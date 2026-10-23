@@ -104,6 +104,25 @@ function go(to: Cam, opts: { instant?: boolean; stiffness?: number } = {}): Prom
 
 let raf = 0;
 let last = 0;
+let introTimer = 0;
+
+// The intro's pull-back is the only motion the visitor didn't ask for; any input cancels it.
+function cancelIntro() {
+  clearTimeout(introTimer);
+  introTimer = 0;
+}
+
+// Stops the camera outright: no frame, no pending intro, no promise left waiting.
+function halt() {
+  cancelIntro();
+  cancelAnimationFrame(raf);
+  raf = 0;
+  settle?.();
+  settle = null;
+  pointers.clear();
+  desk.classList.remove("moving", "dragging");
+}
+
 function wake() {
   if (!raf) {
     last = performance.now();
@@ -112,7 +131,7 @@ function wake() {
 }
 
 function tick(now: number) {
-  const dt = Math.min(0.05, (now - last) / 1000);
+  const dt = Math.max(0, Math.min(0.05, (now - last) / 1000));
   last = now;
   const k = 1 - Math.exp(-dt * stiffness);
   cam.x += (goal.x - cam.x) * k;
@@ -136,6 +155,7 @@ function tick(now: number) {
 }
 
 function apply() {
+  if (!html.classList.contains("desk")) return;
   const tx = vw / 2 - cam.x * cam.z;
   const ty = vh / 2 - cam.y * cam.z;
   world.style.transform = `translate(${tx}px, ${ty}px) scale(${cam.z})`;
@@ -208,8 +228,8 @@ desk.addEventListener("pointerdown", (e) => {
   if (!html.classList.contains("desk") || html.classList.contains("is-live")) return;
   if ((e.target as Element).closest(interactive)) return;
   if (e.button !== 0 && e.pointerType === "mouse") return;
+  cancelIntro();
   pointers.set(e.pointerId, { x: e.clientX, y: e.clientY });
-  desk.setPointerCapture(e.pointerId);
   dragged = false;
   velocity = { x: 0, y: 0, t: performance.now() };
   Object.assign(goal, cam);
@@ -231,6 +251,14 @@ desk.addEventListener("pointermove", (e) => {
   if (!dragged) {
     dragged = true;
     desk.classList.add("dragging");
+    // Captured only now: capturing on pointerdown would retarget the click of a plain press to #desk.
+    for (const id of pointers.keys()) {
+      try {
+        desk.setPointerCapture(id);
+      } catch {
+        // The pointer was already released; nothing to capture.
+      }
+    }
   }
   if (pointers.size === 1) {
     cam.x -= dx / cam.z;
@@ -260,8 +288,8 @@ function release(e: PointerEvent) {
   }
   pinchDist = pointers.size === 2 ? spread() : 0;
 }
-desk.addEventListener("pointerup", release);
-desk.addEventListener("pointercancel", release);
+window.addEventListener("pointerup", release);
+window.addEventListener("pointercancel", release);
 
 // A plain click on a sheet (not a drag, not a link) brings it to the middle of the screen.
 desk.addEventListener("click", (e) => {
@@ -269,7 +297,10 @@ desk.addEventListener("click", (e) => {
   const target = e.target as Element;
   if (target.closest(interactive)) return;
   const item = target.closest<HTMLElement>(".item");
-  if (item) go(fitBox(boxes.get(item) as Box, 56));
+  if (item) {
+    cancelIntro();
+    go(fitBox(boxes.get(item) as Box, 56));
+  }
 });
 
 desk.addEventListener(
@@ -277,6 +308,7 @@ desk.addEventListener(
   (e) => {
     if (!html.classList.contains("desk") || html.classList.contains("is-live")) return;
     e.preventDefault();
+    cancelIntro();
     const scale = e.deltaMode === 1 ? 16 : e.deltaMode === 2 ? vh : 1;
     const rect = desk.getBoundingClientRect();
     if (e.ctrlKey || e.metaKey) {
@@ -293,11 +325,16 @@ desk.addEventListener(
 
 // Safari sends its own gesture events for trackpad pinch.
 let gestureBase = 1;
+const gestureApplies = () =>
+  html.classList.contains("desk") && !html.classList.contains("is-live") && pointers.size === 0;
 desk.addEventListener("gesturestart", (e) => {
+  if (!gestureApplies()) return;
   e.preventDefault();
+  cancelIntro();
   gestureBase = cam.z;
 });
 desk.addEventListener("gesturechange", (e) => {
+  if (!gestureApplies()) return;
   e.preventDefault();
   const g = e as unknown as { scale: number; clientX: number; clientY: number };
   const rect = desk.getBoundingClientRect();
@@ -327,13 +364,15 @@ document.addEventListener("keydown", (e) => {
   const move = moves[e.key];
   if (move) {
     e.preventDefault();
+    cancelIntro();
     move();
   }
 });
 
 // Tabbing onto something off screen brings it into view.
 world.addEventListener("focusin", (e) => {
-  if (!html.classList.contains("desk")) return;
+  if (!html.classList.contains("desk") || html.classList.contains("is-live")) return;
+  cancelIntro();
   const item = (e.target as Element).closest<HTMLElement>(".item");
   if (!item) return;
   const b = boxes.get(item) as Box;
@@ -358,12 +397,21 @@ function shelfView(id: string): Cam {
 }
 
 for (const b of document.querySelectorAll<HTMLButtonElement>("[data-go]")) {
-  b.addEventListener("click", () => go(shelfView(b.dataset.go as string)));
+  b.addEventListener("click", () => {
+    cancelIntro();
+    go(shelfView(b.dataset.go as string));
+  });
 }
 for (const b of document.querySelectorAll<HTMLButtonElement>("[data-zoom]")) {
-  b.addEventListener("click", () => zoomAt(b.dataset.zoom === "in" ? 1.5 : 1 / 1.5, vw / 2, vh / 2, true));
+  b.addEventListener("click", () => {
+    cancelIntro();
+    zoomAt(b.dataset.zoom === "in" ? 1.5 : 1 / 1.5, vw / 2, vh / 2, true);
+  });
 }
-minimap.addEventListener("click", () => go(fitBox(everything())));
+minimap.addEventListener("click", () => {
+  cancelIntro();
+  go(fitBox(everything()));
+});
 
 // ---------- live sites ----------
 
@@ -373,6 +421,14 @@ const liveTitle = live.querySelector(".live-title") as HTMLElement;
 const liveOpen = live.querySelector<HTMLAnchorElement>(".live-open") as HTMLAnchorElement;
 const liveClose = live.querySelector<HTMLButtonElement>(".live-close") as HTMLButtonElement;
 let liveFrom: { cam: Cam; sheet: HTMLElement; button: HTMLButtonElement } | null = null;
+let openSeq = 0;
+const skip = document.querySelector<HTMLElement>(".skip");
+
+// While a site is open, everything behind it is out of reach for focus and assistive tech.
+function setBackgroundInert(on: boolean) {
+  world.inert = on;
+  if (skip) skip.inert = on;
+}
 
 function screenBox(sheet: HTMLElement): Box {
   const screen = sheet.querySelector<HTMLElement>(".screen") as HTMLElement;
@@ -399,13 +455,16 @@ const pause = (ms: number) => new Promise((resolve) => setTimeout(resolve, reduc
 
 async function openLive(button: HTMLButtonElement) {
   if (liveFrom) return;
+  cancelIntro();
+  const id = ++openSeq;
   const sheet = button.closest<HTMLElement>(".sheet") as HTMLElement;
   liveFrom = { cam: { ...goal }, sheet, button };
   // The seal cracks first, then the camera goes in.
   button.classList.add("broken");
   await pause(260);
-  if (liveFrom?.sheet !== sheet) return;
+  if (id !== openSeq) return;
   html.classList.add("is-live");
+  setBackgroundInert(true);
   sheet.classList.add("lifted");
   sheet.style.rotate = "0deg";
   frame.classList.remove("ready");
@@ -413,7 +472,7 @@ async function openLive(button: HTMLButtonElement) {
   liveTitle.textContent = button.dataset.title ?? "";
   liveOpen.href = button.dataset.live as string;
   await go(fitBox(screenBox(sheet), 12, TOP_BAR, 12), { stiffness: 7 });
-  if (liveFrom?.sheet !== sheet) return;
+  if (id !== openSeq) return;
   const r = (sheet.querySelector(".screen") as HTMLElement).getBoundingClientRect();
   setLiveRect(r.top, r.left, r.width, r.height);
   live.hidden = false;
@@ -430,6 +489,8 @@ function closeLive() {
   if (!liveFrom) return;
   const { cam: back, sheet, button } = liveFrom;
   liveFrom = null;
+  openSeq++;
+  setBackgroundInert(false);
   live.hidden = true;
   frame.removeAttribute("src");
   html.classList.remove("is-live");
@@ -441,7 +502,16 @@ function closeLive() {
 }
 
 frame.addEventListener("load", () => {
-  if (frame.getAttribute("src")) frame.classList.add("ready");
+  if (!frame.getAttribute("src")) return;
+  frame.classList.add("ready");
+  // Key events don't bubble out of a frame. The sites share this origin, so listen inside it too.
+  try {
+    frame.contentWindow?.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") closeLive();
+    });
+  } catch {
+    // Cross-origin after a redirect: Escape then only works once focus is back on this page.
+  }
 });
 liveClose.addEventListener("click", closeLive);
 for (const b of document.querySelectorAll<HTMLButtonElement>("button.try")) {
@@ -476,6 +546,7 @@ function setMode(mode: "desk" | "list", intro = false) {
   modeToggle.setAttribute("aria-pressed", String(mode === "list"));
   modeToggle.textContent = mode === "list" ? "Desk view" : "List view";
   if (mode === "list") {
+    halt();
     unplace();
     return;
   }
@@ -494,7 +565,7 @@ function setMode(mode: "desk" | "list", intro = false) {
       h: seal.offsetHeight * 0.4,
     };
     go(fitBox(face, 0, 0, 0), { instant: true });
-    setTimeout(() => go(overview, { stiffness: 2.2 }), 650);
+    introTimer = window.setTimeout(() => go(overview, { stiffness: 2.2 }), 650);
   } else {
     go(overview, { instant: true });
   }
@@ -525,6 +596,20 @@ window.addEventListener("resize", () => {
     } else apply();
   }, 80);
 });
+
+// Boards and receipts grow after the first measure (images load, boards refresh from GitHub),
+// so keep each item's box in step with what is actually on the desk.
+const resized = new ResizeObserver((entries) => {
+  if (!html.classList.contains("desk")) return;
+  for (const { target } of entries) {
+    const el = target as HTMLElement;
+    const b = boxes.get(el);
+    if (b) boxes.set(el, { ...b, w: el.offsetWidth, h: el.offsetHeight });
+  }
+  drawMinimap();
+  drawViewport();
+});
+for (const el of items) resized.observe(el);
 
 async function start() {
   await document.fonts.ready;
