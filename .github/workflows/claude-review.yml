@@ -1,0 +1,111 @@
+name: Claude review
+
+# CI answers "does it build, lint, type-check and pass the browser tests". This
+# asks what no script here can. It reviews, it does not gate: nothing here is a
+# required check.
+#
+# The action refuses to run when this file differs from the copy on the default
+# branch, so a pull request cannot rewrite its own reviewer. The cost is that
+# any change to this file, including the one that added it, goes unreviewed by
+# Claude until it is merged.
+
+on:
+  pull_request:
+    # converted_to_draft is here to cancel, not to run. The job skips drafts, so
+    # the run this starts exists only to take over the concurrency group and stop
+    # a review of a pull request its author has just pulled back.
+    types: [opened, synchronize, reopened, ready_for_review, converted_to_draft]
+
+permissions: {}
+
+# One review per pull request. A rapid re-push cancels the run it superseded.
+concurrency:
+  group: claude-review-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  review:
+    # A fork gets no secrets and Dependabot gets only dependabot secrets, so both
+    # would fail on authentication rather than say anything useful.
+    if: >-
+      github.event.pull_request.head.repo.full_name == github.repository &&
+      github.event.pull_request.user.type == 'User' &&
+      github.event.pull_request.draft == false
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    permissions:
+      contents: read
+      pull-requests: write
+      # Required by the action's default GitHub App authentication.
+      id-token: write
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+          # Nothing here pushes, and the action authenticates through the GitHub
+          # App rather than this token.
+          persist-credentials: false
+
+      # Without the secret the action exits successfully having reviewed
+      # nothing, which paints the pull request as reviewed. Fail legibly instead.
+      - name: Require the token
+        env:
+          CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+        run: |
+          if [ -z "$CLAUDE_CODE_OAUTH_TOKEN" ]; then
+            echo "::error::CLAUDE_CODE_OAUTH_TOKEN is not set. Generate one with 'claude setup-token', then: gh secret set CLAUDE_CODE_OAUTH_TOKEN"
+            exit 1
+          fi
+
+      - uses: anthropics/claude-code-action@ae68417a745a5df4b2124873632bd73a2255e6f6 # v1.0.259
+        with:
+          # A subscription token, not an API key. Generate it with `claude setup-token`.
+          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          prompt: |
+            REPO: ${{ github.repository }}
+            PR: ${{ github.event.pull_request.number }}
+
+            This is https://0-draft.github.io/, a static Astro 7 site that lays the 0-draft
+            org's public repos out on a pannable, zoomable desk. scripts/sync.ts pulls repos,
+            README game boards and dev.to articles into src/data at build time.
+            src/scripts/desk.ts is a dependency-free camera (pan, zoom, rulers, minimap, live
+            iframe); src/lib/readme.ts turns README HTML into data so nothing is injected as
+            raw HTML; src/styles/desk.css is plain layered CSS.
+
+            Do not repeat what CI already does. Biome, astro check, the Vitest unit tests and
+            Playwright (Chromium, WebKit, a phone, and no-JS) run on this PR already.
+
+            Look for what only a reader can catch:
+
+            1. Injection. Anything from a README, the GitHub API or dev.to must reach the
+               page as text or as an allow-listed URL, never through innerHTML or set:html.
+               Links are limited to https://github.com/ and images to the org's
+               raw.githubusercontent.com paths; a widened allow list needs a reason.
+
+            2. The CSP. astro.config.mjs hashes scripts and styles. A new inline style
+               attribute, external host or iframe origin either breaks under the policy or
+               quietly loosens it. Positions are applied through the CSSOM for this reason.
+
+            3. Two views, one DOM. The desk and the list view (also the no-JS view) share
+               markup. A change that only works with the camera running, a media query that
+               changes world-space layout in desk mode, or content that disappears without
+               JavaScript is a regression.
+
+            4. Input and focus. Pointer, wheel, pinch, Safari gesture events and the
+               keyboard all drive the same camera. Watch for drags that swallow link clicks,
+               focus that lands off screen, Escape not closing the live frame, and motion
+               that ignores prefers-reduced-motion.
+
+            5. Sync failure modes. A failing source must keep its previous file rather
+               than emptying the desk.
+
+            Post findings as inline comments on the lines they concern. Use one
+            top-level comment for the summary, posted with
+            `gh pr comment --edit-last --create-if-none` so that a re-review
+            replaces the previous summary rather than stacking another one
+            underneath it. Be specific and cite `file:line`. If the diff is clean
+            against all of the above, say so in one line rather than manufacturing
+            nits.
+
+          claude_args: |
+            --allowedTools "mcp__github_inline_comment__create_inline_comment,Bash(gh pr comment:*),Bash(gh pr diff:*),Bash(gh pr view:*)"

@@ -1,0 +1,59 @@
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+      day: monday
+      time: "09:00"
+      timezone: Asia/Tokyo
+    # Let a release sit for a few days before it is proposed, so a broken or
+    # hijacked version has time to be pulled.
+    cooldown:
+      default-days: 3
+    open-pull-requests-limit: 10
+    commit-message:
+      prefix: chore
+      include: scope
+    groups:
+      astro:
+        patterns:
+          - "astro"
+          - "@astrojs/*"
+        update-types:
+          - minor
+          - patch
+      testing:
+        patterns:
+          - "vitest"
+          - "@playwright/test"
+        update-types:
+          - minor
+          - patch
+      npm-minor-patch:
+        patterns:
+          - "*"
+        update-types:
+          - minor
+          - patch
+
+  - package-ecosystem: github-actions
+    directories:
+      - /
+      - /.github/actions/*
+    schedule:
+      interval: weekly
+      day: monday
+      time: "09:00"
+      timezone: Asia/Tokyo
+    cooldown:
+      default-days: 3
+    open-pull-requests-limit: 5
+    commit-message:
+      prefix: chore
+      include: scope
+    groups:
+      actions-minor-patch:
+        update-types:
+          - minor
+          - patch

@@ -12,7 +12,13 @@ Drag the mat to look around and pinch (or press `+` and `-`) to zoom. A sheet wi
 - `src/data/groups.ts` decides which pile a repo sits in. A new repo that isn't filed there shows up on its own pile on the next build.
 - `src/lib/desk.ts` holds where each sheet sits on the mat. `src/scripts/desk.ts` is the camera: pan, zoom, rulers, minimap and the live frame. It has no dependencies.
 - `src/assets/shots/` holds a screenshot per project, named after the repo.
-- `.github/workflows/deploy.yml` syncs, checks, builds and deploys to Pages on every push and once a day.
+
+## CI
+
+- `ci.yml` runs on every pull request: Biome, actionlint, `astro check`, Vitest, a build, and Playwright against that build in Chromium, WebKit, a phone and with JavaScript off.
+- `deploy.yml` runs the same CI on freshly synced data on every push to main and once a day, then deploys to Pages.
+- `claude-review.yml` reviews pull requests. It needs a `CLAUDE_CODE_OAUTH_TOKEN` secret from `claude setup-token`.
+- Dependabot proposes npm and Actions updates every Monday, grouped and held for three days after release.
 
 ## Develop
 
@@ -21,7 +27,9 @@ pnpm install
 pnpm sync      # needs network; set GITHUB_TOKEN to avoid rate limits
 pnpm dev
 pnpm check     # biome + astro check
+pnpm test      # vitest
 pnpm build
+pnpm e2e       # playwright against dist/
 ```
 
 Astro 7, plain CSS, Node 24 or newer.
