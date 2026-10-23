@@ -29,12 +29,27 @@ const placed: Record<string, Spot> = {
 };
 
 export const labels: Record<string, Spot> = {
-  aws: { x: -2860, y: -1860 },
-  security: { x: 880, y: -1860 },
-  games: { x: -1620, y: 560 },
-  writing: { x: 860, y: 520 },
+  aws: { x: -2860, y: -1920 },
+  security: { x: 880, y: -1920 },
+  games: { x: -1620, y: 490 },
+  writing: { x: 860, y: 470 },
   fresh: { x: 900, y: 1500 },
 };
+
+// Red string between sheets that belong together across piles: the same subject,
+// or a project and the article written about it. Pairs naming a missing repo are skipped.
+export const threads: [string, string][] = [
+  ["caller-identity", "assume-role"],
+  ["assume-role", "identity-deep-dive"],
+  ["on-ramp", "cross-connect"],
+  ["authz-playground", "dev.to"],
+  ["identity-deep-dive", "dev.to"],
+  ["shogi", "dev.to"],
+];
+
+// Dossier numbers are primes, for anyone who notices.
+const PRIMES = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31];
+export const fileNo = (i: number) => `File ${String(PRIMES[i] ?? i + 1).padStart(2, "0")}`;
 
 export interface Shelf {
   id: string;

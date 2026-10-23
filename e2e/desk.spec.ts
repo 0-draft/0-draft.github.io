@@ -70,12 +70,12 @@ test("keyboard focus pulls an off-screen sheet into view", async ({ page, isMobi
     .toBe(true);
 });
 
-test("Try it here opens the live site on the desk and Escape puts it back", async ({ page }) => {
+test("breaking a seal opens the live site on the desk and Escape puts it back", async ({ page }) => {
   await openDesk(page);
   const target = repos.find((r) => r.homepage?.startsWith("https://0-draft.github.io/"));
   test.skip(!target, "no framable site in the data");
   const sheet = page.locator(`article[id="${target?.name}"]`);
-  const button = sheet.getByRole("button", { name: "Try it here" });
+  const button = sheet.getByRole("button", { name: /^Break the seal/ });
   // Focusing brings the sheet on screen first, the way a visitor would reach it.
   await button.focus();
   await expect(button).toBeInViewport({ ratio: 1 });
@@ -87,7 +87,7 @@ test("Try it here opens the live site on the desk and Escape puts it back", asyn
   await page.keyboard.press("Escape");
   await expect(live).toBeHidden();
   await expect(live.locator("iframe")).not.toHaveAttribute("src", /./);
-  await expect(sheet.getByRole("button", { name: "Try it here" })).toBeFocused();
+  await expect(sheet.getByRole("button", { name: /^Break the seal/ })).toBeFocused();
 });
 
 test("the README games render as playable boards", async ({ page }) => {

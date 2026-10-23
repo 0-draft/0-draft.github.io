@@ -2,6 +2,7 @@
 import { Image } from "astro:assets";
 // One project, printed and taped to the mat.
 import type { ImageMetadata } from "astro";
+import wax from "../assets/wax.png";
 import { ago, framable, type Shelf } from "../lib/desk.ts";
 
 type Placed = Shelf["repos"][number];
@@ -28,7 +29,17 @@ const host = site?.replace(/^https:\/\//, "").replace(/\/$/, "");
   data-group={group}
   aria-labelledby={`${repo.name}-title`}
 >
-  <span class:list={["tape", `tape-${repo.tape}`]} aria-hidden="true"></span>
+  {
+    repo.tape === 0 ? (
+      <Image class="fix fix-seal" src={wax} alt="" width={136} format="webp" />
+    ) : repo.tape === 1 ? (
+      <span class="fix tape" aria-hidden="true" />
+    ) : (
+      <svg class="fix fix-clip" viewBox="0 0 40 110" aria-hidden="true">
+        <use href="#clip" />
+      </svg>
+    )
+  }
   {
     kind === "screen" && (
       <div class="screen">
@@ -40,8 +51,16 @@ const host = site?.replace(/^https:\/\//, "").replace(/\/$/, "");
           </div>
         )}
         {live && (
-          <button type="button" class="try" data-live={live} data-title={repo.name}>
-            Try it here
+          <button
+            type="button"
+            class="try"
+            data-live={live}
+            data-title={repo.name}
+            aria-label={`Break the seal: open ${repo.name} here`}
+          >
+            <Image class="seal-half seal-l" src={wax} alt="" width={240} format="webp" />
+            <Image class="seal-half seal-r" src={wax} alt="" width={240} format="webp" />
+            <span class="seal-text" aria-hidden="true">Break the seal</span>
           </button>
         )}
       </div>
