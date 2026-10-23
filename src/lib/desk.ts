@@ -1,4 +1,4 @@
-// Where everything sits on the mat, in world pixels. The home sheet is centred on (0, 0).
+// Where everything sits on the desk, in world pixels. The home sheet is centred on (0, 0).
 // Positions are top-left corners; sizes come from the rendered elements, so only placement lives here.
 import { fallback, groups } from "../data/groups.ts";
 import repos from "../data/repos.json";
@@ -35,17 +35,6 @@ export const labels: Record<string, Spot> = {
   writing: { x: 860, y: 470 },
   fresh: { x: 900, y: 1500 },
 };
-
-// Red string between sheets that belong together across piles: the same subject,
-// or a project and the article written about it. Pairs naming a missing repo are skipped.
-export const threads: [string, string][] = [
-  ["caller-identity", "assume-role"],
-  ["assume-role", "identity-deep-dive"],
-  ["on-ramp", "cross-connect"],
-  ["authz-playground", "dev.to"],
-  ["identity-deep-dive", "dev.to"],
-  ["shogi", "dev.to"],
-];
 
 // Dossier numbers are primes, for anyone who notices.
 const PRIMES = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31];

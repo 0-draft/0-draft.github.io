@@ -1,6 +1,6 @@
 ---
 import { Image } from "astro:assets";
-// One project, printed and taped to the mat.
+// One project, pulled as a proof and laid on the desk.
 import type { ImageMetadata } from "astro";
 import wax from "../assets/wax.png";
 import { ago, framable, type Shelf } from "../lib/desk.ts";
@@ -29,17 +29,6 @@ const host = site?.replace(/^https:\/\//, "").replace(/\/$/, "");
   data-group={group}
   aria-labelledby={`${repo.name}-title`}
 >
-  {
-    repo.tape === 0 ? (
-      <Image class="fix fix-seal" src={wax} alt="" width={136} format="webp" />
-    ) : repo.tape === 1 ? (
-      <span class="fix tape" aria-hidden="true" />
-    ) : (
-      <svg class="fix fix-clip" viewBox="0 0 40 110" aria-hidden="true">
-        <use href="#clip" />
-      </svg>
-    )
-  }
   {
     kind === "screen" && (
       <div class="screen">
@@ -82,5 +71,5 @@ const host = site?.replace(/^https:\/\//, "").replace(/\/$/, "");
       <a class="btn" href={repo.url}>Source</a>
     </p>
   </div>
-  <svg class:list={["stamp", `stamp-${repo.tape}`]} viewBox="0 0 120 120" aria-hidden="true"><use href="#stamp"></use></svg>
+  <svg class:list={["stamp", `stamp-${repo.tape}`]} viewBox="0 0 172 76" aria-hidden="true"><use href="#stamp"></use></svg>
 </article>

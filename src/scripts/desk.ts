@@ -5,8 +5,6 @@ const html = document.documentElement;
 const desk = document.getElementById("desk") as HTMLElement;
 const world = document.getElementById("world") as HTMLElement;
 const items = [...world.querySelectorAll<HTMLElement>(".item")];
-const rulerX = document.querySelector<HTMLCanvasElement>(".ruler-x") as HTMLCanvasElement;
-const rulerY = document.querySelector<HTMLCanvasElement>(".ruler-y") as HTMLCanvasElement;
 const zoomRead = document.querySelector<HTMLOutputElement>(".zoom-read") as HTMLOutputElement;
 const minimap = document.querySelector<HTMLButtonElement>(".minimap") as HTMLButtonElement;
 const modeToggle = document.querySelector<HTMLButtonElement>("[data-mode-toggle]") as HTMLButtonElement;
@@ -14,7 +12,6 @@ const reduced = matchMedia("(prefers-reduced-motion: reduce)");
 
 const Z_MIN = 0.04;
 const Z_MAX = 2.5;
-const RULER = 22;
 const TOP_BAR = 64;
 const BOTTOM_BAR = 84;
 
@@ -82,10 +79,10 @@ const everything = () => union([...boxes.values()]);
 
 // Camera that shows `box` with `pad` screen pixels around it, clear of the HUD bars.
 function fitBox(box: Box, pad = 40, top = TOP_BAR, bottom = BOTTOM_BAR): Cam {
-  const availW = vw - RULER - pad * 2;
+  const availW = vw - pad * 2;
   const availH = vh - top - bottom - pad * 2;
   const z = clampZ(Math.min(availW / box.w, availH / box.h));
-  const cx = box.x + box.w / 2 - RULER / 2 / z;
+  const cx = box.x + box.w / 2;
   const cy = box.y + box.h / 2 - (top - bottom) / 2 / z;
   return { x: cx, y: cy, z };
 }
@@ -143,11 +140,8 @@ function apply() {
   world.style.setProperty("--z", cam.z.toFixed(4));
   desk.style.setProperty("--gx", `${tx}px`);
   desk.style.setProperty("--gy", `${ty}px`);
-  let cell = 40;
-  while (cell * cam.z < 14) cell *= 5;
-  desk.style.setProperty("--gs", `${cell * cam.z}px`);
+  desk.style.setProperty("--tz", `${512 * cam.z}px`);
   zoomRead.value = `${Math.round(cam.z * 100)}%`;
-  drawRulers(tx, ty);
   drawViewport();
 }
 
@@ -165,64 +159,7 @@ function zoomAt(factor: number, sx: number, sy: number, animate = false) {
   }
 }
 
-// ---------- rulers and minimap ----------
-
-const dpr = () => Math.min(2, window.devicePixelRatio || 1);
-let dotFont = "monospace";
-
-function sizeRulers() {
-  for (const [c, w, h] of [
-    [rulerX, vw, RULER],
-    [rulerY, RULER, vh],
-  ] as const) {
-    c.width = Math.round(w * dpr());
-    c.height = Math.round(h * dpr());
-  }
-}
-
-function drawRulers(tx: number, ty: number) {
-  const steps = [10, 20, 50, 100, 200, 500, 1000, 2000];
-  const step = steps.find((s) => s * cam.z >= 9) ?? 2000;
-  for (const axis of ["x", "y"] as const) {
-    const c = axis === "x" ? rulerX : rulerY;
-    const ctx = c.getContext("2d");
-    if (!ctx) continue;
-    const r = dpr();
-    ctx.setTransform(r, 0, 0, r, 0, 0);
-    const len = axis === "x" ? vw : vh;
-    ctx.clearRect(0, 0, axis === "x" ? len : RULER, axis === "x" ? RULER : len);
-    // engraved into a brass rule
-    ctx.fillStyle = "rgb(46 32 10 / 0.9)";
-    ctx.strokeStyle = "rgb(46 32 10 / 0.75)";
-    ctx.lineWidth = 1;
-    ctx.font = `11px ${dotFont}`;
-    const offset = axis === "x" ? tx : ty;
-    const first = Math.floor(-offset / cam.z / step) * step;
-    const lastWorld = (len - offset) / cam.z;
-    ctx.beginPath();
-    for (let w = first; w <= lastWorld; w += step) {
-      const p = Math.round(offset + w * cam.z) + 0.5;
-      const major = w % (step * 5) === 0;
-      const tickLen = major ? 10 : w % ((step * 5) / 5) === 0 ? 5 : 4;
-      if (axis === "x") {
-        ctx.moveTo(p, RULER);
-        ctx.lineTo(p, RULER - tickLen);
-        if (major) ctx.fillText(String(w), p + 3, 10);
-      } else {
-        ctx.moveTo(RULER, p);
-        ctx.lineTo(RULER - tickLen, p);
-        if (major) {
-          ctx.save();
-          ctx.translate(10, p - 3);
-          ctx.rotate(-Math.PI / 2);
-          ctx.fillText(String(w), 0, 0);
-          ctx.restore();
-        }
-      }
-    }
-    ctx.stroke();
-  }
-}
+// ---------- minimap ----------
 
 const SVG = "http://www.w3.org/2000/svg";
 const mapSvg = minimap.querySelector("svg") as SVGSVGElement;
@@ -400,7 +337,7 @@ world.addEventListener("focusin", (e) => {
   const left = (b.x - cam.x) * cam.z + vw / 2;
   const top = (b.y - cam.y) * cam.z + vh / 2;
   const visible =
-    left >= RULER && top >= TOP_BAR && left + b.w * cam.z <= vw && top + b.h * cam.z <= vh - BOTTOM_BAR && cam.z > 0.45;
+    left >= 0 && top >= TOP_BAR && left + b.w * cam.z <= vw && top + b.h * cam.z <= vh - BOTTOM_BAR && cam.z > 0.45;
   if (!visible) go(fitBox(b, 56));
   desk.scrollTop = 0;
   desk.scrollLeft = 0;
@@ -508,53 +445,6 @@ for (const b of document.querySelectorAll<HTMLButtonElement>("button.try")) {
   b.addEventListener("click", () => openLive(b));
 }
 
-// ---------- red string ----------
-
-const SVG_NS = "http://www.w3.org/2000/svg";
-const strings = world.querySelector<SVGSVGElement>(".strings:not(.pins)");
-const pinLayer = world.querySelector<SVGSVGElement>(".strings.pins");
-
-// Where a string is pinned: near the top-right corner of the sheet.
-function pinAt(el: HTMLElement) {
-  const b = boxes.get(el) as Box;
-  return { x: b.x + b.w - 40, y: b.y + 30 };
-}
-
-function drawStrings() {
-  if (!strings) return;
-  const pairs = (strings.dataset.threads ?? "")
-    .split(",")
-    .filter(Boolean)
-    .map((p) => p.split(":").map((id) => document.getElementById(id)));
-  const parts: SVGElement[] = [];
-  const pins: SVGElement[] = [];
-  for (const [ea, eb] of pairs) {
-    if (!ea || !eb || !boxes.has(ea) || !boxes.has(eb)) continue;
-    const a = pinAt(ea);
-    const b = pinAt(eb);
-    // A string hangs: the control point sits below the midpoint, more for longer runs.
-    const sag = Math.min(280, Math.hypot(b.x - a.x, b.y - a.y) * 0.14);
-    const d = `M${a.x} ${a.y}Q${(a.x + b.x) / 2} ${(a.y + b.y) / 2 + sag * 2} ${b.x} ${b.y}`;
-    for (const cls of ["thread", "thread-shine"]) {
-      const path = document.createElementNS(SVG_NS, "path");
-      path.setAttribute("class", cls);
-      path.setAttribute("d", d);
-      parts.push(path);
-    }
-    for (const p of [a, b]) {
-      const use = document.createElementNS(SVG_NS, "use");
-      use.setAttribute("href", "#pin");
-      for (const [k, v] of Object.entries({ x: p.x - 20, y: p.y - 20, width: 40, height: 40 })) {
-        use.setAttribute(k, String(v));
-      }
-      pins.push(use);
-    }
-  }
-  // The string runs under the sheets; only the pins sit on top.
-  strings.replaceChildren(...parts);
-  pinLayer?.replaceChildren(...pins);
-}
-
 // ---------- the redacted password ----------
 
 for (const r of document.querySelectorAll<HTMLButtonElement>(".redacted")) {
@@ -588,9 +478,7 @@ function setMode(mode: "desk" | "list", intro = false) {
   }
   place();
   measure();
-  sizeRulers();
   drawMinimap();
-  drawStrings();
   const overview = narrow() ? shelfView("home") : fitBox(everything());
   if (intro && !reduced.matches) {
     // Start nose to nose with the seal, then pull back to show the whole desk.
@@ -629,7 +517,6 @@ window.addEventListener("resize", () => {
   resizeTimer = window.setTimeout(() => {
     vw = desk.clientWidth;
     vh = desk.clientHeight;
-    sizeRulers();
     if (liveFrom) {
       go(fitBox(screenBox(liveFrom.sheet), 12, TOP_BAR, 12), { instant: true }).then(positionLive);
     } else apply();
@@ -638,7 +525,6 @@ window.addEventListener("resize", () => {
 
 async function start() {
   await document.fonts.ready;
-  dotFont = getComputedStyle(html).getPropertyValue("--font-dot").trim() || "monospace";
   setMode(recalled() === "list" ? "list" : "desk", true);
   html.classList.add("ready");
 }

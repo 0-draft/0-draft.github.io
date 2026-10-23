@@ -2,9 +2,9 @@
 
 <img alt="The 0-draft desk" src="public/og.png">
 
-Everything public in the [0-draft](https://github.com/0-draft) org, filed as dossiers on a lodge desk at <https://0-draft.github.io/>.
+Everything public in the [0-draft](https://github.com/0-draft) org, pulled as proofs and laid out on a print-shop desk at night: <https://0-draft.github.io/>.
 
-Drag the desk to look around and pinch (or press `+` and `-`) to zoom. Break the wax seal on a sheet and the real site opens right on the desk. Red string ties together sheets that belong together across piles. Blackjack, shogi and the guest book are read live from their READMEs, so you can make a move from here. Prefer a plain page? Press "List view".
+Drag the desk to look around and pinch (or press `+` and `-`) to zoom. Break the wax seal on a sheet and the real site opens right on the desk. Blackjack, shogi and the guest book are read live from their READMEs, so you can make a move from here. Prefer a plain page? Press "List view".
 
 ## How it works
 
