@@ -28,9 +28,10 @@ for (const r of targets) {
     // An error page must never be printed: without --all it would never be retaken.
     const res = await page.goto(r.homepage as string, { waitUntil: "networkidle", timeout: 45_000 });
     if (!res?.ok()) throw new Error(`HTTP ${res?.status() ?? "no response"}`);
-    // goto follows redirects; only print what is still on the org's Pages origin.
-    if (!page.url().startsWith("https://0-draft.github.io/")) throw new Error(`redirected to ${page.url()}`);
     await page.waitForTimeout(1500);
+    // Checked after the wait so a late client-side redirect is caught too:
+    // only print what is still on the org's Pages origin.
+    if (!page.url().startsWith("https://0-draft.github.io/")) throw new Error(`redirected to ${page.url()}`);
     await page.screenshot({ path });
     taken++;
     console.log(`shot  ${r.name}`);
