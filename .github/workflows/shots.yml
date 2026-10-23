@@ -39,6 +39,8 @@ jobs:
       - id: v
         run: echo "playwright=$(node -p 'require("./package.json").devDependencies["@playwright/test"]')" >> "$GITHUB_OUTPUT"
 
+  # Shooting runs third-party code (the npm install, the sites themselves) with a
+  # read-only token. Only the propose job can write, and it installs nothing.
   shoot:
     needs: versions
     runs-on: ubuntu-latest
@@ -47,8 +49,7 @@ jobs:
       image: mcr.microsoft.com/playwright:v${{ needs.versions.outputs.playwright }}-noble
       options: --user 1001
     permissions:
-      contents: write
-      pull-requests: write
+      contents: read
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
@@ -59,20 +60,42 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ github.token }}
       - run: node scripts/shoot.ts ${{ inputs.all && '--all' || '' }}
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: shots
+          path: src/assets/shots
+          retention-days: 3
+
+  propose:
+    needs: shoot
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
+        with:
+          name: shots
+          path: src/assets/shots
       - name: Propose the new screenshots
         env:
           GH_TOKEN: ${{ github.token }}
           REPO: ${{ github.repository }}
           RUN_ID: ${{ github.run_id }}
+          GIT_AUTHOR_NAME: github-actions[bot]
+          GIT_AUTHOR_EMAIL: 41898282+github-actions[bot]@users.noreply.github.com
+          GIT_COMMITTER_NAME: github-actions[bot]
+          GIT_COMMITTER_EMAIL: 41898282+github-actions[bot]@users.noreply.github.com
         run: |
-          git config --global --add safe.directory "$GITHUB_WORKSPACE"
           if [ -z "$(git status --porcelain -- src/assets/shots)" ]; then
             echo "Every live site already has a screenshot."
             exit 0
           fi
           branch="shots/$RUN_ID"
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git switch -c "$branch"
           git add -- src/assets/shots
           git commit -m "chore(shots): update project screenshots"
