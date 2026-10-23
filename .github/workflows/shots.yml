@@ -95,6 +95,11 @@ jobs:
             echo "Every live site already has a screenshot."
             exit 0
           fi
+          open="$(gh pr list --repo "$REPO" --state open --search 'head:shots/' --json number --jq '.[0].number // empty')"
+          if [ -n "$open" ]; then
+            echo "::notice::Screenshots are already proposed in #$open; merge or close it first."
+            exit 0
+          fi
           # The artifact comes from a job that ran third-party code, so commit nothing
           # but real PNGs directly inside src/assets/shots.
           git status --porcelain --untracked-files=all -- src/assets/shots | cut -c4- | while read -r f; do
