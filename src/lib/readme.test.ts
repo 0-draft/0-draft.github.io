@@ -66,9 +66,14 @@ describe("parseBlocks", () => {
     });
   });
 
-  it("decodes numeric references, and decodes &amp; last", () => {
-    const [p] = parseBlocks("<p>it&#x27;s &#39;fine&#39; &amp;#39;</p>");
-    expect(p).toEqual({ kind: "text", segs: [{ text: "it's 'fine' &#39;" }] });
+  it("decodes numeric references in one pass, never twice", () => {
+    const [p] = parseBlocks("<p>it&#x27;s &#39;fine&#39; &amp;#39; &amp;lt;b&amp;gt;</p>");
+    expect(p).toEqual({ kind: "text", segs: [{ text: "it's 'fine' &#39; &lt;b&gt;" }] });
+  });
+
+  it("survives references that name no real character", () => {
+    const [p] = parseBlocks("<p>a&#x110000;b&#xD800;c&#0;d&bogus;e</p>");
+    expect(p).toEqual({ kind: "text", segs: [{ text: "a\ufffdb\ufffdc\ufffdd&bogus;e" }] });
   });
 
   it("reads a table's head and its body cell by cell", () => {
