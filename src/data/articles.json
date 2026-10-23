@@ -1,1 +1,106 @@
-[{"title":"Mandatum: Making an AI Agent's Authority a Chain You Can Verify","url":"https://dev.to/kanywst/mandatum-making-an-ai-agents-authority-a-chain-you-can-verify-1hoa","publishedAt":"2026-09-16T10:45:49Z","reactions":1,"tags":["showdev","go","security","authorization"],"readingMinutes":4},{"title":"I Made Four Authorization Engines Answer the Same Questions","url":"https://dev.to/kanywst/i-made-four-authorization-engines-answer-the-same-questions-5a96","publishedAt":"2026-09-12T07:11:35Z","reactions":0,"tags":["showdev","authorization","security","webassembly"],"readingMinutes":2},{"title":"Envoy AI Gateway: A Hands-On Tour You Can Run Before Touching Kubernetes","url":"https://dev.to/kanywst/envoy-ai-gateway-a-hands-on-tour-you-can-run-before-touching-kubernetes-136p","publishedAt":"2026-08-14T11:24:30Z","reactions":0,"tags":["ai","kubernetes","envoy","llm"],"readingMinutes":28},{"title":"Let's Play Shogi: I Turned My GitHub Profile README Into a Playable Board","url":"https://dev.to/kanywst/lets-play-shogi-i-turned-my-github-profile-readme-into-a-playable-board-333c","publishedAt":"2026-08-13T11:18:30Z","reactions":0,"tags":["showdev","github","python","automation"],"readingMinutes":5},{"title":"Mapping MCP, A2A, and ACP: Telling AI Agent Protocols Apart in 2026","url":"https://dev.to/kanywst/mapping-mcp-a2a-and-acp-telling-ai-agent-protocols-apart-in-2026-1hha","publishedAt":"2026-06-28T11:51:47Z","reactions":1,"tags":["ai","agents","mcp","a2a"],"readingMinutes":12},{"title":"The Day client_id Becomes a URL: Client ID Metadata Documents vs Dynamic Client Registration (DCR)","url":"https://dev.to/kanywst/the-day-clientid-becomes-a-url-client-id-metadata-documents-vs-dynamic-client-registration-dcr-dhi","publishedAt":"2026-06-26T12:08:30Z","reactions":1,"tags":["oauth","security","identity","mcp"],"readingMinutes":15},{"title":"AgentAuth Deep Dive: Reading the Self-Authenticating UUID for AI Agents from the Source","url":"https://dev.to/kanywst/agentauth-deep-dive-reading-the-self-authenticating-uuid-for-ai-agents-from-the-source-44eh","publishedAt":"2026-06-25T13:44:37Z","reactions":0,"tags":["ai","security","mcp","typescript"],"readingMinutes":14},{"title":"JWT (Access Token) vs X.509 Deep Dive: How to Choose What You Present as a Credential","url":"https://dev.to/kanywst/jwt-access-token-vs-x509-deep-dive-how-to-choose-what-you-present-as-a-credential-34ij","publishedAt":"2026-06-15T13:54:03Z","reactions":0,"tags":["security","authentication","jwt","tls"],"readingMinutes":10}]
+[
+  {
+    "title": "Mandatum: Making an AI Agent's Authority a Chain You Can Verify",
+    "url": "https://dev.to/kanywst/mandatum-making-an-ai-agents-authority-a-chain-you-can-verify-1hoa",
+    "publishedAt": "2026-09-16T10:45:49Z",
+    "reactions": 1,
+    "tags": [
+      "showdev",
+      "go",
+      "security",
+      "authorization"
+    ],
+    "readingMinutes": 4
+  },
+  {
+    "title": "I Made Four Authorization Engines Answer the Same Questions",
+    "url": "https://dev.to/kanywst/i-made-four-authorization-engines-answer-the-same-questions-5a96",
+    "publishedAt": "2026-09-12T07:11:35Z",
+    "reactions": 0,
+    "tags": [
+      "showdev",
+      "authorization",
+      "security",
+      "webassembly"
+    ],
+    "readingMinutes": 2
+  },
+  {
+    "title": "Envoy AI Gateway: A Hands-On Tour You Can Run Before Touching Kubernetes",
+    "url": "https://dev.to/kanywst/envoy-ai-gateway-a-hands-on-tour-you-can-run-before-touching-kubernetes-136p",
+    "publishedAt": "2026-08-14T11:24:30Z",
+    "reactions": 0,
+    "tags": [
+      "ai",
+      "kubernetes",
+      "envoy",
+      "llm"
+    ],
+    "readingMinutes": 28
+  },
+  {
+    "title": "Let's Play Shogi: I Turned My GitHub Profile README Into a Playable Board",
+    "url": "https://dev.to/kanywst/lets-play-shogi-i-turned-my-github-profile-readme-into-a-playable-board-333c",
+    "publishedAt": "2026-08-13T11:18:30Z",
+    "reactions": 0,
+    "tags": [
+      "showdev",
+      "github",
+      "python",
+      "automation"
+    ],
+    "readingMinutes": 5
+  },
+  {
+    "title": "Mapping MCP, A2A, and ACP: Telling AI Agent Protocols Apart in 2026",
+    "url": "https://dev.to/kanywst/mapping-mcp-a2a-and-acp-telling-ai-agent-protocols-apart-in-2026-1hha",
+    "publishedAt": "2026-06-28T11:51:47Z",
+    "reactions": 1,
+    "tags": [
+      "ai",
+      "agents",
+      "mcp",
+      "a2a"
+    ],
+    "readingMinutes": 12
+  },
+  {
+    "title": "The Day client_id Becomes a URL: Client ID Metadata Documents vs Dynamic Client Registration (DCR)",
+    "url": "https://dev.to/kanywst/the-day-clientid-becomes-a-url-client-id-metadata-documents-vs-dynamic-client-registration-dcr-dhi",
+    "publishedAt": "2026-06-26T12:08:30Z",
+    "reactions": 1,
+    "tags": [
+      "oauth",
+      "security",
+      "identity",
+      "mcp"
+    ],
+    "readingMinutes": 15
+  },
+  {
+    "title": "AgentAuth Deep Dive: Reading the Self-Authenticating UUID for AI Agents from the Source",
+    "url": "https://dev.to/kanywst/agentauth-deep-dive-reading-the-self-authenticating-uuid-for-ai-agents-from-the-source-44eh",
+    "publishedAt": "2026-06-25T13:44:37Z",
+    "reactions": 0,
+    "tags": [
+      "ai",
+      "security",
+      "mcp",
+      "typescript"
+    ],
+    "readingMinutes": 14
+  },
+  {
+    "title": "JWT (Access Token) vs X.509 Deep Dive: How to Choose What You Present as a Credential",
+    "url": "https://dev.to/kanywst/jwt-access-token-vs-x509-deep-dive-how-to-choose-what-you-present-as-a-credential-34ij",
+    "publishedAt": "2026-06-15T13:54:03Z",
+    "reactions": 0,
+    "tags": [
+      "security",
+      "authentication",
+      "jwt",
+      "tls"
+    ],
+    "readingMinutes": 10
+  }
+]
