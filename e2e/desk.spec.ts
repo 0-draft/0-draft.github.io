@@ -120,6 +120,58 @@ test("the redacted password lifts when pressed", async ({ page }) => {
   await expect(redacted).not.toHaveCSS("color", "rgba(0, 0, 0, 0)");
 });
 
+test("a plain click on a sheet brings it to the middle of the screen", async ({ page }) => {
+  await openDesk(page);
+  // From the whole-desk view every sheet is on screen but none is centred.
+  await page.keyboard.press("0");
+  const sheet = page.locator("#s3-atlas");
+  const before = await sheet.boundingBox();
+  if (!before) throw new Error("sheet not laid out");
+  // A real pointer press in the middle of the print (the screenshot, not a link or the seal).
+  await page.mouse.click(before.x + before.width / 2, before.y + before.height * 0.3);
+  await expect
+    .poll(async () => {
+      const box = await sheet.boundingBox();
+      const vp = page.viewportSize();
+      if (!box || !vp) return Number.POSITIVE_INFINITY;
+      return Math.abs(box.x + box.width / 2 - vp.width / 2);
+    })
+    .toBeLessThan(24);
+});
+
+test("switching to list view mid-flight leaves the list untouched by the camera", async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: "no-preference" });
+  await openDesk(page);
+  await page.getByRole("button", { name: "Played in the README" }).click();
+  await page.getByRole("button", { name: "List view" }).click();
+  await page.waitForTimeout(1500);
+  await expect(page.locator("#world")).not.toHaveAttribute("style", /transform/);
+});
+
+test("while a site is open, focus cannot wander onto the desk behind it", async ({ page }) => {
+  await openDesk(page);
+  const target = repos.find((r) => r.homepage?.startsWith("https://0-draft.github.io/"));
+  test.skip(!target, "no framable site in the data");
+  const button = page.locator(`article[id="${target?.name}"]`).getByRole("button", { name: /^Break the seal/ });
+  await button.focus();
+  await button.click();
+  await expect(page.locator(".live")).toBeVisible();
+  // Keep the frame from taking focus with a page we don't control.
+  await page.locator(".live iframe").evaluate((f) => f.setAttribute("tabindex", "-1"));
+  for (let i = 0; i < 6; i++) {
+    await page.keyboard.press("Tab");
+    expect(await page.evaluate(() => !!document.activeElement?.closest("#world"))).toBe(false);
+  }
+});
+
+test("board images carry their size, so the boards don't grow after the desk is measured", async ({ page }) => {
+  await openDesk(page);
+  const unsized = await page
+    .locator('[data-game="shogi"] img, [data-game="blackjack"] img')
+    .evaluateAll((imgs) => imgs.filter((i) => !i.getAttribute("width") || !i.getAttribute("height")).length);
+  expect(unsized).toBe(0);
+});
+
 test("the README games render as playable boards", async ({ page }) => {
   await openDesk(page);
   const shogi = page.locator('[data-game="shogi"] .b-grid .b-row');

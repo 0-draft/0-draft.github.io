@@ -674,7 +674,6 @@
     z-index: 3;
   }
   html.desk .sheet.lifted {
-    z-index: 20;
     transition: rotate 0.4s;
   }
   .scrim {
