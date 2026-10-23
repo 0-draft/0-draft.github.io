@@ -1,6 +1,6 @@
 # 0-draft.github.io
 
-<img alt="The 0-draft desk" src="public/og.png">
+<img alt="The 0-draft desk" src="public/og.jpg">
 
 Everything public in the [0-draft](https://github.com/0-draft) org, pulled as proofs and laid out on a print-shop desk at night: <https://0-draft.github.io/>.
 

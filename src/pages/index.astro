@@ -1,5 +1,6 @@
 ---
-import { Font } from "astro:assets";
+import { Font, Image } from "astro:assets";
+import seal from "../assets/seal.png";
 import Blocks from "../components/Blocks.astro";
 import Sheet from "../components/Sheet.astro";
 import articles from "../data/articles.json";
@@ -27,7 +28,7 @@ const count = all.reduce((n, s) => n + s.repos.length, 0);
     <meta name="description" content={description} />
     <meta property="og:title" content="0-draft" />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content={new URL("/og.png", Astro.site)} />
+    <meta property="og:image" content={new URL("/og.jpg", Astro.site)} />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="theme-color" content="#0f0e0d" />
     <link rel="icon" href="/favicon.png" type="image/png" />
@@ -47,7 +48,7 @@ const count = all.reduce((n, s) => n + s.repos.length, 0);
 
     <header class="hud hud-top">
       <a class="brand" href="/" aria-label="0-draft, back to the start">
-        <img src="/seal.png" alt="" width="44" height="42" />
+        <Image src={seal} alt="" width={40} densities={[1, 2]} format="webp" />
         <span>0-draft</span>
       </a>
       <div class="hud-links">
@@ -60,7 +61,16 @@ const count = all.reduce((n, s) => n + s.repos.length, 0);
       <div class="surface" aria-hidden="true"></div>
       <div class="world" id="world">
         <section class="item home" id="home" data-x={home.x} data-y={home.y} data-tilt="0" data-group="home">
-          <img class="home-seal" src="/seal.png" alt="The 0-draft seal: a robot face under a black beret with a red heart" width="900" height="860" fetchpriority="high" />
+          <Image
+            class="home-seal"
+            src={seal}
+            alt="The 0-draft seal: a robot face under a black beret with a red heart"
+            width={520}
+            densities={[1, 2]}
+            format="webp"
+            loading="eager"
+            fetchpriority="high"
+          />
           <div class="home-copy">
             <h1>0-draft</h1>
             <p class="lede">Raw outputs, researches, and unpolished tools. Everything here is v0.</p>
