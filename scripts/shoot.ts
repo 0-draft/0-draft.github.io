@@ -45,4 +45,6 @@ for (const r of targets) {
 }
 await browser.close();
 console.log(`${taken} taken, ${failed} failed, ${targets.length - taken - failed} kept`);
-if (failed && !taken) process.exit(1);
+// One broken site is a warning, not a red run every Monday. Only when every
+// target fails is something wrong with the run itself (network, browser).
+if (targets.length > 0 && failed === targets.length) process.exit(1);
