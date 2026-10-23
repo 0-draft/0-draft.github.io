@@ -95,7 +95,9 @@ jobs:
             echo "Every live site already has a screenshot."
             exit 0
           fi
-          open="$(gh pr list --repo "$REPO" --state open --search 'head:shots/' --json number --jq '.[0].number // empty')"
+          # head: in a search is an exact branch match, so filter the prefix with jq instead.
+          open="$(gh pr list --repo "$REPO" --state open --limit 100 --json number,headRefName \
+            --jq '[.[] | select(.headRefName | startswith("shots/"))][0].number // empty')"
           if [ -n "$open" ]; then
             echo "::notice::Screenshots are already proposed in #$open; merge or close it first."
             exit 0
