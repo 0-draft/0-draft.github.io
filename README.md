@@ -10,7 +10,7 @@ Drag the desk to look around and pinch (or press `+` and `-`) to zoom. Break the
 
 - `scripts/sync.ts` pulls the org's public repos (archived repos and forks are left out), the live region of each README game, and the latest dev.to articles into `src/data/`. A source that fails keeps its previous file.
 - `src/data/groups.ts` decides which pile a repo sits in. A new repo that isn't filed there shows up on its own pile on the next build.
-- `src/lib/desk.ts` holds where each sheet sits on the mat. `src/scripts/desk.ts` is the camera: pan, zoom, rulers, minimap and the live frame. It has no dependencies.
+- `src/lib/desk.ts` holds where each sheet sits on the desk. `src/scripts/desk.ts` is the camera: pan, zoom, the minimap and the live frame. It has no dependencies.
 - `src/assets/shots/` holds a screenshot per project, named after the repo.
 
 ## CI

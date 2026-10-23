@@ -589,8 +589,23 @@
     overflow: hidden;
     touch-action: none;
     cursor: grab;
-    /* the stock moves and scales with the camera, so the desk reads as a surface */
-    background: var(--night) url("/tex/stock.webp") var(--gx, 0) var(--gy, 0) / max(128px, var(--tz, 512px));
+    background: var(--night);
+  }
+  /* the black stock, one tile larger than the screen on every side, translated with the camera */
+  .surface {
+    display: none;
+  }
+  html.desk .surface {
+    display: block;
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    width: calc(100% + 1024px);
+    height: calc(100% + 1024px);
+    background: url("/tex/stock.webp") 0 0 / 512px;
+    will-change: transform;
+    pointer-events: none;
   }
   /* the lamp: a warm pool on the surface under the world, and falloff over it.
      Both are fixed and painted once, so panning never repaints them. */
