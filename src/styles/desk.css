@@ -774,6 +774,14 @@
   .pill-wax:hover {
     background: var(--red-deep);
   }
+  .pill kbd {
+    margin-left: 8px;
+    padding: 1px 5px;
+    border: 1px solid rgb(241 236 225 / 0.5);
+    border-radius: 3px;
+    font-family: var(--mono);
+    font-size: 10.5px;
+  }
 
   .tray {
     position: fixed;
