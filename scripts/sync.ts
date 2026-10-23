@@ -59,20 +59,25 @@ async function repos() {
 }
 
 // Reads each board image's intrinsic size so the boards render at their final size from the start.
+// Sizes are cosmetic: an image that can't be read just goes unsized instead of failing the sync.
+async function sizeOf(src: string): Promise<{ w: number; h: number } | null> {
+  try {
+    const svg = await (await get(src)).text();
+    const w = Number(svg.match(/<svg[^>]*\swidth="(\d+(?:\.\d+)?)"/)?.[1]);
+    const h = Number(svg.match(/<svg[^>]*\sheight="(\d+(?:\.\d+)?)"/)?.[1]);
+    return w && h ? { w, h } : null;
+  } catch {
+    return null;
+  }
+}
+
 async function sizeCells(blocks: Block[]) {
-  const sizes = new Map<string, { w: number; h: number } | null>();
-  for (const b of blocks) {
-    if (b.kind !== "grid") continue;
-    for (const cell of b.rows.flat()) {
-      if (!sizes.has(cell.src)) {
-        const svg = await (await get(cell.src)).text();
-        const w = Number(svg.match(/<svg[^>]*\swidth="(\d+(?:\.\d+)?)"/)?.[1]);
-        const h = Number(svg.match(/<svg[^>]*\sheight="(\d+(?:\.\d+)?)"/)?.[1]);
-        sizes.set(cell.src, w && h ? { w, h } : null);
-      }
-      const size = sizes.get(cell.src);
-      if (size) Object.assign(cell, size);
-    }
+  const cells = blocks.flatMap((b) => (b.kind === "grid" ? b.rows.flat() : []));
+  const srcs = [...new Set(cells.map((c) => c.src))];
+  const sizes = new Map(await Promise.all(srcs.map(async (src) => [src, await sizeOf(src)] as const)));
+  for (const cell of cells) {
+    const size = sizes.get(cell.src);
+    if (size) Object.assign(cell, size);
   }
 }
 
