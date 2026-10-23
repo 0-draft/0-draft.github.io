@@ -3,6 +3,7 @@
 
 const html = document.documentElement;
 const desk = document.getElementById("desk") as HTMLElement;
+const surface = document.querySelector<HTMLElement>(".surface") as HTMLElement;
 const world = document.getElementById("world") as HTMLElement;
 const items = [...world.querySelectorAll<HTMLElement>(".item")];
 const zoomRead = document.querySelector<HTMLOutputElement>(".zoom-read") as HTMLOutputElement;
@@ -12,6 +13,7 @@ const reduced = matchMedia("(prefers-reduced-motion: reduce)");
 
 const Z_MIN = 0.04;
 const Z_MAX = 2.5;
+const TILE = 512;
 const TOP_BAR = 64;
 const BOTTOM_BAR = 84;
 
@@ -138,9 +140,10 @@ function apply() {
   const ty = vh / 2 - cam.y * cam.z;
   world.style.transform = `translate(${tx}px, ${ty}px) scale(${cam.z})`;
   world.style.setProperty("--z", cam.z.toFixed(4));
-  desk.style.setProperty("--gx", `${tx}px`);
-  desk.style.setProperty("--gy", `${ty}px`);
-  desk.style.setProperty("--tz", `${512 * cam.z}px`);
+  // The stock is one tile-sized layer that only ever translates, so panning never repaints it.
+  const ox = (((tx % TILE) + TILE) % TILE) - TILE;
+  const oy = (((ty % TILE) + TILE) % TILE) - TILE;
+  surface.style.transform = `translate3d(${ox}px, ${oy}px, 0)`;
   zoomRead.value = `${Math.round(cam.z * 100)}%`;
   drawViewport();
 }
