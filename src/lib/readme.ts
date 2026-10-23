@@ -45,11 +45,16 @@ function segments(html: string): Seg[] {
       const href = safeHref(m[1]);
       if (text) segs.push(href ? { text, href } : { text });
     } else if (m[3] !== undefined) {
+      // A lone space between two links still matters: without it their words run together.
       const text = decode(m[3]).replace(/\s+/g, " ");
-      if (text.trim()) segs.push({ text });
+      if (text) segs.push({ text });
     }
   }
-  return segs;
+  const first = segs[0];
+  const last = segs.at(-1);
+  if (first && !first.href) first.text = first.text.trimStart();
+  if (last && !last.href) last.text = last.text.trimEnd();
+  return segs.filter((s) => s.text);
 }
 
 function grid(pre: string): Cell[][] {
