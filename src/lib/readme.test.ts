@@ -66,6 +66,11 @@ describe("parseBlocks", () => {
     });
   });
 
+  it("decodes numeric references, and decodes &amp; last", () => {
+    const [p] = parseBlocks("<p>it&#x27;s &#39;fine&#39; &amp;#39;</p>");
+    expect(p).toEqual({ kind: "text", segs: [{ text: "it's 'fine' &#39;" }] });
+  });
+
   it("reads a table's head and its body cell by cell", () => {
     const [t] = parseBlocks(
       `<table align="center"><thead><tr><th>Hand</th><th></th></tr></thead><tbody><tr><td><code>2026-10-14</code></td><td><a href="https://github.com/kanywst">@kanywst</a></td></tr></tbody></table>`,
