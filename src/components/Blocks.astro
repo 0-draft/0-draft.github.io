@@ -1,0 +1,65 @@
+---
+// Server render of a README game's live region. src/scripts/boards.ts renders the same shape in the browser.
+import type { Block } from "../lib/readme.ts";
+
+interface Props {
+  blocks: Block[];
+}
+const { blocks } = Astro.props;
+---
+
+{
+  blocks.map((b) =>
+    b.kind === "grid" ? (
+      <div class="b-grid">
+        {b.rows.map((row) => (
+          <div class="b-row">
+            {row.map((c) =>
+              c.href ? (
+                <a href={c.href} target="_blank" rel="noopener" title={c.alt || undefined}>
+                  <img src={c.src} alt={c.alt} loading="lazy" decoding="async" draggable="false" />
+                </a>
+              ) : (
+                <img src={c.src} alt={c.alt} loading="lazy" decoding="async" draggable="false" />
+              ),
+            )}
+          </div>
+        ))}
+      </div>
+    ) : b.kind === "text" ? (
+      <p class="b-text">
+        {b.segs.map((s) =>
+          s.href ? (
+            <a href={s.href} target="_blank" rel="noopener">
+              {s.text}
+            </a>
+          ) : (
+            s.text
+          ),
+        )}
+      </p>
+    ) : (
+      <table class="b-table">
+        <tbody>
+          {b.rows.map((row) => (
+            <tr>
+              {row.map((cell) => (
+                <td>
+                  {cell.map((s) =>
+                    s.href ? (
+                      <a href={s.href} target="_blank" rel="noopener">
+                        {s.text}
+                      </a>
+                    ) : (
+                      s.text
+                    ),
+                  )}
+                </td>
+              ))}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    ),
+  )
+}

@@ -1,0 +1,67 @@
+---
+import { Image } from "astro:assets";
+// One project, printed and taped to the mat.
+import type { ImageMetadata } from "astro";
+import { ago, framable, type Shelf } from "../lib/desk.ts";
+
+type Placed = Shelf["repos"][number];
+interface Props {
+  repo: Placed;
+  group: string;
+  kind?: "screen" | "board" | "book" | "receipt";
+}
+const { repo, group, kind = "screen" } = Astro.props;
+
+const shots = import.meta.glob<{ default: ImageMetadata }>("../assets/shots/*.png", { eager: true });
+const shot = shots[`../assets/shots/${repo.name}.png`]?.default;
+const live = framable(repo);
+const site = repo.homepage && !repo.homepage.startsWith(repo.url) ? repo.homepage : null;
+const host = site?.replace(/^https:\/\//, "").replace(/\/$/, "");
+---
+
+<article
+  class:list={["item", "sheet", `sheet-${kind}`]}
+  id={repo.name}
+  data-x={repo.spot.x}
+  data-y={repo.spot.y}
+  data-tilt={repo.tilt}
+  data-group={group}
+  aria-labelledby={`${repo.name}-title`}
+>
+  <span class:list={["tape", `tape-${repo.tape}`]} aria-hidden="true"></span>
+  {
+    kind === "screen" && (
+      <div class="screen">
+        {shot ? (
+          <Image src={shot} alt={`The ${repo.name} site`} width={1200} quality={78} format="webp" />
+        ) : (
+          <div class="screen-blank" aria-hidden="true">
+            <span>{repo.name}</span>
+          </div>
+        )}
+        {live && (
+          <button type="button" class="try" data-live={live} data-title={repo.name}>
+            Try it here
+          </button>
+        )}
+      </div>
+    )
+  }
+  <slot />
+  <div class="caption">
+    <h3 id={`${repo.name}-title`}>
+      <a href={site ?? repo.url}>{repo.name}</a>
+    </h3>
+    <p class="desc">{repo.description}</p>
+    <p class="meta">
+      {repo.language && <span>{repo.language}</span>}
+      <span>pushed {ago(repo.pushedAt)}</span>
+      {repo.stars > 0 && <span>{repo.stars === 1 ? "1 star" : `${repo.stars} stars`}</span>}
+    </p>
+    <p class="actions">
+      {site && <a class="btn btn-ink" href={site}>Open {host}</a>}
+      <a class="btn" href={repo.url}>Source</a>
+    </p>
+  </div>
+  <svg class:list={["stamp", `stamp-${repo.tape}`]} viewBox="0 0 120 120" aria-hidden="true"><use href="#stamp"></use></svg>
+</article>

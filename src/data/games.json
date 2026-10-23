@@ -1,0 +1,711 @@
+{
+  "blackjack": [
+    {
+      "kind": "grid",
+      "rows": [
+        [
+          {
+            "href": "https://github.com/0-draft/blackjack#blackjack",
+            "src": "https://raw.githubusercontent.com/0-draft/blackjack/main/.github/cards/label-dealer.svg",
+            "alt": "dealer"
+          },
+          {
+            "href": "https://github.com/0-draft/blackjack#blackjack",
+            "src": "https://raw.githubusercontent.com/0-draft/blackjack/main/.github/cards/7S.svg",
+            "alt": "seven of spades"
+          },
+          {
+            "href": "https://github.com/0-draft/blackjack#blackjack",
+            "src": "https://raw.githubusercontent.com/0-draft/blackjack/main/.github/cards/back.svg",
+            "alt": "the dealer's hole card, face down"
+          }
+        ],
+        [
+          {
+            "href": "https://github.com/0-draft/blackjack#blackjack",
+            "src": "https://raw.githubusercontent.com/0-draft/blackjack/main/.github/cards/label-you.svg",
+            "alt": "you"
+          },
+          {
+            "href": "https://github.com/0-draft/blackjack#blackjack",
+            "src": "https://raw.githubusercontent.com/0-draft/blackjack/main/.github/cards/3D.svg",
+            "alt": "three of diamonds"
+          },
+          {
+            "href": "https://github.com/0-draft/blackjack#blackjack",
+            "src": "https://raw.githubusercontent.com/0-draft/blackjack/main/.github/cards/7S.svg",
+            "alt": "seven of spades"
+          }
+        ]
+      ]
+    },
+    {
+      "kind": "text",
+      "segs": [
+        {
+          "text": "The dealer shows seven, and you have 10."
+        }
+      ]
+    },
+    {
+      "kind": "grid",
+      "rows": [
+        [
+          {
+            "href": "https://github.com/0-draft/blackjack/issues/new?title=bj%7Chit+12&body=Just+click+Submit+new+issue.+The+table+updates+in+about+30+seconds.",
+            "src": "https://raw.githubusercontent.com/0-draft/blackjack/main/.github/cards/btn-hit.svg",
+            "alt": "hit"
+          },
+          {
+            "href": "https://github.com/0-draft/blackjack/issues/new?title=bj%7Cstand+12&body=Just+click+Submit+new+issue.+The+table+updates+in+about+30+seconds.",
+            "src": "https://raw.githubusercontent.com/0-draft/blackjack/main/.github/cards/btn-stand.svg",
+            "alt": "stand"
+          },
+          {
+            "href": "https://github.com/0-draft/blackjack/issues/new?title=bj%7Cdouble+12&body=Just+click+Submit+new+issue.+The+table+updates+in+about+30+seconds.",
+            "src": "https://raw.githubusercontent.com/0-draft/blackjack/main/.github/cards/btn-double.svg",
+            "alt": "double"
+          },
+          {
+            "href": "https://github.com/0-draft/blackjack/issues/new?title=bj%7Csurrender+12&body=Just+click+Submit+new+issue.+The+table+updates+in+about+30+seconds.",
+            "src": "https://raw.githubusercontent.com/0-draft/blackjack/main/.github/cards/btn-surrender.svg",
+            "alt": "surrender"
+          }
+        ]
+      ]
+    },
+    {
+      "kind": "text",
+      "segs": [
+        {
+          "text": "Beat the dealer without going over 21. A click opens a prefilled issue: submit it and the table moves in about 30 seconds."
+        }
+      ]
+    },
+    {
+      "kind": "text",
+      "segs": [
+        {
+          "text": "Shoe 1 · 4.8 decks left · out of it: 6 7 Q 7 8 7 8 2 2 Q T T 5 K K 7 9 3 3 J 9 3 7 7 · "
+        },
+        {
+          "text": "all 62",
+          "href": "https://github.com/0-draft/blackjack/blob/main/.github/blackjack.json"
+        }
+      ]
+    },
+    {
+      "kind": "text",
+      "segs": [
+        {
+          "text": "-3u over 11 hands · 1 player · 0u lost to mistakes"
+        }
+      ]
+    },
+    {
+      "kind": "table",
+      "rows": [
+        [
+          [
+            {
+              "text": "11"
+            },
+            {
+              "text": "@kanywst",
+              "href": "https://github.com/kanywst"
+            }
+          ],
+          [
+            {
+              "text": "22 bust (9 3 J)"
+            }
+          ],
+          [
+            {
+              "text": "12 (3 9)"
+            }
+          ],
+          [
+            {
+              "text": "-25u"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "text": "10"
+            },
+            {
+              "text": "@kanywst",
+              "href": "https://github.com/kanywst"
+            }
+          ],
+          [
+            {
+              "text": "20 (T K)"
+            }
+          ],
+          [
+            {
+              "text": "22 bust (5 K 7)"
+            }
+          ],
+          [
+            {
+              "text": "+25u"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "text": "9"
+            },
+            {
+              "text": "@kanywst",
+              "href": "https://github.com/kanywst"
+            }
+          ],
+          [
+            {
+              "text": "21 (7 2 2 Q)"
+            }
+          ],
+          [
+            {
+              "text": "18 (8 T)"
+            }
+          ],
+          [
+            {
+              "text": "+25u"
+            }
+          ]
+        ]
+      ]
+    },
+    {
+      "kind": "text",
+      "segs": [
+        {
+          "text": "6 decks · dealer stands on soft 17 · double after split · late surrender · blackjack pays 3 to 2 · shuffled at the 75% cut card"
+        }
+      ]
+    }
+  ],
+  "shogi": [
+    {
+      "kind": "grid",
+      "rows": [
+        [
+          {
+            "href": "https://github.com/0-draft/shogi/issues/new?title=shogi%7Csel+9a&body=Just+click+Submit+new+issue.+The+board+updates+in+about+30+seconds.",
+            "src": "https://raw.githubusercontent.com/0-draft/shogi/main/.github/koma/gL.svg",
+            "alt": "9a white lance to move"
+          },
+          {
+            "href": "https://github.com/0-draft/shogi/issues/new?title=shogi%7Csel+8a&body=Just+click+Submit+new+issue.+The+board+updates+in+about+30+seconds.",
+            "src": "https://raw.githubusercontent.com/0-draft/shogi/main/.github/koma/gN.svg",
+            "alt": "8a white knight to move"
+          },
+          {
+            "href": "https://github.com/0-draft/shogi#shogi",
+            "src": "https://raw.githubusercontent.com/0-draft/shogi/main/.github/koma/empty.svg",
+            "alt": ""
+          },
+          {
+            "href": "https://github.com/0-draft/shogi/issues/new?title=shogi%7Csel+6a&body=Just+click+Submit+new+issue.+The+board+updates+in+about+30+seconds.",
+            "src": "https://raw.githubusercontent.com/0-draft/shogi/main/.github/koma/gG.svg",
+            "alt": "6a white gold to move"
+          },
+          {
+            "href": "https://github.com/0-draft/shogi/issues/new?title=shogi%7Csel+5a&body=Just+click+Submit+new+issue.+The+board+updates+in+about+30+seconds.",
+            "src": "https://raw.githubusercontent.com/0-draft/shogi/main/.github/koma/gK.svg",
+            "alt": "5a white king to move"
+          },
+          {
+            "href": "https://github.com/0-draft/shogi/issues/new?title=shogi%7Csel+4a&body=Just+click+Submit+new+issue.+The+board+updates+in+about+30+seconds.",
+            "src": "https://raw.githubusercontent.com/0-draft/shogi/main/.github/koma/gG.svg",
+            "alt": "4a white gold to move"
+          },
+          {
+            "href": "https://github.com/0-draft/shogi/issues/new?title=shogi%7Csel+3a&body=Just+click+Submit+new+issue.+The+board+updates+in+about+30+seconds.",
+            "src": "https://raw.githubusercontent.com/0-draft/shogi/main/.github/koma/gS.svg",
+            "alt": "3a white silver to move"
+          },
+          {
+            "href": "https://github.com/0-draft/shogi/issues/new?title=shogi%7Csel+2a&body=Just+click+Submit+new+issue.+The+board+updates+in+about+30+seconds.",
+            "src": "https://raw.githubusercontent.com/0-draft/shogi/main/.github/koma/gN.svg",
+            "alt": "2a white knight to move"
+          },
+          {
+            "href": "https://github.com/0-draft/shogi/issues/new?title=shogi%7Csel+1a&body=Just+click+Submit+new+issue.+The+board+updates+in+about+30+seconds.",
+            "src": "https://raw.githubusercontent.com/0-draft/shogi/main/.github/koma/gL.svg",
+            "alt": "1a white lance to move"
+          }
+        ],
+        [
+          {
+            "href": "https://github.com/0-draft/shogi#shogi",
+            "src": "https://raw.githubusercontent.com/0-draft/shogi/main/.github/koma/empty.svg",
+            "alt": ""
+          },
+          {
+            "href": "https://github.com/0-draft/shogi/issues/new?title=shogi%7Csel+8b&body=Just+click+Submit+new+issue.+The+board+updates+in+about+30+seconds.",
+            "src": "https://raw.githubusercontent.com/0-draft/shogi/main/.github/koma/gR.svg",
+            "alt": "8b white rook to move"
+          },
+          {
+            "href": "https://github.com/0-draft/shogi#shogi",
+            "src": "https://raw.githubusercontent.com/0-draft/shogi/main/.github/koma/empty.svg",
+            "alt": ""
+          },
+          {
+            "href": "https://github.com/0-draft/shogi/issues/new?title=shogi%7Csel+6b&body=Just+click+Submit+new+issue.+The+board+updates+in+about+30+seconds.",
+            "src": "https://raw.githubusercontent.com/0-draft/shogi/main/.github/koma/gS.svg",
+            "alt": "6b white silver to move"
+          },
+          {
+            "href": "https://github.com/0-draft/shogi#shogi",
+            "src": "https://raw.githubusercontent.com/0-draft/shogi/main/.github/koma/empty.svg",
+            "alt": ""
+          },
+          {
+            "href": "https://github.com/0-draft/shogi#shogi",
+            "src": "https://raw.githubusercontent.com/0-draft/shogi/main/.github/koma/empty.svg",
+            "alt": ""
+          },
+          {
+            "href": "https://github.com/0-draft/shogi#shogi",
+            "src": "https://raw.githubusercontent.com/0-draft/shogi/main/.github/koma/empty.svg",
+            "alt": ""
+          },
+          {
+            "href": "https://github.com/0-draft/shogi/issues/new?title=shogi%7Csel+2b&body=Just+click+Submit+new+issue.+The+board+updates+in+about+30+seconds.",
+            "src": "https://raw.githubusercontent.com/0-draft/shogi/main/.github/koma/gB.svg",
+            "alt": "2b white bishop to move"
+          },
+          {
+            "href": "https://github.com/0-draft/shogi#shogi",
+            "src": "https://raw.githubusercontent.com/0-draft/shogi/main/.github/koma/empty.svg",
+            "alt": ""
+          }
+        ],
+        [
+          {
+            "href": "https://github.com/0-draft/shogi/issues/new?title=shogi%7Csel+9c&body=Just+click+Submit+new+issue.+The+board+updates+in+about+30+seconds.",
+            "src": "https://raw.githubusercontent.com/0-draft/shogi/main/.github/koma/gP.svg",
+            "alt": "9c white pawn to move"
+          },
+          {
+            "href": "https://github.com/0-draft/shogi#shogi",
+            "src": "https://raw.githubusercontent.com/0-draft/shogi/main/.github/koma/empty.svg",
+            "alt": ""
+          },
+          {
+            "href": "https://github.com/0-draft/shogi/issues/new?title=shogi%7Csel+7c&body=Just+click+Submit+new+issue.+The+board+updates+in+about+30+seconds.",
+            "src": "https://raw.githubusercontent.com/0-draft/shogi/main/.github/koma/gP.svg",
+            "alt": "7c white pawn to move"
+          },
+          {
+            "href": "https://github.com/0-draft/shogi/issues/new?title=shogi%7Csel+6c&body=Just+click+Submit+new+issue.+The+board+updates+in+about+30+seconds.",
+            "src": "https://raw.githubusercontent.com/0-draft/shogi/main/.github/koma/gP.svg",
+            "alt": "6c white pawn to move"
+          },
+          {
+            "href": "https://github.com/0-draft/shogi/issues/new?title=shogi%7Csel+5c&body=Just+click+Submit+new+issue.+The+board+updates+in+about+30+seconds.",
+            "src": "https://raw.githubusercontent.com/0-draft/shogi/main/.github/koma/gP.svg",
+            "alt": "5c white pawn to move"
+          },
+          {
+            "href": "https://github.com/0-draft/shogi/issues/new?title=shogi%7Csel+4c&body=Just+click+Submit+new+issue.+The+board+updates+in+about+30+seconds.",
+            "src": "https://raw.githubusercontent.com/0-draft/shogi/main/.github/koma/gP.svg",
+            "alt": "4c white pawn to move"
+          },
+          {
+            "href": "https://github.com/0-draft/shogi/issues/new?title=shogi%7Csel+3c&body=Just+click+Submit+new+issue.+The+board+updates+in+about+30+seconds.",
+            "src": "https://raw.githubusercontent.com/0-draft/shogi/main/.github/koma/gP.svg",
+            "alt": "3c white pawn to move"
+          },
+          {
+            "href": "https://github.com/0-draft/shogi/issues/new?title=shogi%7Csel+2c&body=Just+click+Submit+new+issue.+The+board+updates+in+about+30+seconds.",
+            "src": "https://raw.githubusercontent.com/0-draft/shogi/main/.github/koma/gP.svg",
+            "alt": "2c white pawn to move"
+          },
+          {
+            "href": "https://github.com/0-draft/shogi/issues/new?title=shogi%7Csel+1c&body=Just+click+Submit+new+issue.+The+board+updates+in+about+30+seconds.",
+            "src": "https://raw.githubusercontent.com/0-draft/shogi/main/.github/koma/gP.svg",
+            "alt": "1c white pawn to move"
+          }
+        ],
+        [
+          {
+            "href": "https://github.com/0-draft/shogi#shogi",
+            "src": "https://raw.githubusercontent.com/0-draft/shogi/main/.github/koma/empty.svg",
+            "alt": ""
+          },
+          {
+            "href": "https://github.com/0-draft/shogi/issues/new?title=shogi%7Csel+8d&body=Just+click+Submit+new+issue.+The+board+updates+in+about+30+seconds.",
+            "src": "https://raw.githubusercontent.com/0-draft/shogi/main/.github/koma/gP.svg",
+            "alt": "8d white pawn to move"
+          },
+          {
+            "href": "https://github.com/0-draft/shogi#shogi",
+            "src": "https://raw.githubusercontent.com/0-draft/shogi/main/.github/koma/empty.svg",
+            "alt": ""
+          },
+          {
+            "href": "https://github.com/0-draft/shogi#shogi",
+            "src": "https://raw.githubusercontent.com/0-draft/shogi/main/.github/koma/empty.svg",
+            "alt": ""
+          },
+          {
+            "href": "https://github.com/0-draft/shogi#shogi",
+            "src": "https://raw.githubusercontent.com/0-draft/shogi/main/.github/koma/empty.svg",
+            "alt": ""
+          },
+          {
+            "href": "https://github.com/0-draft/shogi#shogi",
+            "src": "https://raw.githubusercontent.com/0-draft/shogi/main/.github/koma/empty.svg",
+            "alt": ""
+          },
+          {
+            "href": "https://github.com/0-draft/shogi#shogi",
+            "src": "https://raw.githubusercontent.com/0-draft/shogi/main/.github/koma/empty.svg",
+            "alt": ""
+          },
+          {
+            "href": "https://github.com/0-draft/shogi#shogi",
+            "src": "https://raw.githubusercontent.com/0-draft/shogi/main/.github/koma/empty.svg",
+            "alt": ""
+          },
+          {
+            "href": "https://github.com/0-draft/shogi#shogi",
+            "src": "https://raw.githubusercontent.com/0-draft/shogi/main/.github/koma/empty.svg",
+            "alt": ""
+          }
+        ],
+        [
+          {
+            "href": "https://github.com/0-draft/shogi#shogi",
+            "src": "https://raw.githubusercontent.com/0-draft/shogi/main/.github/koma/empty.svg",
+            "alt": ""
+          },
+          {
+            "href": "https://github.com/0-draft/shogi#shogi",
+            "src": "https://raw.githubusercontent.com/0-draft/shogi/main/.github/koma/empty.svg",
+            "alt": ""
+          },
+          {
+            "href": "https://github.com/0-draft/shogi#shogi",
+            "src": "https://raw.githubusercontent.com/0-draft/shogi/main/.github/koma/empty.svg",
+            "alt": ""
+          },
+          {
+            "href": "https://github.com/0-draft/shogi#shogi",
+            "src": "https://raw.githubusercontent.com/0-draft/shogi/main/.github/koma/empty.svg",
+            "alt": ""
+          },
+          {
+            "href": "https://github.com/0-draft/shogi#shogi",
+            "src": "https://raw.githubusercontent.com/0-draft/shogi/main/.github/koma/empty.svg",
+            "alt": ""
+          },
+          {
+            "href": "https://github.com/0-draft/shogi#shogi",
+            "src": "https://raw.githubusercontent.com/0-draft/shogi/main/.github/koma/empty.svg",
+            "alt": ""
+          },
+          {
+            "href": "https://github.com/0-draft/shogi#shogi",
+            "src": "https://raw.githubusercontent.com/0-draft/shogi/main/.github/koma/empty.svg",
+            "alt": ""
+          },
+          {
+            "href": "https://github.com/0-draft/shogi#shogi",
+            "src": "https://raw.githubusercontent.com/0-draft/shogi/main/.github/koma/empty.svg",
+            "alt": ""
+          },
+          {
+            "href": "https://github.com/0-draft/shogi#shogi",
+            "src": "https://raw.githubusercontent.com/0-draft/shogi/main/.github/koma/empty.svg",
+            "alt": ""
+          }
+        ],
+        [
+          {
+            "href": "https://github.com/0-draft/shogi#shogi",
+            "src": "https://raw.githubusercontent.com/0-draft/shogi/main/.github/koma/empty.svg",
+            "alt": ""
+          },
+          {
+            "href": "https://github.com/0-draft/shogi#shogi",
+            "src": "https://raw.githubusercontent.com/0-draft/shogi/main/.github/koma/empty.svg",
+            "alt": ""
+          },
+          {
+            "href": "https://github.com/0-draft/shogi#shogi",
+            "src": "https://raw.githubusercontent.com/0-draft/shogi/main/.github/koma/sP-idle.svg",
+            "alt": "7f black pawn"
+          },
+          {
+            "href": "https://github.com/0-draft/shogi#shogi",
+            "src": "https://raw.githubusercontent.com/0-draft/shogi/main/.github/koma/empty.svg",
+            "alt": ""
+          },
+          {
+            "href": "https://github.com/0-draft/shogi#shogi",
+            "src": "https://raw.githubusercontent.com/0-draft/shogi/main/.github/koma/empty.svg",
+            "alt": ""
+          },
+          {
+            "href": "https://github.com/0-draft/shogi#shogi",
+            "src": "https://raw.githubusercontent.com/0-draft/shogi/main/.github/koma/empty.svg",
+            "alt": ""
+          },
+          {
+            "href": "https://github.com/0-draft/shogi#shogi",
+            "src": "https://raw.githubusercontent.com/0-draft/shogi/main/.github/koma/empty.svg",
+            "alt": ""
+          },
+          {
+            "href": "https://github.com/0-draft/shogi#shogi",
+            "src": "https://raw.githubusercontent.com/0-draft/shogi/main/.github/koma/empty.svg",
+            "alt": ""
+          },
+          {
+            "href": "https://github.com/0-draft/shogi#shogi",
+            "src": "https://raw.githubusercontent.com/0-draft/shogi/main/.github/koma/empty.svg",
+            "alt": ""
+          }
+        ],
+        [
+          {
+            "href": "https://github.com/0-draft/shogi#shogi",
+            "src": "https://raw.githubusercontent.com/0-draft/shogi/main/.github/koma/sP-idle.svg",
+            "alt": "9g black pawn"
+          },
+          {
+            "href": "https://github.com/0-draft/shogi#shogi",
+            "src": "https://raw.githubusercontent.com/0-draft/shogi/main/.github/koma/sP-idle.svg",
+            "alt": "8g black pawn"
+          },
+          {
+            "href": "https://github.com/0-draft/shogi#shogi",
+            "src": "https://raw.githubusercontent.com/0-draft/shogi/main/.github/koma/sN-idle.svg",
+            "alt": "7g black knight"
+          },
+          {
+            "href": "https://github.com/0-draft/shogi#shogi",
+            "src": "https://raw.githubusercontent.com/0-draft/shogi/main/.github/koma/sP-idle.svg",
+            "alt": "6g black pawn"
+          },
+          {
+            "href": "https://github.com/0-draft/shogi#shogi",
+            "src": "https://raw.githubusercontent.com/0-draft/shogi/main/.github/koma/sP-idle.svg",
+            "alt": "5g black pawn"
+          },
+          {
+            "href": "https://github.com/0-draft/shogi#shogi",
+            "src": "https://raw.githubusercontent.com/0-draft/shogi/main/.github/koma/sP-idle.svg",
+            "alt": "4g black pawn"
+          },
+          {
+            "href": "https://github.com/0-draft/shogi#shogi",
+            "src": "https://raw.githubusercontent.com/0-draft/shogi/main/.github/koma/sP-idle.svg",
+            "alt": "3g black pawn"
+          },
+          {
+            "href": "https://github.com/0-draft/shogi#shogi",
+            "src": "https://raw.githubusercontent.com/0-draft/shogi/main/.github/koma/sP-idle.svg",
+            "alt": "2g black pawn"
+          },
+          {
+            "href": "https://github.com/0-draft/shogi#shogi",
+            "src": "https://raw.githubusercontent.com/0-draft/shogi/main/.github/koma/sP-idle.svg",
+            "alt": "1g black pawn"
+          }
+        ],
+        [
+          {
+            "href": "https://github.com/0-draft/shogi#shogi",
+            "src": "https://raw.githubusercontent.com/0-draft/shogi/main/.github/koma/empty.svg",
+            "alt": ""
+          },
+          {
+            "href": "https://github.com/0-draft/shogi#shogi",
+            "src": "https://raw.githubusercontent.com/0-draft/shogi/main/.github/koma/sB-idle.svg",
+            "alt": "8h black bishop"
+          },
+          {
+            "href": "https://github.com/0-draft/shogi#shogi",
+            "src": "https://raw.githubusercontent.com/0-draft/shogi/main/.github/koma/empty.svg",
+            "alt": ""
+          },
+          {
+            "href": "https://github.com/0-draft/shogi#shogi",
+            "src": "https://raw.githubusercontent.com/0-draft/shogi/main/.github/koma/empty.svg",
+            "alt": ""
+          },
+          {
+            "href": "https://github.com/0-draft/shogi#shogi",
+            "src": "https://raw.githubusercontent.com/0-draft/shogi/main/.github/koma/sR-idle.svg",
+            "alt": "5h black rook"
+          },
+          {
+            "href": "https://github.com/0-draft/shogi#shogi",
+            "src": "https://raw.githubusercontent.com/0-draft/shogi/main/.github/koma/empty.svg",
+            "alt": ""
+          },
+          {
+            "href": "https://github.com/0-draft/shogi#shogi",
+            "src": "https://raw.githubusercontent.com/0-draft/shogi/main/.github/koma/empty.svg",
+            "alt": ""
+          },
+          {
+            "href": "https://github.com/0-draft/shogi#shogi",
+            "src": "https://raw.githubusercontent.com/0-draft/shogi/main/.github/koma/empty.svg",
+            "alt": ""
+          },
+          {
+            "href": "https://github.com/0-draft/shogi#shogi",
+            "src": "https://raw.githubusercontent.com/0-draft/shogi/main/.github/koma/empty.svg",
+            "alt": ""
+          }
+        ],
+        [
+          {
+            "href": "https://github.com/0-draft/shogi#shogi",
+            "src": "https://raw.githubusercontent.com/0-draft/shogi/main/.github/koma/sL-idle.svg",
+            "alt": "9i black lance"
+          },
+          {
+            "href": "https://github.com/0-draft/shogi#shogi",
+            "src": "https://raw.githubusercontent.com/0-draft/shogi/main/.github/koma/empty.svg",
+            "alt": ""
+          },
+          {
+            "href": "https://github.com/0-draft/shogi#shogi",
+            "src": "https://raw.githubusercontent.com/0-draft/shogi/main/.github/koma/sS-idle.svg",
+            "alt": "7i black silver"
+          },
+          {
+            "href": "https://github.com/0-draft/shogi#shogi",
+            "src": "https://raw.githubusercontent.com/0-draft/shogi/main/.github/koma/sG-idle.svg",
+            "alt": "6i black gold"
+          },
+          {
+            "href": "https://github.com/0-draft/shogi#shogi",
+            "src": "https://raw.githubusercontent.com/0-draft/shogi/main/.github/koma/sK-idle.svg",
+            "alt": "5i black king"
+          },
+          {
+            "href": "https://github.com/0-draft/shogi#shogi",
+            "src": "https://raw.githubusercontent.com/0-draft/shogi/main/.github/koma/sG-idle.svg",
+            "alt": "4i black gold"
+          },
+          {
+            "href": "https://github.com/0-draft/shogi#shogi",
+            "src": "https://raw.githubusercontent.com/0-draft/shogi/main/.github/koma/sS-idle.svg",
+            "alt": "3i black silver"
+          },
+          {
+            "href": "https://github.com/0-draft/shogi#shogi",
+            "src": "https://raw.githubusercontent.com/0-draft/shogi/main/.github/koma/sN-idle.svg",
+            "alt": "2i black knight"
+          },
+          {
+            "href": "https://github.com/0-draft/shogi#shogi",
+            "src": "https://raw.githubusercontent.com/0-draft/shogi/main/.github/koma/sL-idle.svg",
+            "alt": "1i black lance"
+          }
+        ]
+      ]
+    },
+    {
+      "kind": "text",
+      "segs": [
+        {
+          "text": "Click a piece, then a square. Takes about 30 seconds. · "
+        },
+        {
+          "text": "Resign",
+          "href": "https://github.com/0-draft/shogi/issues/new?title=shogi%7Cresign&body=Just+click+Submit+new+issue.+The+board+updates+in+about+30+seconds."
+        }
+      ]
+    },
+    {
+      "kind": "text",
+      "segs": [
+        {
+          "text": "Last move: R-5h · Black 0 · White 0 · 0 games · 1 player"
+        }
+      ]
+    }
+  ],
+  "guestbook": [
+    {
+      "kind": "table",
+      "rows": [
+        [
+          [
+            {
+              "text": "2026-10-14"
+            }
+          ],
+          [
+            {
+              "text": "@kanywst",
+              "href": "https://github.com/kanywst"
+            }
+          ],
+          [
+            {
+              "text": "workflow no longer hardcodes the repo or branch",
+              "href": "https://github.com/0-draft/guestbook/issues/5"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "text": "2026-10-14"
+            }
+          ],
+          [
+            {
+              "text": "@kanywst",
+              "href": "https://github.com/kanywst"
+            }
+          ],
+          [
+            {
+              "text": "smoke test after the move to 0-draft 👋",
+              "href": "https://github.com/0-draft/guestbook/issues/3"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "text": "2026-03-23"
+            }
+          ],
+          [
+            {
+              "text": "@kanywst",
+              "href": "https://github.com/kanywst"
+            }
+          ],
+          [
+            {
+              "text": "‼️",
+              "href": "https://github.com/kanywst/kanywst/issues/2"
+            }
+          ]
+        ]
+      ]
+    }
+  ]
+}

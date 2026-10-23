@@ -1,0 +1,198 @@
+---
+import { Font } from "astro:assets";
+import Blocks from "../components/Blocks.astro";
+import Sheet from "../components/Sheet.astro";
+import articles from "../data/articles.json";
+import games from "../data/games.json";
+import { home, shelves } from "../lib/desk.ts";
+import type { Block } from "../lib/readme.ts";
+import "../styles/desk.css";
+
+const all = shelves();
+const boards = games as Record<string, Block[]>;
+const guestRows = boards.guestbook?.find((b) => b.kind === "table")?.rows ?? [];
+const minutes = articles.reduce((n, a) => n + a.readingMinutes, 0);
+const shortDate = (iso: string) =>
+  new Date(iso).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric", timeZone: "UTC" });
+const description = "Raw outputs, researches, and unpolished tools. Everything here is v0.";
+---
+
+<!doctype html>
+<html lang="en" class="list">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>0-draft</title>
+    <meta name="description" content={description} />
+    <meta property="og:title" content="0-draft" />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={new URL("/og.png", Astro.site)} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#4c6e7f" />
+    <link rel="icon" href="/favicon.png" type="image/png" />
+    <Font cssVariable="--font-round" preload />
+    <Font cssVariable="--font-dot" preload />
+  </head>
+  <body>
+    <svg width="0" height="0" class="sprite" aria-hidden="true">
+      <symbol id="stamp" viewBox="0 0 120 120">
+        <path id="stamp-ring" d="M60 60m-45 0a45 45 0 1 1 90 0a45 45 0 1 1-90 0" fill="none"></path>
+        <circle cx="60" cy="60" r="57" fill="none" stroke="currentColor" stroke-width="4"></circle>
+        <circle cx="60" cy="60" r="35" fill="none" stroke="currentColor" stroke-width="2"></circle>
+        <text font-size="11.5" font-weight="900" letter-spacing="1.4" fill="currentColor">
+          <textPath href="#stamp-ring">raw output · unpolished · draft zero ·</textPath>
+        </text>
+        <path
+          d="M60 45.5s-5-3-5-6.4a2.6 2.6 0 0 1 5-1 2.6 2.6 0 0 1 5 1c0 3.4-5 6.4-5 6.4z"
+          fill="currentColor"></path>
+        <text x="60" y="78" text-anchor="middle" font-size="30" font-weight="900" fill="currentColor">v0</text>
+      </symbol>
+    </svg>
+    <a class="skip" href="#list" data-mode="list">Skip to the project list</a>
+
+    <header class="hud hud-top">
+      <a class="brand" href="/" aria-label="0-draft, back to the start">
+        <img src="/seal.png" alt="" width="44" height="42" />
+        <span>0-draft</span>
+      </a>
+      <div class="hud-links">
+        <button type="button" class="pill" data-mode-toggle aria-pressed="false">List view</button>
+        <a class="pill" href="https://github.com/0-draft">GitHub</a>
+      </div>
+    </header>
+
+    <main class="desk" id="desk" aria-label="The 0-draft desk">
+      <div class="world" id="world">
+        <section class="item home" id="home" data-x={home.x} data-y={home.y} data-tilt="0" data-group="home">
+          <img class="home-seal" src="/seal.png" alt="The 0-draft seal: a robot face under a black beret with a red heart" width="900" height="860" fetchpriority="high" />
+          <div class="home-copy">
+            <h1>0-draft</h1>
+            <p class="bubble">Raw outputs, researches, and unpolished tools. Everything here is v0.</p>
+            <p class="hint">
+              <span class="hint-desk">Drag the mat to look around and pinch to zoom. Anything with a live site opens right here on the desk.</span>
+              <span class="hint-list">Twelve things on the desk right now, in four piles.</span>
+            </p>
+          </div>
+          <img class="sticker sticker-avatar" src="/avatar.png" alt="" width="370" height="370" loading="lazy" />
+        </section>
+
+        <div class="list-anchor" id="list" tabindex="-1"></div>
+
+        {
+          all.map((shelf) => (
+            <section class="shelf" id={`shelf-${shelf.id}`} aria-labelledby={`label-${shelf.id}`} data-group={shelf.id}>
+              <header
+                class="item label"
+                data-x={shelf.label.x}
+                data-y={shelf.label.y}
+                data-tilt="-1.2"
+                data-group={shelf.id}
+              >
+                <h2 id={`label-${shelf.id}`}>{shelf.title}</h2>
+                <p>{shelf.blurb}</p>
+              </header>
+              <div class="pile">
+                {shelf.repos.map((repo) =>
+                  repo.name === "blackjack" || repo.name === "shogi" ? (
+                    <Sheet repo={repo} group={shelf.id} kind="board">
+                      <div class:list={["board", `board-${repo.name}`]} data-game={repo.name}>
+                        <Blocks blocks={boards[repo.name] ?? []} />
+                      </div>
+                    </Sheet>
+                  ) : repo.name === "guestbook" ? (
+                    <Sheet repo={repo} group={shelf.id} kind="book">
+                      <div class="book">
+                        <ol class="book-lines" data-game="guestbook">
+                          {guestRows.map(([date, who, msg]) => (
+                            <li>
+                              <time>{date?.[0]?.text}</time>
+                              <a class="who" href={who?.[0]?.href}>
+                                {who?.[0]?.text}
+                              </a>
+                              <a class="msg" href={msg?.[0]?.href}>
+                                {msg?.[0]?.text}
+                              </a>
+                            </li>
+                          ))}
+                        </ol>
+                        <a
+                          class="btn btn-wax"
+                          href="https://github.com/0-draft/guestbook/issues/new?template=guestbook.yml&title=%F0%9F%93%AE+%5BGuest+Book%5D"
+                        >
+                          Sign the guest book
+                        </a>
+                      </div>
+                    </Sheet>
+                  ) : repo.name === "dev.to" ? (
+                    <Sheet repo={repo} group={shelf.id} kind="receipt">
+                      <div class="receipt">
+                        <p class="r-head">
+                          <strong>dev.to/kanywst</strong>
+                          <span>Latest {articles.length} articles</span>
+                        </p>
+                        <ol class="r-lines">
+                          {articles.map((a) => (
+                            <li>
+                              <a href={a.url}>{a.title}</a>
+                              <span class="r-min">{a.readingMinutes} min</span>
+                              <span class="r-date">{shortDate(a.publishedAt)}</span>
+                            </li>
+                          ))}
+                        </ol>
+                        <p class="r-total">
+                          <span>Total reading</span>
+                          <span>{minutes} min</span>
+                        </p>
+                        <p class="r-thanks">Thanks for reading. Come back for v1.</p>
+                      </div>
+                    </Sheet>
+                  ) : (
+                    <Sheet repo={repo} group={shelf.id} />
+                  ),
+                )}
+              </div>
+            </section>
+          ))
+        }
+      </div>
+      <div class="scrim" aria-hidden="true"></div>
+    </main>
+
+    <canvas class="ruler ruler-x" aria-hidden="true"></canvas>
+    <canvas class="ruler ruler-y" aria-hidden="true"></canvas>
+
+    <nav class="hud tray" aria-label="Move around the desk">
+      <div class="tray-go">
+        <button type="button" data-go="home">Home</button>
+        {all.map((s) => <button type="button" data-go={s.id}>{s.title}</button>)}
+      </div>
+      <div class="tray-zoom">
+        <button type="button" data-zoom="out" aria-label="Zoom out">
+          <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10" /></svg>
+        </button>
+        <output class="zoom-read" aria-live="off">100%</output>
+        <button type="button" data-zoom="in" aria-label="Zoom in">
+          <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M8 3v10" /></svg>
+        </button>
+      </div>
+    </nav>
+
+    <button type="button" class="hud minimap" aria-label="Show the whole desk">
+      <svg aria-hidden="true"></svg>
+    </button>
+
+    <div class="live" hidden>
+      <div class="live-bar">
+        <strong class="live-title"></strong>
+        <a class="pill live-open" href="/" target="_blank" rel="noopener">Open in a new tab</a>
+        <button type="button" class="pill pill-wax live-close">Back to the desk</button>
+      </div>
+      <iframe class="live-frame" title="Live project"></iframe>
+    </div>
+
+    <script>
+      import "../scripts/desk.ts";
+      import "../scripts/boards.ts";
+    </script>
+  </body>
+</html>
