@@ -43,8 +43,9 @@ const { blocks } = Astro.props;
         {b.head.some((h) => h) && (
           <thead>
             <tr>
-              {b.head.map((h) => (
-                <th scope="col">{h}</th>
+              {/* A blank header still names its column for screen readers. */}
+              {b.head.map((h, i) => (
+                <th scope="col">{h || <span class="vh">Column {i + 1}</span>}</th>
               ))}
             </tr>
           </thead>
