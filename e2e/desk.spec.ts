@@ -95,6 +95,20 @@ test("breaking a seal opens the live site on the desk and Escape puts it back", 
   await expect(sheet.getByRole("button", { name: /^Break the seal/ })).toBeFocused();
 });
 
+test("pressing the darkened desk around an open site closes it", async ({ page, isMobile }) => {
+  test.skip(isMobile, "on a phone the site fills the screen, leaving no desk to press");
+  await openDesk(page);
+  const target = repos.find((r) => r.homepage?.startsWith("https://0-draft.github.io/"));
+  test.skip(!target, "no framable site in the data");
+  const button = page.locator(`article[id="${target?.name}"]`).getByRole("button", { name: /^Break the seal/ });
+  await button.focus();
+  await button.click();
+  await expect(page.locator(".live")).toBeVisible();
+  const vp = page.viewportSize();
+  await page.mouse.click(4, (vp?.height ?? 800) - 4);
+  await expect(page.locator(".live")).toBeHidden();
+});
+
 test("Escape while a seal is still cracking cancels the open", async ({ page }) => {
   // Arrive with motion reduced so the camera settles at once, then turn motion back
   // on so pressing the seal starts the real crack-then-dive sequence.

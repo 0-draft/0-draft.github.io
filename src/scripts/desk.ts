@@ -501,12 +501,14 @@ function closeLive() {
   button.focus({ preventScroll: true });
 }
 
-// The frame is sandboxed to an opaque origin, so its key events can't be heard from here:
-// Escape works whenever focus is on this page, and "Back to the desk" is always one Tab away.
+// The frame is sandboxed to an opaque origin, so its key events can't be heard from here.
+// Escape works whenever focus is on this page; with focus inside the site, the button above it
+// or a press anywhere on the darkened desk around it closes it.
 frame.addEventListener("load", () => {
   if (frame.getAttribute("src")) frame.classList.add("ready");
 });
 liveClose.addEventListener("click", closeLive);
+document.querySelector(".scrim")?.addEventListener("click", closeLive);
 for (const b of document.querySelectorAll<HTMLButtonElement>("button.try")) {
   b.addEventListener("click", () => openLive(b));
 }
