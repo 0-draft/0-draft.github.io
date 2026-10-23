@@ -1,0 +1,125 @@
+import { expect, type Page, test } from "@playwright/test";
+import repos from "../src/data/repos.json" with { type: "json" };
+
+// Collects anything the page logs as an error, CSP violations included.
+function watchErrors(page: Page): string[] {
+  const errors: string[] = [];
+  page.on("pageerror", (e) => errors.push(e.message));
+  page.on("console", (m) => {
+    if (m.type() === "error") errors.push(m.text());
+  });
+  return errors;
+}
+
+async function openDesk(page: Page) {
+  await page.goto("/");
+  await expect(page.locator("html")).toHaveClass(/\bready\b/);
+  await expect(page.locator("html")).toHaveClass(/\bdesk\b/);
+}
+
+test.beforeEach(async ({ page }) => {
+  // Keep the intro short and deterministic.
+  await page.emulateMedia({ reducedMotion: "reduce" });
+});
+
+test("lays every synced repo out on the desk without errors", async ({ page }) => {
+  const errors = watchErrors(page);
+  await openDesk(page);
+  for (const r of repos) {
+    await expect(page.locator(`article[id="${r.name}"]`), r.name).toHaveCount(1);
+  }
+  const placed = await page
+    .locator("article.sheet")
+    .evaluateAll((els) => els.map((el) => (el as HTMLElement).style.translate));
+  expect(placed.every((t) => /px/.test(t))).toBe(true);
+  expect(errors).toEqual([]);
+});
+
+test("ships a CSP that only allows what the page needs", async ({ page }) => {
+  await page.goto("/");
+  const csp = await page.locator('meta[http-equiv="content-security-policy"]').getAttribute("content");
+  expect(csp).toContain("default-src 'self'");
+  expect(csp).toContain("frame-src 'self' https://0-draft.github.io");
+  expect(csp).not.toContain("unsafe-inline");
+  expect(csp).not.toContain("unsafe-eval");
+});
+
+test("tray buttons move the camera and the zoom readout follows", async ({ page }) => {
+  await openDesk(page);
+  const world = page.locator("#world");
+  const before = await world.getAttribute("style");
+  await page.getByRole("button", { name: "Played in the README" }).click();
+  await expect.poll(() => world.getAttribute("style")).not.toBe(before);
+  await expect(page.locator(".zoom-read")).toHaveText(/^\d+%$/);
+});
+
+test("keyboard focus pulls an off-screen sheet into view", async ({ page, isMobile }) => {
+  test.skip(isMobile, "no hardware keyboard");
+  await openDesk(page);
+  await page.getByRole("button", { name: "Home" }).click();
+  const link = page.locator("#guestbook h3 a");
+  await link.focus();
+  await expect
+    .poll(async () => {
+      const box = await link.boundingBox();
+      const vp = page.viewportSize();
+      return (
+        !!box && !!vp && box.x >= 0 && box.y >= 0 && box.x + box.width <= vp.width && box.y + box.height <= vp.height
+      );
+    })
+    .toBe(true);
+});
+
+test("Try it here opens the live site on the desk and Escape puts it back", async ({ page }) => {
+  await openDesk(page);
+  const target = repos.find((r) => r.homepage?.startsWith("https://0-draft.github.io/"));
+  test.skip(!target, "no framable site in the data");
+  const sheet = page.locator(`article[id="${target?.name}"]`);
+  const button = sheet.getByRole("button", { name: "Try it here" });
+  // Focusing brings the sheet on screen first, the way a visitor would reach it.
+  await button.focus();
+  await expect(button).toBeInViewport({ ratio: 1 });
+  await button.click();
+  const live = page.locator(".live");
+  await expect(live).toBeVisible();
+  await expect(live.locator("iframe")).toHaveAttribute("src", target?.homepage ?? "");
+  await expect(page.getByRole("button", { name: "Back to the desk" })).toBeFocused();
+  await page.keyboard.press("Escape");
+  await expect(live).toBeHidden();
+  await expect(live.locator("iframe")).not.toHaveAttribute("src", /./);
+  await expect(sheet.getByRole("button", { name: "Try it here" })).toBeFocused();
+});
+
+test("the README games render as playable boards", async ({ page }) => {
+  await openDesk(page);
+  const shogi = page.locator('[data-game="shogi"] .b-grid .b-row');
+  await expect(shogi).toHaveCount(9);
+  await expect(page.locator('[data-game="shogi"] a[href*="/issues/new"]').first()).toBeAttached();
+  await expect(page.locator('[data-game="blackjack"] img').first()).toBeAttached();
+  await expect(page.locator('[data-game="guestbook"] li').first()).toBeAttached();
+});
+
+test("list view turns the desk into a plain page and remembers the choice", async ({ page }) => {
+  await openDesk(page);
+  await page.getByRole("button", { name: "List view" }).click();
+  await expect(page.locator("html")).toHaveClass(/\blist\b/);
+  await expect(page.locator(".tray")).toBeHidden();
+  await expect(page.locator("#world")).not.toHaveAttribute("style", /transform: translate/);
+  await page.reload();
+  await expect(page.locator("html")).toHaveClass(/\blist\b/);
+  await page.getByRole("button", { name: "Desk view" }).click();
+  await expect(page.locator("html")).toHaveClass(/\bdesk\b/);
+});
+
+test.describe("without JavaScript", () => {
+  test.use({ javaScriptEnabled: false });
+
+  test("everything is still there as a list", async ({ page }) => {
+    await page.goto("/");
+    await expect(page.locator("html")).toHaveClass(/\blist\b/);
+    await expect(page.getByRole("heading", { level: 1, name: "0-draft" })).toBeVisible();
+    for (const r of repos) {
+      await expect(page.getByRole("heading", { level: 3, name: r.name })).toBeVisible();
+    }
+  });
+});
