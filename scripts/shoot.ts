@@ -21,9 +21,11 @@ const browser = await chromium.launch();
 const page = await browser.newPage({ viewport: { width: 1280, height: 800 }, reducedMotion: "reduce" });
 let taken = 0;
 let failed = 0;
+let attempted = 0;
 for (const r of targets) {
   const path = shot(r.name);
   if (!all && (await exists(path))) continue;
+  attempted++;
   try {
     // An error page must never be printed: without --all it would never be retaken.
     const res = await page.goto(r.homepage as string, { waitUntil: "networkidle", timeout: 45_000 });
@@ -47,4 +49,4 @@ await browser.close();
 console.log(`${taken} taken, ${failed} failed, ${targets.length - taken - failed} kept`);
 // One broken site is a warning, not a red run every Monday. Only when every
 // target fails is something wrong with the run itself (network, browser).
-if (targets.length > 0 && failed === targets.length) process.exit(1);
+if (attempted > 0 && taken === 0) process.exit(1);

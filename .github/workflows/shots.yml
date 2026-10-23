@@ -36,8 +36,10 @@ jobs:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
+      - uses: ./.github/actions/setup
+      # The installed version, as in ci.yml, so the image tag is exact even if the spec is a range.
       - id: v
-        run: echo "playwright=$(node -p 'require("./package.json").devDependencies["@playwright/test"]')" >> "$GITHUB_OUTPUT"
+        run: echo "playwright=$(node -p 'require("@playwright/test/package.json").version')" >> "$GITHUB_OUTPUT"
 
   # Shooting runs third-party code (the npm install, the sites themselves) with a
   # read-only token. Only the propose job can write, and it installs nothing.
