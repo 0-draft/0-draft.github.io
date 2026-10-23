@@ -71,10 +71,29 @@ async function sizeOf(src: string): Promise<{ w: number; h: number } | null> {
   }
 }
 
-async function sizeCells(blocks: Block[]) {
+// Sizes the previous games.json already knew, so a transient fetch failure doesn't drop them.
+async function knownSizes(): Promise<Map<string, { w: number; h: number }>> {
+  const known = new Map<string, { w: number; h: number }>();
+  try {
+    const previous = JSON.parse(await readFile(data("games.json"), "utf8")) as Record<string, Block[]>;
+    for (const blocks of Object.values(previous)) {
+      for (const b of blocks) {
+        if (b.kind !== "grid") continue;
+        for (const c of b.rows.flat()) if (c.w && c.h) known.set(c.src, { w: c.w, h: c.h });
+      }
+    }
+  } catch {
+    // No previous file: everything is fetched.
+  }
+  return known;
+}
+
+async function sizeCells(blocks: Block[], known: Map<string, { w: number; h: number }>) {
   const cells = blocks.flatMap((b) => (b.kind === "grid" ? b.rows.flat() : []));
   const srcs = [...new Set(cells.map((c) => c.src))];
-  const sizes = new Map(await Promise.all(srcs.map(async (src) => [src, await sizeOf(src)] as const)));
+  const sizes = new Map(
+    await Promise.all(srcs.map(async (src) => [src, (await sizeOf(src)) ?? known.get(src) ?? null] as const)),
+  );
   for (const cell of cells) {
     const size = sizes.get(cell.src);
     if (size) Object.assign(cell, size);
@@ -83,11 +102,12 @@ async function sizeCells(blocks: Block[]) {
 
 async function games() {
   const out: Record<string, Block[]> = {};
+  const known = await knownSizes();
   for (const name of Object.keys(GAMES) as GameName[]) {
     const md = await (await get(readmeUrl(name))).text();
     const blocks = parseGame(name, md);
     if (!blocks?.length) throw new Error(`no live region in ${name}/README.md`);
-    await sizeCells(blocks);
+    await sizeCells(blocks, known);
     out[name] = blocks;
   }
   return out;
