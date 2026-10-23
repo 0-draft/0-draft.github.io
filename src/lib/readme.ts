@@ -36,19 +36,25 @@ function safeHref(url: string): string | null {
   return u && u.origin === "https://github.com" && !u.username && !u.password ? u.href : null;
 }
 
-function safeImg(url: string): boolean {
+function safeImg(url: string): string | null {
   const u = parsed(url);
-  return !!u && u.origin === "https://raw.githubusercontent.com" && u.pathname.startsWith("/0-draft/");
+  return u && u.origin === "https://raw.githubusercontent.com" && u.pathname.startsWith("/0-draft/") ? u.href : null;
 }
 
 function decode(s: string): string {
-  return s
-    .replace(/&quot;/g, '"')
-    .replace(/&#39;/g, "'")
-    .replace(/&lt;/g, "<")
-    .replace(/&gt;/g, ">")
-    .replace(/&nbsp;/g, " ")
-    .replace(/&amp;/g, "&");
+  return (
+    s
+      // Numeric references first (Python's html.escape writes ' as &#x27;); &amp; stays last
+      // so "&amp;#39;" decodes to the literal text "&#39;" rather than to an apostrophe.
+      .replace(/&#x([0-9a-f]+);/gi, (_, h) => String.fromCodePoint(Number.parseInt(h, 16)))
+      .replace(/&#(\d+);/g, (_, d) => String.fromCodePoint(Number(d)))
+      .replace(/&quot;/g, '"')
+      .replace(/&#39;/g, "'")
+      .replace(/&lt;/g, "<")
+      .replace(/&gt;/g, ">")
+      .replace(/&nbsp;/g, " ")
+      .replace(/&amp;/g, "&")
+  );
 }
 
 function segments(html: string): Seg[] {
@@ -77,14 +83,14 @@ function grid(pre: string): Cell[][] {
   return pre
     .split("\n")
     .map((line) =>
-      [...line.matchAll(cellRe)]
-        .filter((m) => safeImg(m[2]))
+      [...line.matchAll(cellRe)].flatMap((m) => {
+        const src = safeImg(m[2]);
+        if (!src) return [];
         // A cell is a link only when it does something: opens a prefilled move issue.
         // The rest point back at the README itself and would just be empty tab stops.
-        .map((m) => {
-          const href = safeHref(m[1]);
-          return { href: href?.includes("/issues/new") ? href : null, src: m[2], alt: decode(m[3]) };
-        }),
+        const href = safeHref(m[1]);
+        return [{ href: href?.includes("/issues/new") ? href : null, src, alt: decode(m[3]) }];
+      }),
     )
     .filter((row) => row.length > 0);
 }

@@ -18,6 +18,16 @@ const ghHeaders: Record<string, string> = {
 const token = process.env.GITHUB_TOKEN ?? process.env.GH_TOKEN;
 if (token) ghHeaders.Authorization = `Bearer ${token}`;
 
+// Links that reach the page from an API are kept only when they are plain https URLs.
+function https(url: unknown, host?: string): string | null {
+  try {
+    const u = new URL(String(url));
+    return u.protocol === "https:" && (!host || u.hostname === host) ? u.href : null;
+  } catch {
+    return null;
+  }
+}
+
 async function get(url: string, headers: Record<string, string> = {}): Promise<Response> {
   const res = await fetch(url, { headers, signal: AbortSignal.timeout(20_000) });
   if (!res.ok) throw new Error(`${res.status} ${url}`);
@@ -38,7 +48,7 @@ async function repos() {
       name: r.name,
       description: r.description ?? "",
       url: r.html_url,
-      homepage: r.homepage || null,
+      homepage: https(r.homepage),
       language: r.language,
       topics: r.topics ?? [],
       stars: r.stargazers_count,
@@ -80,14 +90,16 @@ async function games() {
 
 async function articles() {
   const res = await get(`https://dev.to/api/articles?username=${DEVTO_USER}&per_page=8`);
-  return (await res.json()).map((a: any) => ({
-    title: a.title,
-    url: a.url,
-    publishedAt: a.published_at,
-    reactions: a.public_reactions_count ?? a.positive_reactions_count,
-    tags: a.tag_list,
-    readingMinutes: a.reading_time_minutes,
-  }));
+  return (await res.json())
+    .map((a: any) => ({
+      title: a.title,
+      url: https(a.url, "dev.to"),
+      publishedAt: a.published_at,
+      reactions: a.public_reactions_count ?? a.positive_reactions_count,
+      tags: a.tag_list,
+      readingMinutes: a.reading_time_minutes,
+    }))
+    .filter((a: { url: string | null }) => a.url);
 }
 
 let failed = 0;
