@@ -15,6 +15,10 @@ updates:
     commit-message:
       prefix: chore
       include: scope
+    ignore:
+      # Types follow the Node major CI runs on (24), not the newest Node.
+      - dependency-name: "@types/node"
+        update-types: ["version-update:semver-major"]
     groups:
       astro:
         patterns:
