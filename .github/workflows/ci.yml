@@ -70,11 +70,16 @@ jobs:
   build:
     runs-on: ubuntu-latest
     timeout-minutes: 15
+    outputs:
+      playwright: ${{ steps.versions.outputs.playwright }}
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
       - uses: ./.github/actions/setup
+      # The e2e job runs in the Playwright image matching the installed test runner.
+      - id: versions
+        run: echo "playwright=$(node -p 'require("@playwright/test/package.json").version')" >> "$GITHUB_OUTPUT"
       - if: inputs.sync
         run: pnpm run sync
         env:
@@ -99,6 +104,12 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     timeout-minutes: 20
+    # Browsers and their system libraries come baked into the image, so nothing is
+    # fetched from apt at test time. The tag follows the installed @playwright/test,
+    # so a Dependabot bump moves both together.
+    container:
+      image: mcr.microsoft.com/playwright:v${{ needs.build.outputs.playwright }}-noble
+      options: --user 1001
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
@@ -108,7 +119,6 @@ jobs:
       - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
         with:
           name: site
-      - run: pnpm exec playwright install --with-deps chromium webkit
       - run: pnpm exec playwright test
         env:
           CI: true

@@ -17,7 +17,7 @@ export default defineConfig({
     { name: "phone", use: { ...devices["Pixel 7"] } },
   ],
   webServer: {
-    command: "python3 -m http.server 4329 --bind 127.0.0.1 --directory dist",
+    command: "node e2e/serve.mjs 4329",
     url: "http://127.0.0.1:4329",
     reuseExistingServer: !process.env.CI,
   },
