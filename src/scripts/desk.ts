@@ -81,7 +81,7 @@ function groupBox(group: string): Box {
 const everything = () => union([...boxes.values()]);
 
 // Camera that shows `box` with `pad` screen pixels around it, clear of the HUD bars.
-function fit(box: Box, pad = 40, top = TOP_BAR, bottom = BOTTOM_BAR): Cam {
+function fitBox(box: Box, pad = 40, top = TOP_BAR, bottom = BOTTOM_BAR): Cam {
   const availW = vw - RULER - pad * 2;
   const availH = vh - top - bottom - pad * 2;
   const z = clampZ(Math.min(availW / box.w, availH / box.h));
@@ -328,7 +328,7 @@ desk.addEventListener("click", (e) => {
   const target = e.target as Element;
   if (target.closest(interactive)) return;
   const item = target.closest<HTMLElement>(".item");
-  if (item) go(fit(boxes.get(item) as Box, 56));
+  if (item) go(fitBox(boxes.get(item) as Box, 56));
 });
 
 desk.addEventListener(
@@ -380,7 +380,7 @@ document.addEventListener("keydown", (e) => {
     "+": () => zoomAt(1.4, vw / 2, vh / 2, true),
     "=": () => zoomAt(1.4, vw / 2, vh / 2, true),
     "-": () => zoomAt(1 / 1.4, vw / 2, vh / 2, true),
-    "0": () => go(fit(everything())),
+    "0": () => go(fitBox(everything())),
   };
   const move = moves[e.key];
   if (move) {
@@ -399,7 +399,7 @@ world.addEventListener("focusin", (e) => {
   const top = (b.y - cam.y) * cam.z + vh / 2;
   const visible =
     left >= RULER && top >= TOP_BAR && left + b.w * cam.z <= vw && top + b.h * cam.z <= vh - BOTTOM_BAR && cam.z > 0.45;
-  if (!visible) go(fit(b, 56));
+  if (!visible) go(fitBox(b, 56));
   desk.scrollTop = 0;
   desk.scrollLeft = 0;
 });
@@ -409,10 +409,10 @@ const homeBox = () => boxes.get(document.getElementById("home") as HTMLElement) 
 
 // On a phone a whole pile is too small to read, so jump to its first sheet instead.
 function shelfView(id: string): Cam {
-  if (id === "home") return fit(homeBox(), narrow() ? 16 : 48);
-  if (!narrow()) return fit(groupBox(id), 48);
+  if (id === "home") return fitBox(homeBox(), narrow() ? 16 : 48);
+  if (!narrow()) return fitBox(groupBox(id), 48);
   const first = items.find((el) => el.dataset.group === id && el.classList.contains("sheet"));
-  return fit(boxes.get(first as HTMLElement) as Box, 16);
+  return fitBox(boxes.get(first as HTMLElement) as Box, 16);
 }
 
 for (const b of document.querySelectorAll<HTMLButtonElement>("[data-go]")) {
@@ -421,7 +421,7 @@ for (const b of document.querySelectorAll<HTMLButtonElement>("[data-go]")) {
 for (const b of document.querySelectorAll<HTMLButtonElement>("[data-zoom]")) {
   b.addEventListener("click", () => zoomAt(b.dataset.zoom === "in" ? 1.5 : 1 / 1.5, vw / 2, vh / 2, true));
 }
-minimap.addEventListener("click", () => go(fit(everything())));
+minimap.addEventListener("click", () => go(fitBox(everything())));
 
 // ---------- live sites ----------
 
@@ -463,7 +463,7 @@ async function openLive(button: HTMLButtonElement) {
   frame.src = button.dataset.live as string;
   liveTitle.textContent = button.dataset.title ?? "";
   liveOpen.href = button.dataset.live as string;
-  await go(fit(screenBox(sheet), 12, TOP_BAR, 12), { stiffness: 7 });
+  await go(fitBox(screenBox(sheet), 12, TOP_BAR, 12), { stiffness: 7 });
   if (liveFrom?.sheet !== sheet) return;
   const r = (sheet.querySelector(".screen") as HTMLElement).getBoundingClientRect();
   setLiveRect(r.top, r.left, r.width, r.height);
@@ -527,7 +527,7 @@ function setMode(mode: "desk" | "list", intro = false) {
   measure();
   sizeRulers();
   drawMinimap();
-  const overview = narrow() ? shelfView("home") : fit(everything());
+  const overview = narrow() ? shelfView("home") : fitBox(everything());
   if (intro && !reduced.matches) {
     // Start nose to nose with the seal, then pull back to show the whole desk.
     const seal = document.querySelector<HTMLElement>(".home-seal") as HTMLElement;
@@ -538,7 +538,7 @@ function setMode(mode: "desk" | "list", intro = false) {
       w: seal.offsetWidth * 0.4,
       h: seal.offsetHeight * 0.4,
     };
-    go(fit(face, 0, 0, 0), { instant: true });
+    go(fitBox(face, 0, 0, 0), { instant: true });
     setTimeout(() => go(overview, { stiffness: 2.2 }), 650);
   } else {
     go(overview, { instant: true });
@@ -567,7 +567,7 @@ window.addEventListener("resize", () => {
     vh = desk.clientHeight;
     sizeRulers();
     if (liveFrom) {
-      go(fit(screenBox(liveFrom.sheet), 12, TOP_BAR, 12), { instant: true }).then(positionLive);
+      go(fitBox(screenBox(liveFrom.sheet), 12, TOP_BAR, 12), { instant: true }).then(positionLive);
     } else apply();
   }, 80);
 });
