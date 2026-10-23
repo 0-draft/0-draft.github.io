@@ -220,24 +220,23 @@
     font-size: 21px;
     color: rgb(247 244 236 / 0.86);
   }
-  /* a redaction bar that lifts on hover, focus or press */
+  /* a redaction bar that lifts on hover, focus or press. The bar only goes on once
+     the script is running (html.ready), so without JavaScript the answer is plain text. */
   .redacted {
     padding: 0 0.15em;
     border: 0;
     border-radius: 2px;
-    background: var(--ink);
-    color: transparent;
+    background: transparent;
+    color: var(--gilt);
     font-weight: 800;
     cursor: pointer;
     transition:
       background 0.25s,
       color 0.25s;
   }
-  .redacted:hover,
-  .redacted:focus-visible,
-  .redacted[aria-pressed="true"] {
-    background: transparent;
-    color: var(--gilt);
+  html.ready .redacted:not(:hover, :focus-visible, [aria-pressed="true"]) {
+    background: var(--ink);
+    color: transparent;
   }
   .sticker {
     height: auto;
@@ -1231,6 +1230,17 @@
     .live-title {
       font-size: 17px;
     }
+  }
+}
+
+/* High-contrast modes drop author backgrounds, which would leave the gilt-foil title invisible. */
+@media (forced-colors: active) {
+  .home h1 {
+    background: none;
+    color: CanvasText;
+  }
+  .redacted {
+    color: CanvasText;
   }
 }
 

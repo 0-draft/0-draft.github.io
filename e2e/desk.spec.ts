@@ -90,6 +90,36 @@ test("breaking a seal opens the live site on the desk and Escape puts it back", 
   await expect(sheet.getByRole("button", { name: /^Break the seal/ })).toBeFocused();
 });
 
+test("Escape while a seal is still cracking cancels the open", async ({ page }) => {
+  // Arrive with motion reduced so the camera settles at once, then turn motion back
+  // on so pressing the seal starts the real crack-then-dive sequence.
+  await openDesk(page);
+  const target = repos.find((r) => r.homepage?.startsWith("https://0-draft.github.io/"));
+  test.skip(!target, "no framable site in the data");
+  const button = page.locator(`article[id="${target?.name}"]`).getByRole("button", { name: /^Break the seal/ });
+  await button.focus();
+  await expect(button).toBeInViewport({ ratio: 1 });
+  await page.emulateMedia({ reducedMotion: "no-preference" });
+  await button.click();
+  // A second press lands while the seal is cracking and must not start a second open.
+  await button.dispatchEvent("click");
+  await page.keyboard.press("Escape");
+  await page.waitForTimeout(1200);
+  await expect(page.locator(".live")).toBeHidden();
+  await expect(page.locator(".live iframe")).not.toHaveAttribute("src", /./);
+  await expect(page.locator("html")).not.toHaveClass(/is-live/);
+});
+
+test("the redacted password lifts when pressed", async ({ page }) => {
+  await openDesk(page);
+  const redacted = page.locator(".redacted");
+  await expect(redacted).toHaveCSS("color", "rgba(0, 0, 0, 0)");
+  await redacted.click();
+  await expect(redacted).toHaveAttribute("aria-pressed", "true");
+  await page.mouse.move(0, 0);
+  await expect(redacted).not.toHaveCSS("color", "rgba(0, 0, 0, 0)");
+});
+
 test("the README games render as playable boards", async ({ page }) => {
   await openDesk(page);
   const shogi = page.locator('[data-game="shogi"] .b-grid .b-row');
@@ -121,5 +151,7 @@ test.describe("without JavaScript", () => {
     for (const r of repos) {
       await expect(page.getByRole("heading", { level: 3, name: r.name })).toBeVisible();
     }
+    // Nothing can lift the redaction bar without a script, so it must not be drawn.
+    await expect(page.locator(".redacted")).not.toHaveCSS("color", "rgba(0, 0, 0, 0)");
   });
 });
