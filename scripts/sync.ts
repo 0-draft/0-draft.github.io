@@ -4,7 +4,7 @@
 //   src/data/articles.json  latest dev.to articles
 // A source that fails keeps its previous file, so one flaky API never breaks the build.
 import { readFile, writeFile } from "node:fs/promises";
-import { GAMES, type GameName, parseGame, readmeUrl } from "../src/lib/readme.ts";
+import { type Block, GAMES, type GameName, parseGame, readmeUrl } from "../src/lib/readme.ts";
 
 const ORG = "0-draft";
 const SKIP = new Set([".github", `${ORG}.github.io`]);
@@ -48,12 +48,31 @@ async function repos() {
     .sort((a, b) => b.pushedAt.localeCompare(a.pushedAt));
 }
 
+// Reads each board image's intrinsic size so the boards render at their final size from the start.
+async function sizeCells(blocks: Block[]) {
+  const sizes = new Map<string, { w: number; h: number } | null>();
+  for (const b of blocks) {
+    if (b.kind !== "grid") continue;
+    for (const cell of b.rows.flat()) {
+      if (!sizes.has(cell.src)) {
+        const svg = await (await get(cell.src)).text();
+        const w = Number(svg.match(/<svg[^>]*\swidth="(\d+(?:\.\d+)?)"/)?.[1]);
+        const h = Number(svg.match(/<svg[^>]*\sheight="(\d+(?:\.\d+)?)"/)?.[1]);
+        sizes.set(cell.src, w && h ? { w, h } : null);
+      }
+      const size = sizes.get(cell.src);
+      if (size) Object.assign(cell, size);
+    }
+  }
+}
+
 async function games() {
-  const out: Record<string, unknown> = {};
+  const out: Record<string, Block[]> = {};
   for (const name of Object.keys(GAMES) as GameName[]) {
     const md = await (await get(readmeUrl(name))).text();
     const blocks = parseGame(name, md);
-    if (!blocks) throw new Error(`no live region in ${name}/README.md`);
+    if (!blocks?.length) throw new Error(`no live region in ${name}/README.md`);
+    await sizeCells(blocks);
     out[name] = blocks;
   }
   return out;
@@ -79,6 +98,10 @@ for (const [file, load] of [
 ] as const) {
   try {
     const value = await load();
+    // An empty answer is a failure too: an org rename or a token change must not empty the desk.
+    if (Array.isArray(value) ? value.length === 0 : Object.keys(value).length === 0) {
+      throw new Error("empty response");
+    }
     await writeFile(data(file), `${JSON.stringify(value, null, 2)}\n`);
     console.log(`ok    ${file}`);
   } catch (err) {

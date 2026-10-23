@@ -15,7 +15,16 @@ function segs(list: Seg[]): Node[] {
   return list.map((s) => (s.href ? link(s.href, s.text) : document.createTextNode(s.text)));
 }
 
-function render(blocks: Block[]): Node[] {
+// Image sizes come from the build (scripts/sync.ts); a refreshed board reuses them by src.
+function knownSizes(el: HTMLElement): Map<string, { w: number; h: number }> {
+  const sizes = new Map<string, { w: number; h: number }>();
+  for (const img of el.querySelectorAll("img")) {
+    if (img.width && img.height) sizes.set(img.src, { w: img.width, h: img.height });
+  }
+  return sizes;
+}
+
+function render(blocks: Block[], sizes: Map<string, { w: number; h: number }>): Node[] {
   return blocks.map((b) => {
     if (b.kind === "grid") {
       const grid = document.createElement("div");
@@ -26,6 +35,8 @@ function render(blocks: Block[]): Node[] {
         for (const c of row) {
           const img = document.createElement("img");
           Object.assign(img, { src: c.src, alt: c.alt, decoding: "async", draggable: false });
+          const size = sizes.get(c.src);
+          if (size) Object.assign(img, { width: size.w, height: size.h });
           if (c.href) {
             const a = link(c.href, img);
             if (c.alt) a.title = c.alt;
@@ -44,6 +55,15 @@ function render(blocks: Block[]): Node[] {
     }
     const table = document.createElement("table");
     table.className = "b-table";
+    if (b.head.some((h) => h)) {
+      const tr = table.createTHead().insertRow();
+      for (const h of b.head) {
+        const th = document.createElement("th");
+        th.scope = "col";
+        th.textContent = h;
+        tr.append(th);
+      }
+    }
     const body = table.createTBody();
     for (const row of b.rows) {
       const tr = body.insertRow();
@@ -89,7 +109,7 @@ async function refresh() {
         const blocks = parseGame(name, md);
         if (!blocks) return;
         if (name === "guestbook") renderGuestbook(el, blocks);
-        else el.replaceChildren(...render(blocks));
+        else el.replaceChildren(...render(blocks, knownSizes(el)));
       } catch {
         // The build-time board stays up if GitHub can't be reached.
       }

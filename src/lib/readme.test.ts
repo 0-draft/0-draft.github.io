@@ -19,7 +19,7 @@ describe("liveRegion", () => {
 });
 
 describe("parseBlocks", () => {
-  it("reads a <pre> board into rows of linked cells", () => {
+  it("reads a <pre> board into rows, linking only cells that open a move", () => {
     const pre = `<pre><a href="${ISSUE}"><img src="${IMG}/gL.svg" align="top" alt="9a white lance"></a><a href="https://github.com/0-draft/shogi#shogi"><img src="${IMG}/empty.svg" align="top" alt=""></a>
 <a href="${ISSUE}"><img src="${IMG}/sP.svg" align="top" alt="9g black pawn"></a></pre>`;
     const [grid] = parseBlocks(pre);
@@ -32,7 +32,7 @@ describe("parseBlocks", () => {
             src: `${IMG}/gL.svg`,
             alt: "9a white lance",
           },
-          { href: "https://github.com/0-draft/shogi#shogi", src: `${IMG}/empty.svg`, alt: "" },
+          { href: null, src: `${IMG}/empty.svg`, alt: "" },
         ],
         [
           {
@@ -66,14 +66,35 @@ describe("parseBlocks", () => {
     });
   });
 
-  it("reads table bodies cell by cell and ignores the head", () => {
+  it("reads a table's head and its body cell by cell", () => {
     const [t] = parseBlocks(
-      `<table><thead><tr><th>x</th></tr></thead><tbody><tr><td><code>2026-10-14</code></td><td><a href="https://github.com/kanywst">@kanywst</a></td></tr></tbody></table>`,
+      `<table align="center"><thead><tr><th>Hand</th><th></th></tr></thead><tbody><tr><td><code>2026-10-14</code></td><td><a href="https://github.com/kanywst">@kanywst</a></td></tr></tbody></table>`,
     );
     expect(t).toEqual({
       kind: "table",
+      head: ["Hand", ""],
       rows: [[[{ text: "2026-10-14" }], [{ text: "@kanywst", href: "https://github.com/kanywst" }]]],
     });
+  });
+
+  it.each([
+    "https://github.com.evil.example/x",
+    "https://github.com@evil.example/x",
+    "https://user:pw@github.com/x",
+    "http://github.com/x",
+    "//github.com/x",
+    "javascript:alert(1)",
+  ])("refuses the look-alike link %s", (href) => {
+    const [p] = parseBlocks(`<p><a href="${href}">x</a></p>`);
+    expect(p).toEqual({ kind: "text", segs: [{ text: "x" }] });
+  });
+
+  it.each([
+    "https://raw.githubusercontent.com/0-draft/../someone/x/main/a.svg",
+    "https://raw.githubusercontent.com.evil.example/0-draft/a.svg",
+    "https://raw.githubusercontent.com/someone/0-draft/a.svg",
+  ])("refuses the look-alike image %s", (src) => {
+    expect(parseBlocks(`<pre><a href="${ISSUE}"><img src="${src}" alt="x"></a></pre>`)).toEqual([]);
   });
 
   it("keeps blocks in document order", () => {
