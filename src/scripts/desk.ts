@@ -366,7 +366,8 @@ desk.addEventListener("gesturechange", (e) => {
 
 document.addEventListener("keydown", (e) => {
   if (!html.classList.contains("desk")) return;
-  if (e.key === "Escape" && html.classList.contains("is-live")) {
+  // liveFrom is set from the moment a seal is pressed, so Escape also cancels an open still on its way in.
+  if (e.key === "Escape" && liveFrom) {
     closeLive();
     return;
   }
@@ -457,6 +458,7 @@ function positionLive() {
 const pause = (ms: number) => new Promise((resolve) => setTimeout(resolve, reduced.matches ? 0 : ms));
 
 async function openLive(button: HTMLButtonElement) {
+  if (liveFrom) return;
   const sheet = button.closest<HTMLElement>(".sheet") as HTMLElement;
   liveFrom = { cam: { ...goal }, sheet, button };
   // The seal cracks first, then the camera goes in.
