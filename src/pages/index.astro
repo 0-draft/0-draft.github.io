@@ -197,7 +197,13 @@ const count = all.reduce((n, s) => n + s.repos.length, 0);
         <a class="pill live-open" href="/" target="_blank" rel="noopener">Open in a new tab</a>
         <button type="button" class="pill pill-wax live-close">Back to the desk</button>
       </div>
-      <iframe class="live-frame" title="Live project"></iframe>
+      <!-- Every project site shares this origin on GitHub Pages; without a sandbox, a bug in any of
+           them could script this page through window.parent. -->
+      <iframe
+        class="live-frame"
+        title="Live project"
+        sandbox="allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox"
+        referrerpolicy="strict-origin-when-cross-origin"></iframe>
     </div>
 
     <script>

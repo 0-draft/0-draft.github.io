@@ -501,17 +501,10 @@ function closeLive() {
   button.focus({ preventScroll: true });
 }
 
+// The frame is sandboxed to an opaque origin, so its key events can't be heard from here:
+// Escape works whenever focus is on this page, and "Back to the desk" is always one Tab away.
 frame.addEventListener("load", () => {
-  if (!frame.getAttribute("src")) return;
-  frame.classList.add("ready");
-  // Key events don't bubble out of a frame. The sites share this origin, so listen inside it too.
-  try {
-    frame.contentWindow?.addEventListener("keydown", (e) => {
-      if (e.key === "Escape") closeLive();
-    });
-  } catch {
-    // Cross-origin after a redirect: Escape then only works once focus is back on this page.
-  }
+  if (frame.getAttribute("src")) frame.classList.add("ready");
 });
 liveClose.addEventListener("click", closeLive);
 for (const b of document.querySelectorAll<HTMLButtonElement>("button.try")) {

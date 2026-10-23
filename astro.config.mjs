@@ -25,9 +25,10 @@ export default defineConfig({
     csp: {
       directives: [
         "default-src 'self'",
-        "img-src 'self' data: https://raw.githubusercontent.com",
+        "img-src 'self' https://raw.githubusercontent.com",
         "connect-src 'self' https://raw.githubusercontent.com",
-        "frame-src 'self' https://0-draft.github.io",
+        "frame-src https://0-draft.github.io",
+        "object-src 'none'",
         "font-src 'self'",
         "base-uri 'none'",
         "form-action 'none'",
