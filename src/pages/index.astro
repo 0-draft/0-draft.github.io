@@ -4,7 +4,8 @@ import Blocks from "../components/Blocks.astro";
 import Sheet from "../components/Sheet.astro";
 import articles from "../data/articles.json";
 import games from "../data/games.json";
-import { home, shelves } from "../lib/desk.ts";
+import { fileNo, home, shelves, threads } from "../lib/desk.ts";
+import { rosette } from "../lib/guilloche.ts";
 import type { Block } from "../lib/readme.ts";
 import "../styles/desk.css";
 
@@ -15,6 +16,13 @@ const minutes = articles.reduce((n, a) => n + a.readingMinutes, 0);
 const shortDate = (iso: string) =>
   new Date(iso).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric", timeZone: "UTC" });
 const description = "Raw outputs, researches, and unpolished tools. Everything here is v0.";
+const count = all.reduce((n, s) => n + s.repos.length, 0);
+const onDesk = new Set(all.flatMap((s) => s.repos.map((r) => r.name)));
+const strings = threads.filter(([a, b]) => onDesk.has(a) && onDesk.has(b)).map((t) => t.join(":"));
+const crest = rosette(330, 330, [
+  { radius: 300, amplitude: 14, waves: 36, strands: 7 },
+  { radius: 252, amplitude: 9, waves: 48, strands: 5 },
+]);
 ---
 
 <!doctype html>
@@ -28,13 +36,41 @@ const description = "Raw outputs, researches, and unpolished tools. Everything h
     <meta property="og:description" content={description} />
     <meta property="og:image" content={new URL("/og.png", Astro.site)} />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="theme-color" content="#4c6e7f" />
+    <meta name="theme-color" content="#1c3f33" />
     <link rel="icon" href="/favicon.png" type="image/png" />
     <Font cssVariable="--font-round" preload />
     <Font cssVariable="--font-dot" preload />
+    <Font cssVariable="--font-fell" preload />
   </head>
   <body>
     <svg width="0" height="0" class="sprite" aria-hidden="true">
+      <defs>
+        <radialGradient id="brass-fill" cx="35%" cy="30%" r="75%">
+          <stop offset="0" stop-color="#f3dfa6"></stop>
+          <stop offset="0.45" stop-color="#c9a45c"></stop>
+          <stop offset="1" stop-color="#7a5a2a"></stop>
+        </radialGradient>
+      </defs>
+      <symbol id="pin" viewBox="0 0 40 40">
+        <ellipse cx="22" cy="30" rx="11" ry="5" fill="rgb(0 0 0 / 0.35)"></ellipse>
+        <circle cx="20" cy="18" r="13" fill="url(#brass-fill)"></circle>
+        <circle cx="16" cy="13" r="4" fill="#fff6d8" opacity="0.7"></circle>
+      </symbol>
+      <symbol id="clip" viewBox="0 0 40 110">
+        <path
+          d="M12 96V22a8 8 0 0 1 16 0v66a13 13 0 0 1-26 0V14a12 12 0 0 1 24 0"
+          fill="none"
+          stroke="#8a6a3a"
+          stroke-width="5"
+          stroke-linecap="round"></path>
+        <path
+          d="M12 96V22a8 8 0 0 1 16 0v66a13 13 0 0 1-26 0V14a12 12 0 0 1 24 0"
+          fill="none"
+          stroke="#e3c98b"
+          stroke-width="2.2"
+          stroke-linecap="round"
+          transform="translate(-0.8 -0.8)"></path>
+      </symbol>
       <symbol id="stamp" viewBox="0 0 120 120">
         <path id="stamp-ring" d="M60 60m-45 0a45 45 0 1 1 90 0a45 45 0 1 1-90 0" fill="none"></path>
         <circle cx="60" cy="60" r="57" fill="none" stroke="currentColor" stroke-width="4"></circle>
@@ -64,22 +100,35 @@ const description = "Raw outputs, researches, and unpolished tools. Everything h
     <main class="desk" id="desk" aria-label="The 0-draft desk">
       <div class="world" id="world">
         <section class="item home" id="home" data-x={home.x} data-y={home.y} data-tilt="0" data-group="home">
-          <img class="home-seal" src="/seal.png" alt="The 0-draft seal: a robot face under a black beret with a red heart" width="900" height="860" fetchpriority="high" />
+          <div class="crest">
+            <svg class="guilloche" viewBox="0 0 660 660" aria-hidden="true"><path d={crest}></path></svg>
+            <img class="home-seal" src="/seal.png" alt="The 0-draft seal: a robot face under a black beret with a red heart" width="900" height="860" fetchpriority="high" />
+          </div>
           <div class="home-copy">
+            <p class="motto">Societas Draftorum Nulla</p>
             <h1>0-draft</h1>
             <p class="bubble">Raw outputs, researches, and unpolished tools. Everything here is v0.</p>
             <p class="hint">
-              <span class="hint-desk">Drag the mat to look around and pinch to zoom. Anything with a live site opens right here on the desk.</span>
-              <span class="hint-list">Twelve things on the desk right now, in four piles.</span>
+              <span class="hint-desk">Drag the desk to look around and pinch to zoom. Break a seal and the project opens right here.</span>
+              <span class="hint-list">{count} files on the desk right now, in {all.length} piles.</span>
+            </p>
+            <p class="password">
+              Membership is open. The password is
+              <button type="button" class="redacted" aria-pressed="false">
+                <span>a GitHub account</span>
+              </button>.
             </p>
           </div>
           <img class="sticker sticker-avatar" src="/avatar.png" alt="" width="370" height="370" loading="lazy" />
         </section>
 
+        <svg class="strings" data-threads={strings.join(",")} aria-hidden="true"></svg>
+        <svg class="strings pins" aria-hidden="true"></svg>
+
         <div class="list-anchor" id="list" tabindex="-1"></div>
 
         {
-          all.map((shelf) => (
+          all.map((shelf, i) => (
             <section class="shelf" id={`shelf-${shelf.id}`} aria-labelledby={`label-${shelf.id}`} data-group={shelf.id}>
               <header
                 class="item label"
@@ -88,6 +137,7 @@ const description = "Raw outputs, researches, and unpolished tools. Everything h
                 data-tilt="-1.2"
                 data-group={shelf.id}
               >
+                <span class="file-no">{fileNo(i)}</span>
                 <h2 id={`label-${shelf.id}`}>{shelf.title}</h2>
                 <p>{shelf.blurb}</p>
               </header>

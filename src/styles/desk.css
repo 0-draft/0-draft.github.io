@@ -3,28 +3,36 @@
 /* ---------- tokens ---------- */
 
 :root {
-  --mat: #4c6e7f;
-  --mat-deep: #3a5868;
-  --mat-line: rgb(255 255 255 / 0.12);
-  --mat-line-major: rgb(255 255 255 / 0.26);
-  --paper: #fff;
-  --paper-cool: #eef3f5;
-  --ink: #000;
-  --ink-soft: #2e3f4a;
+  /* the lodge desk: bottle-green baize, gold tooling, brass fittings */
+  --desk: #1c3f33;
+  --desk-deep: #12291f;
+  --desk-line: rgb(201 164 92 / 0.09);
+  --desk-line-major: rgb(201 164 92 / 0.2);
+  --gilt: #c9a45c;
+  --gilt-deep: #8a6a3a;
+  --brass: #b08d57;
+  --paper: #f7f4ec;
+  --paper-cool: #ebe6d9;
+  --manila: #dcc79a;
+  --manila-deep: #c4ab76;
+  --ink: #14161c;
+  --ink-soft: #3a3e48;
   --wax: #b3272a;
   --wax-deep: #8e1c1f;
+  --wax-light: #d0484a;
   --blush: #f2a9a1;
-  --tape: rgb(239 230 204 / 0.94);
   --felt: #1c5c43;
   --wood: #ecd6a6;
 
   --round: var(--font-round), "M PLUS Rounded 1c", ui-rounded, system-ui, sans-serif;
   --dot: var(--font-dot), "DotGothic16", ui-monospace, monospace;
+  --fell: var(--font-fell), "IM Fell English SC", Georgia, serif;
+  --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .13 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 
   --shadow-paper:
-    0 1px 1px rgb(0 0 0 / 0.08), 0 12px 24px -10px rgb(14 34 44 / 0.5), 0 40px 70px -40px rgb(14 34 44 / 0.45);
+    0 1px 1px rgb(0 0 0 / 0.08), 0 12px 24px -10px rgb(4 16 12 / 0.5), 0 40px 70px -40px rgb(4 16 12 / 0.45);
   --shadow-lift:
-    0 1px 1px rgb(0 0 0 / 0.08), 0 24px 40px -14px rgb(14 34 44 / 0.55), 0 70px 100px -50px rgb(14 34 44 / 0.5);
+    0 1px 1px rgb(0 0 0 / 0.08), 0 24px 40px -14px rgb(4 16 12 / 0.55), 0 70px 100px -50px rgb(4 16 12 / 0.5);
   --hearts: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='26' height='22' viewBox='0 0 26 22'%3E%3Cpath d='M13 17s-5.4-3.3-5.4-6.9a2.8 2.8 0 0 1 5.4-1.1 2.8 2.8 0 0 1 5.4 1.1c0 3.6-5.4 6.9-5.4 6.9z' fill='%23fff' fill-opacity='.6'/%3E%3C/svg%3E");
   --zigzag: polygon(
     0 8%,
@@ -87,7 +95,7 @@
     -webkit-text-size-adjust: 100%;
   }
   body {
-    background: var(--mat);
+    background: var(--desk);
     color: var(--ink);
     font-family: var(--round);
     font-weight: 500;
@@ -101,9 +109,13 @@
     text-underline-offset: 3px;
   }
   :focus-visible {
-    outline: 3px solid var(--wax);
+    outline: 3px solid var(--gilt);
     outline-offset: 3px;
     border-radius: 4px;
+  }
+  .sheet :focus-visible,
+  .label :focus-visible {
+    outline-color: var(--wax);
   }
   .skip {
     position: fixed;
@@ -132,10 +144,33 @@
     width: 1360px;
     color: var(--paper);
   }
+  .crest {
+    position: relative;
+    display: grid;
+    place-items: center;
+  }
+  .guilloche {
+    position: absolute;
+    inset: -70px;
+    width: calc(100% + 140px);
+    height: calc(100% + 140px);
+    fill: none;
+    stroke: var(--gilt);
+    stroke-width: 0.9;
+    opacity: 0.5;
+    pointer-events: none;
+  }
   .home-seal {
+    position: relative;
     width: 560px;
     height: auto;
-    filter: drop-shadow(0 14px 18px rgb(14 34 44 / 0.45));
+    filter: drop-shadow(0 14px 18px rgb(4 16 12 / 0.55));
+  }
+  .motto {
+    font-family: var(--fell);
+    font-size: 34px;
+    letter-spacing: 0.06em;
+    color: var(--gilt);
   }
   .home h1 {
     font-weight: 900;
@@ -143,6 +178,11 @@
     line-height: 0.88;
     letter-spacing: -0.04em;
     white-space: nowrap;
+    /* gold foil: a bright band moving through darker gilt */
+    background: linear-gradient(172deg, #f6e3a8 8%, #c9a45c 34%, #8a6a3a 52%, #e8cf8a 70%, #a9853f 92%);
+    background-clip: text;
+    color: transparent;
+    filter: drop-shadow(0 3px 0 rgb(4 16 12 / 0.55));
   }
   .bubble {
     position: relative;
@@ -173,7 +213,31 @@
     font-size: 21px;
     line-height: 1.6;
     max-width: 30em;
-    color: rgb(255 255 255 / 0.92);
+    color: rgb(247 244 236 / 0.86);
+  }
+  .password {
+    margin-top: 14px;
+    font-size: 21px;
+    color: rgb(247 244 236 / 0.86);
+  }
+  /* a redaction bar that lifts on hover, focus or press */
+  .redacted {
+    padding: 0 0.15em;
+    border: 0;
+    border-radius: 2px;
+    background: var(--ink);
+    color: transparent;
+    font-weight: 800;
+    cursor: pointer;
+    transition:
+      background 0.25s,
+      color 0.25s;
+  }
+  .redacted:hover,
+  .redacted:focus-visible,
+  .redacted[aria-pressed="true"] {
+    background: transparent;
+    color: var(--gilt);
   }
   .sticker {
     height: auto;
@@ -189,20 +253,40 @@
     rotate: 9deg;
   }
 
-  /* group labels: a strip of masking tape written on with a marker */
+  /* group labels: a manila dossier folder with a numbered index tab */
   .label {
+    position: relative;
     width: max-content;
-    max-width: 660px;
-    padding: 16px 34px 18px;
-    background: var(--tape);
-    clip-path: var(--zigzag);
-    filter: drop-shadow(0 4px 6px rgb(14 34 44 / 0.3));
+    max-width: 680px;
+    margin-top: 34px;
+    padding: 20px 36px 22px;
+    border-radius: 3px 12px 6px 6px;
+    background: linear-gradient(180deg, rgb(255 255 255 / 0.18), transparent 40%), var(--manila);
+    filter: drop-shadow(0 6px 8px rgb(4 16 12 / 0.4));
+  }
+  .label::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 100%;
+    width: 200px;
+    height: 34px;
+    border-radius: 10px 14px 0 0;
+    background: var(--manila);
+  }
+  .file-no {
+    position: absolute;
+    left: 22px;
+    bottom: calc(100% + 6px);
+    font-family: var(--dot);
+    font-size: 18px;
+    color: var(--ink-soft);
   }
   .label h2 {
-    font-weight: 900;
-    font-size: 56px;
+    font-family: var(--fell);
+    font-weight: 400;
+    font-size: 60px;
     line-height: 1.05;
-    letter-spacing: -0.02em;
   }
   .label p {
     margin-top: 6px;
@@ -246,41 +330,77 @@
     height: 100%;
     font-weight: 900;
     font-size: 48px;
-    color: var(--mat);
+    color: var(--desk);
   }
+  /* a wax seal over the screenshot; breaking it opens the live site */
   .try {
     position: absolute;
-    right: 18px;
-    bottom: 18px;
-    display: grid;
-    place-items: center;
-    width: 112px;
+    right: 22px;
+    bottom: 34px;
+    width: 116px;
     aspect-ratio: 1;
-    padding: 12px;
+    padding: 0;
     border: 0;
     border-radius: 50%;
-    background: var(--wax);
-    color: var(--paper);
-    font-weight: 900;
-    font-size: 19px;
-    line-height: 1.05;
-    text-align: center;
+    background: none;
     rotate: -10deg;
     cursor: pointer;
-    box-shadow:
-      inset 0 0 0 4px var(--wax),
-      inset 0 0 0 6px rgb(255 255 255 / 0.55),
-      0 8px 14px -4px rgb(80 10 12 / 0.55);
+    filter: drop-shadow(0 8px 8px rgb(60 6 8 / 0.5));
     transition:
       scale 0.2s,
       rotate 0.2s;
   }
   .try:hover {
-    scale: 1.08;
+    scale: 1.07;
     rotate: -4deg;
   }
   .try:active {
-    scale: 0.96;
+    scale: 0.95;
+  }
+  .seal-half {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    transition:
+      translate 0.35s cubic-bezier(0.3, 0.7, 0.4, 1),
+      rotate 0.35s cubic-bezier(0.3, 0.7, 0.4, 1),
+      opacity 0.35s 0.1s;
+  }
+  .seal-l {
+    clip-path: polygon(0 0, 53% 0, 47% 30%, 56% 52%, 45% 74%, 51% 100%, 0 100%);
+  }
+  .seal-r {
+    clip-path: polygon(53% 0, 100% 0, 100% 100%, 51% 100%, 45% 74%, 56% 52%, 47% 30%);
+  }
+  .seal-text {
+    position: absolute;
+    top: 92%;
+    left: 50%;
+    translate: -50% 0;
+    rotate: 8deg;
+    padding: 3px 10px 4px;
+    border-radius: 3px;
+    background: var(--manila);
+    color: var(--ink);
+    font-family: var(--dot);
+    font-size: 14px;
+    white-space: nowrap;
+    box-shadow: 0 3px 6px -2px rgb(4 16 12 / 0.5);
+    transition: opacity 0.2s;
+  }
+  .try.broken .seal-l {
+    translate: -16px 10px;
+    rotate: -18deg;
+    opacity: 0;
+  }
+  .try.broken .seal-r {
+    translate: 16px 14px;
+    rotate: 16deg;
+    opacity: 0;
+  }
+  .try.broken .seal-text {
+    opacity: 0;
   }
 
   .caption {
@@ -311,7 +431,7 @@
     margin-top: 12px;
     font-family: var(--dot);
     font-size: 14px;
-    color: var(--mat-deep);
+    color: var(--desk-deep);
   }
   .actions {
     display: flex;
@@ -391,33 +511,74 @@
     bottom: 64px;
   }
 
-  /* washi tape with hearts on it */
-  .tape {
+  /* what holds each sheet down: a wax seal, washi tape with hearts, or a brass clip */
+  .fix {
     position: absolute;
     z-index: 2;
+    pointer-events: none;
+  }
+  .fix-seal {
+    top: -28px;
+    left: calc(50% - 34px);
+    width: 68px;
+    height: 68px;
+    rotate: 12deg;
+    filter: drop-shadow(0 3px 3px rgb(40 4 6 / 0.45));
+  }
+  .tape {
+    top: -6px;
+    left: -40px;
     width: 132px;
     height: 34px;
     background:
       var(--hearts) 4px 6px / 26px 22px,
       var(--blush);
     opacity: 0.92;
+    rotate: -38deg;
     clip-path: var(--zigzag);
+  }
+  .fix-clip {
+    top: -30px;
+    left: 40px;
+    width: 30px;
+    height: 82px;
+    rotate: -5deg;
+    filter: drop-shadow(1px 3px 2px rgb(4 16 12 / 0.45));
+  }
+
+  /* red string between related sheets, pinned with brass */
+  .strings {
+    display: none;
+  }
+  html.desk .strings {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    width: 1px;
+    height: 1px;
+    overflow: visible;
     pointer-events: none;
   }
-  .tape-0 {
-    top: -15px;
-    left: calc(50% - 66px);
-    rotate: -3deg;
+  html.desk .strings.pins {
+    z-index: 4;
   }
-  .tape-1 {
-    top: -6px;
-    left: -40px;
-    rotate: -38deg;
+  html.desk .sheet {
+    z-index: 1;
   }
-  .tape-2 {
-    top: -6px;
-    right: -40px;
-    rotate: 36deg;
+  .strings .thread {
+    fill: none;
+    stroke: var(--wax);
+    stroke-width: 3.5;
+    stroke-linecap: round;
+    filter: drop-shadow(0 6px 3px rgb(4 16 12 / 0.45));
+  }
+  .strings .thread-shine {
+    fill: none;
+    stroke: var(--wax-light);
+    stroke-width: 1;
+    opacity: 0.7;
   }
 
   /* README games, drawn from the live README */
@@ -511,7 +672,7 @@
   .book-lines time {
     font-family: var(--dot);
     font-size: 13px;
-    color: var(--mat-deep);
+    color: var(--desk-deep);
   }
   .book-lines .who {
     font-weight: 800;
@@ -571,7 +732,7 @@
   .r-date {
     grid-column: 1 / -1;
     font-size: 12px;
-    color: var(--mat-deep);
+    color: var(--desk-deep);
   }
   .r-total {
     display: flex;
@@ -583,7 +744,7 @@
     margin-top: 16px;
     text-align: center;
     font-size: 13px;
-    color: var(--mat-deep);
+    color: var(--desk-deep);
   }
 }
 
@@ -603,18 +764,38 @@
     touch-action: none;
     cursor: grab;
     --gs: 40px;
-    background-color: var(--mat);
+    background-color: var(--desk);
     background-image:
-      linear-gradient(var(--mat-line-major) 1px, transparent 1px),
-      linear-gradient(90deg, var(--mat-line-major) 1px, transparent 1px),
-      linear-gradient(var(--mat-line) 1px, transparent 1px),
-      linear-gradient(90deg, var(--mat-line) 1px, transparent 1px);
+      linear-gradient(var(--desk-line-major) 1px, transparent 1px),
+      linear-gradient(90deg, var(--desk-line-major) 1px, transparent 1px),
+      linear-gradient(var(--desk-line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--desk-line) 1px, transparent 1px), var(--grain);
     background-size:
       calc(var(--gs) * 5) calc(var(--gs) * 5),
       calc(var(--gs) * 5) calc(var(--gs) * 5),
       var(--gs) var(--gs),
-      var(--gs) var(--gs);
-    background-position: var(--gx, 0) var(--gy, 0);
+      var(--gs) var(--gs),
+      240px 240px;
+    background-position:
+      var(--gx, 0) var(--gy, 0),
+      var(--gx, 0) var(--gy, 0),
+      var(--gx, 0) var(--gy, 0),
+      var(--gx, 0) var(--gy, 0),
+      0 0;
+  }
+  /* a gold-tooled border and a vignette, like the edge of a lodge desk */
+  html.desk .desk::after {
+    content: "";
+    position: fixed;
+    pointer-events: none;
+    z-index: 5;
+    inset: var(--ruler) 0 0 var(--ruler);
+    box-shadow:
+      inset 0 0 0 9px rgb(18 41 31 / 0.75),
+      inset 0 0 0 10px rgb(201 164 92 / 0.6),
+      inset 0 0 0 14px rgb(18 41 31 / 0.35),
+      inset 0 0 0 15px rgb(201 164 92 / 0.32),
+      inset 0 0 140px 20px rgb(2 10 7 / 0.5);
   }
   html.desk .desk.dragging {
     cursor: grabbing;
@@ -675,7 +856,7 @@
     position: absolute;
     inset: 0;
     z-index: 10;
-    background: rgb(20 36 44 / 0.6);
+    background: rgb(6 18 13 / 0.68);
     animation: fade 0.3s both;
   }
   @keyframes fade {
@@ -688,6 +869,12 @@
 /* ---------- list view (also what you get without JavaScript) ---------- */
 
 @layer list {
+  html.list body {
+    background:
+      var(--grain) 0 0 / 240px 240px,
+      radial-gradient(120% 80% at 50% 0%, #24503f, var(--desk) 60%, var(--desk-deep));
+    background-attachment: fixed;
+  }
   html.list .world {
     max-width: 1280px;
     margin-inline: auto;
@@ -743,7 +930,7 @@
       gap: 12px;
     }
     html.list .home-seal {
-      width: min(240px, 60vw);
+      width: 100%;
     }
     html.list .home h1 {
       font-size: clamp(64px, 20vw, 120px);
@@ -763,6 +950,12 @@
     }
     html.list .label h2 {
       font-size: 40px;
+    }
+    html.list .motto {
+      font-size: 22px;
+    }
+    html.list .crest {
+      width: min(240px, 60vw);
     }
     html.list .label {
       padding-inline: 22px;
@@ -808,7 +1001,7 @@
   .brand img {
     width: 44px;
     height: auto;
-    filter: drop-shadow(0 2px 3px rgb(14 34 44 / 0.4));
+    filter: drop-shadow(0 2px 3px rgb(4 16 12 / 0.4));
   }
   .hud-links {
     display: flex;
@@ -827,7 +1020,7 @@
     font-size: 14px;
     text-decoration: none;
     cursor: pointer;
-    box-shadow: 0 4px 10px -4px rgb(14 34 44 / 0.5);
+    box-shadow: 0 4px 10px -4px rgb(4 16 12 / 0.5);
   }
   .pill:hover {
     background: var(--ink);
@@ -843,18 +1036,19 @@
     z-index: 30;
     top: 0;
     left: 0;
-    background: var(--mat-deep);
     pointer-events: none;
   }
   .ruler-x {
     width: 100%;
     height: var(--ruler);
-    border-bottom: 1px solid rgb(255 255 255 / 0.2);
+    background: linear-gradient(180deg, #e3c98b, var(--brass) 55%, #8a6a3a);
+    border-bottom: 1px solid #5c4421;
   }
   .ruler-y {
     width: var(--ruler);
     height: 100%;
-    border-right: 1px solid rgb(255 255 255 / 0.2);
+    background: linear-gradient(90deg, #e3c98b, var(--brass) 55%, #8a6a3a);
+    border-right: 1px solid #5c4421;
   }
 
   .tray {
@@ -870,7 +1064,9 @@
     padding: 6px;
     border-radius: 999px;
     background: var(--ink);
-    box-shadow: 0 14px 30px -10px rgb(0 0 0 / 0.55);
+    box-shadow:
+      inset 0 0 0 1px rgb(201 164 92 / 0.45),
+      0 14px 30px -10px rgb(0 0 0 / 0.55);
   }
   .tray button {
     flex: none;
@@ -886,7 +1082,8 @@
     cursor: pointer;
   }
   .tray button:hover {
-    background: rgb(255 255 255 / 0.16);
+    background: rgb(201 164 92 / 0.18);
+    color: var(--gilt);
   }
   .tray-go {
     display: flex;
@@ -933,8 +1130,10 @@
     padding: 8px;
     border: 0;
     border-radius: 16px;
-    background: var(--mat-deep);
-    box-shadow: 0 10px 24px -10px rgb(0 0 0 / 0.5);
+    background: var(--desk-deep);
+    box-shadow:
+      inset 0 0 0 1px rgb(201 164 92 / 0.5),
+      0 10px 24px -10px rgb(0 0 0 / 0.5);
     cursor: pointer;
   }
   .minimap svg {
@@ -947,7 +1146,7 @@
     fill: rgb(255 255 255 / 0.8);
   }
   .m-label {
-    fill: var(--tape);
+    fill: var(--manila);
   }
   .m-home {
     fill: rgb(255 255 255 / 0.35);

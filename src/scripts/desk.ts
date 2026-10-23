@@ -191,8 +191,9 @@ function drawRulers(tx: number, ty: number) {
     ctx.setTransform(r, 0, 0, r, 0, 0);
     const len = axis === "x" ? vw : vh;
     ctx.clearRect(0, 0, axis === "x" ? len : RULER, axis === "x" ? RULER : len);
-    ctx.fillStyle = "rgb(255 255 255 / 0.85)";
-    ctx.strokeStyle = "rgb(255 255 255 / 0.7)";
+    // engraved into a brass rule
+    ctx.fillStyle = "rgb(46 32 10 / 0.9)";
+    ctx.strokeStyle = "rgb(46 32 10 / 0.75)";
     ctx.lineWidth = 1;
     ctx.font = `11px ${dotFont}`;
     const offset = axis === "x" ? tx : ty;
@@ -453,9 +454,15 @@ function positionLive() {
   else setLiveRect(r.top, r.left, r.width, r.height);
 }
 
+const pause = (ms: number) => new Promise((resolve) => setTimeout(resolve, reduced.matches ? 0 : ms));
+
 async function openLive(button: HTMLButtonElement) {
   const sheet = button.closest<HTMLElement>(".sheet") as HTMLElement;
   liveFrom = { cam: { ...goal }, sheet, button };
+  // The seal cracks first, then the camera goes in.
+  button.classList.add("broken");
+  await pause(260);
+  if (liveFrom?.sheet !== sheet) return;
   html.classList.add("is-live");
   sheet.classList.add("lifted");
   sheet.style.rotate = "0deg";
@@ -486,6 +493,7 @@ function closeLive() {
   html.classList.remove("is-live");
   sheet.classList.remove("lifted");
   sheet.style.rotate = `${num(sheet, "tilt")}deg`;
+  button.classList.remove("broken");
   go(back);
   button.focus({ preventScroll: true });
 }
@@ -496,6 +504,59 @@ frame.addEventListener("load", () => {
 liveClose.addEventListener("click", closeLive);
 for (const b of document.querySelectorAll<HTMLButtonElement>("button.try")) {
   b.addEventListener("click", () => openLive(b));
+}
+
+// ---------- red string ----------
+
+const SVG_NS = "http://www.w3.org/2000/svg";
+const strings = world.querySelector<SVGSVGElement>(".strings:not(.pins)");
+const pinLayer = world.querySelector<SVGSVGElement>(".strings.pins");
+
+// Where a string is pinned: near the top-right corner of the sheet.
+function pinAt(el: HTMLElement) {
+  const b = boxes.get(el) as Box;
+  return { x: b.x + b.w - 40, y: b.y + 30 };
+}
+
+function drawStrings() {
+  if (!strings) return;
+  const pairs = (strings.dataset.threads ?? "")
+    .split(",")
+    .filter(Boolean)
+    .map((p) => p.split(":").map((id) => document.getElementById(id)));
+  const parts: SVGElement[] = [];
+  const pins: SVGElement[] = [];
+  for (const [ea, eb] of pairs) {
+    if (!ea || !eb || !boxes.has(ea) || !boxes.has(eb)) continue;
+    const a = pinAt(ea);
+    const b = pinAt(eb);
+    // A string hangs: the control point sits below the midpoint, more for longer runs.
+    const sag = Math.min(280, Math.hypot(b.x - a.x, b.y - a.y) * 0.14);
+    const d = `M${a.x} ${a.y}Q${(a.x + b.x) / 2} ${(a.y + b.y) / 2 + sag * 2} ${b.x} ${b.y}`;
+    for (const cls of ["thread", "thread-shine"]) {
+      const path = document.createElementNS(SVG_NS, "path");
+      path.setAttribute("class", cls);
+      path.setAttribute("d", d);
+      parts.push(path);
+    }
+    for (const p of [a, b]) {
+      const use = document.createElementNS(SVG_NS, "use");
+      use.setAttribute("href", "#pin");
+      for (const [k, v] of Object.entries({ x: p.x - 20, y: p.y - 20, width: 40, height: 40 })) {
+        use.setAttribute(k, String(v));
+      }
+      pins.push(use);
+    }
+  }
+  // The string runs under the sheets; only the pins sit on top.
+  strings.replaceChildren(...parts);
+  pinLayer?.replaceChildren(...pins);
+}
+
+// ---------- the redacted password ----------
+
+for (const r of document.querySelectorAll<HTMLButtonElement>(".redacted")) {
+  r.addEventListener("click", () => r.setAttribute("aria-pressed", String(r.getAttribute("aria-pressed") !== "true")));
 }
 
 // ---------- modes ----------
@@ -527,6 +588,7 @@ function setMode(mode: "desk" | "list", intro = false) {
   measure();
   sizeRulers();
   drawMinimap();
+  drawStrings();
   const overview = narrow() ? shelfView("home") : fitBox(everything());
   if (intro && !reduced.matches) {
     // Start nose to nose with the seal, then pull back to show the whole desk.

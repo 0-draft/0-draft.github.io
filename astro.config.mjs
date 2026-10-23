@@ -14,6 +14,14 @@ export default defineConfig({
     },
     {
       provider: fontProviders.google(),
+      name: "IM Fell English SC",
+      cssVariable: "--font-fell",
+      weights: [400],
+      subsets: ["latin"],
+      fallbacks: ["Georgia", "serif"],
+    },
+    {
+      provider: fontProviders.google(),
       name: "DotGothic16",
       cssVariable: "--font-dot",
       weights: [400],
