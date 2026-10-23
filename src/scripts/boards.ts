@@ -57,10 +57,17 @@ function render(blocks: Block[], sizes: Map<string, { w: number; h: number }>): 
     table.className = "b-table";
     if (b.head.some((h) => h)) {
       const tr = table.createTHead().insertRow();
-      for (const h of b.head) {
+      for (const [i, h] of b.head.entries()) {
         const th = document.createElement("th");
         th.scope = "col";
-        th.textContent = h;
+        if (h) th.textContent = h;
+        else {
+          // A blank header still names its column for screen readers.
+          const vh = document.createElement("span");
+          vh.className = "vh";
+          vh.textContent = `Column ${i + 1}`;
+          th.append(vh);
+        }
         tr.append(th);
       }
     }
