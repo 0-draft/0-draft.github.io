@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { groups } from "../data/groups.ts";
 import repos from "../data/repos.json";
-import { ago, framable, type Repo, shelves } from "./desk.ts";
+import { ago, framable, labels, placed, type Repo, shelves } from "./desk.ts";
 
 const DAY = 86_400_000;
 const now = Date.parse("2026-10-24T00:00:00Z");
@@ -51,13 +51,13 @@ describe("shelves", () => {
     }
   });
 
-  it("gives every sheet a spot, a small tilt and a tape style, the same on every build", () => {
+  it("gives every sheet a spot, a small tilt and a stamp variant, the same on every build", () => {
     const again = shelves();
     for (const [i, shelf] of all.entries()) {
       for (const [j, r] of shelf.repos.entries()) {
         expect(Number.isFinite(r.spot.x) && Number.isFinite(r.spot.y)).toBe(true);
         expect(Math.abs(r.tilt)).toBeLessThanOrEqual(1.6);
-        expect([0, 1, 2]).toContain(r.tape);
+        expect([0, 1, 2]).toContain(r.variant);
         expect(again[i].repos[j]).toEqual(r);
       }
     }
@@ -66,5 +66,21 @@ describe("shelves", () => {
   it("does not stack two sheets on the same spot", () => {
     const spots = all.flatMap((s) => s.repos.map((r) => `${r.spot.x},${r.spot.y}`));
     expect(new Set(spots).size).toBe(spots.length);
+  });
+});
+
+describe("the hand-made layout", () => {
+  it("has a heading spot for every group", () => {
+    for (const g of groups) expect(labels[g.id], g.id).toBeDefined();
+  });
+
+  it("has a hand-placed spot for every filed repo", () => {
+    for (const name of groups.flatMap((g) => g.repos)) expect(placed[name], name).toBeDefined();
+  });
+
+  it("puts the pile for unfiled repos below every other pile", () => {
+    const lowest = Math.max(...Object.values(placed).map((s) => s.y));
+    // The tallest sheet (the dev.to receipt) is about 1200px; leave room for it.
+    expect(labels.fresh.y).toBeGreaterThan(lowest + 1200);
   });
 });

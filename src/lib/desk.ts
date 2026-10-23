@@ -13,7 +13,7 @@ export interface Spot {
 export const home: Spot = { x: -680, y: -330 };
 
 // Hand-placed so each group reads as one pile on the desk.
-const placed: Record<string, Spot> = {
+export const placed: Record<string, Spot> = {
   "caller-identity": { x: -2860, y: -1600 },
   "assume-role": { x: -2180, y: -1540 },
   "on-ramp": { x: -1500, y: -1620 },
@@ -33,7 +33,8 @@ export const labels: Record<string, Spot> = {
   security: { x: 880, y: -1920 },
   games: { x: -1620, y: 490 },
   writing: { x: 860, y: 470 },
-  fresh: { x: 900, y: 1500 },
+  // Below every other pile (the dev.to receipt reaches y ≈ 1970).
+  fresh: { x: -1620, y: 2300 },
 };
 
 // Dossier numbers are primes, for anyone who notices.
@@ -45,10 +46,10 @@ export interface Shelf {
   title: string;
   blurb: string;
   label: Spot;
-  repos: (Repo & { spot: Spot; tilt: number; tape: number })[];
+  repos: (Repo & { spot: Spot; tilt: number; variant: number })[];
 }
 
-// Same name, same tilt and tape, every build.
+// Same name, same tilt and stamp variant, every build.
 function hash(s: string): number {
   let h = 2166136261;
   for (const c of s) h = Math.imul(h ^ c.charCodeAt(0), 16777619);
@@ -57,7 +58,7 @@ function hash(s: string): number {
 
 function dress(r: Repo, spot: Spot) {
   const n = hash(r.name);
-  return { ...r, spot, tilt: Math.round((n * 3.2 - 1.6) * 10) / 10, tape: Math.floor(n * 1000) % 3 };
+  return { ...r, spot, tilt: Math.round((n * 3.2 - 1.6) * 10) / 10, variant: Math.floor(n * 1000) % 3 };
 }
 
 export function shelves(): Shelf[] {
@@ -68,7 +69,9 @@ export function shelves(): Shelf[] {
     label: labels[g.id],
     repos: g.repos.flatMap((name) => {
       const r = byName.get(name);
-      return r ? [dress(r, placed[name] ?? labels[g.id])] : [];
+      // A filed repo without a hand-placed spot goes just under its pile's heading
+      // (desk.test.ts fails the build so this stays a stopgap).
+      return r ? [dress(r, placed[name] ?? { x: labels[g.id].x, y: labels[g.id].y + 320 })] : [];
     }),
   }));
   const fresh = repos.filter((r) => !filed.has(r.name));
@@ -76,7 +79,7 @@ export function shelves(): Shelf[] {
     out.push({
       ...fallback,
       label: labels.fresh,
-      repos: fresh.map((r, i) => dress(r, { x: labels.fresh.x + i * 700, y: labels.fresh.y + 260 })),
+      repos: fresh.map((r, i) => dress(r, { x: labels.fresh.x + i * 720, y: labels.fresh.y + 300 })),
     });
   }
   return out.filter((s) => s.repos.length > 0);
