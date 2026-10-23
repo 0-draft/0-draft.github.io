@@ -17,10 +17,10 @@ const { blocks } = Astro.props;
             {row.map((c) =>
               c.href ? (
                 <a href={c.href} target="_blank" rel="noopener" title={c.alt || undefined}>
-                  <img src={c.src} alt={c.alt} loading="lazy" decoding="async" draggable="false" />
+                  <img src={c.src} alt={c.alt} width={c.w} height={c.h} loading="lazy" decoding="async" draggable="false" />
                 </a>
               ) : (
-                <img src={c.src} alt={c.alt} loading="lazy" decoding="async" draggable="false" />
+                <img src={c.src} alt={c.alt} width={c.w} height={c.h} loading="lazy" decoding="async" draggable="false" />
               ),
             )}
           </div>
@@ -40,6 +40,15 @@ const { blocks } = Astro.props;
       </p>
     ) : (
       <table class="b-table">
+        {b.head.some((h) => h) && (
+          <thead>
+            <tr>
+              {b.head.map((h) => (
+                <th scope="col">{h}</th>
+              ))}
+            </tr>
+          </thead>
+        )}
         <tbody>
           {b.rows.map((row) => (
             <tr>
