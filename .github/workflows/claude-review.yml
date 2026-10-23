@@ -68,7 +68,7 @@ jobs:
             This is https://0-draft.github.io/, a static Astro 7 site that lays the 0-draft
             org's public repos out on a pannable, zoomable desk. scripts/sync.ts pulls repos,
             README game boards and dev.to articles into src/data at build time.
-            src/scripts/desk.ts is a dependency-free camera (pan, zoom, rulers, minimap, live
+            src/scripts/desk.ts is a dependency-free camera (pan, zoom, minimap, live
             iframe); src/lib/readme.ts turns README HTML into data so nothing is injected as
             raw HTML; src/styles/desk.css is plain layered CSS.
 
