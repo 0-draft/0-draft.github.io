@@ -39,7 +39,12 @@ test("ships a CSP that only allows what the page needs", async ({ page }) => {
   await page.goto("/");
   const csp = await page.locator('meta[http-equiv="content-security-policy"]').getAttribute("content");
   expect(csp).toContain("default-src 'self'");
-  expect(csp).toContain("frame-src 'self' https://0-draft.github.io");
+  expect(csp).toContain("frame-src https://0-draft.github.io");
+  expect(csp).toContain("object-src 'none'");
+  // The project sites share this origin; the frame must not get it back.
+  const sandbox = await page.locator(".live-frame").getAttribute("sandbox");
+  expect(sandbox).toContain("allow-scripts");
+  expect(sandbox).not.toContain("allow-same-origin");
   expect(csp).not.toContain("unsafe-inline");
   expect(csp).not.toContain("unsafe-eval");
 });
