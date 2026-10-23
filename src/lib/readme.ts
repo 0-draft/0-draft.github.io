@@ -41,20 +41,17 @@ function safeImg(url: string): string | null {
   return u && u.origin === "https://raw.githubusercontent.com" && u.pathname.startsWith("/0-draft/") ? u.href : null;
 }
 
+const NAMED: Record<string, string> = { quot: '"', lt: "<", gt: ">", nbsp: " ", amp: "&" };
+
+// One pass, so nothing is decoded twice ("&amp;lt;" stays the text "&lt;"), and a reference
+// that names no real character stays as written instead of throwing.
 function decode(s: string): string {
-  return (
-    s
-      // Numeric references first (Python's html.escape writes ' as &#x27;); &amp; stays last
-      // so "&amp;#39;" decodes to the literal text "&#39;" rather than to an apostrophe.
-      .replace(/&#x([0-9a-f]+);/gi, (_, h) => String.fromCodePoint(Number.parseInt(h, 16)))
-      .replace(/&#(\d+);/g, (_, d) => String.fromCodePoint(Number(d)))
-      .replace(/&quot;/g, '"')
-      .replace(/&#39;/g, "'")
-      .replace(/&lt;/g, "<")
-      .replace(/&gt;/g, ">")
-      .replace(/&nbsp;/g, " ")
-      .replace(/&amp;/g, "&")
-  );
+  return s.replace(/&(#x[0-9a-f]+|#\d+|[a-z]+);/gi, (ref, body: string) => {
+    if (body[0] !== "#") return NAMED[body.toLowerCase()] ?? ref;
+    const code = body[1] === "x" || body[1] === "X" ? Number.parseInt(body.slice(2), 16) : Number(body.slice(1));
+    const real = code > 0 && code <= 0x10ffff && !(code >= 0xd800 && code <= 0xdfff);
+    return real ? String.fromCodePoint(code) : "\ufffd";
+  });
 }
 
 function segments(html: string): Seg[] {
