@@ -57,6 +57,8 @@ jobs:
         with:
           persist-credentials: false
       - uses: ./.github/actions/setup
+        with:
+          cache: "false"
       # The committed repo list can lag behind the org; read the current one.
       - run: pnpm run sync
         env:
@@ -105,18 +107,17 @@ jobs:
             exit 0
           fi
           # The artifact comes from a job that ran third-party code, so commit nothing
-          # but real PNGs directly inside src/assets/shots.
-          git status --porcelain --untracked-files=all -- src/assets/shots | cut -c4- | while read -r f; do
+          # but well-formed PNGs directly inside src/assets/shots (checked chunk by chunk).
+          changed="$(git status --porcelain --untracked-files=all -- src/assets/shots | cut -c4-)"
+          for f in $changed; do
             case "$f" in
               src/assets/shots/*/*) echo "::error::unexpected path $f"; exit 1 ;;
               src/assets/shots/*.png) ;;
               *) echo "::error::unexpected file $f"; exit 1 ;;
             esac
-            if [ "$(head -c 8 "$f" | od -An -tx1 | tr -d ' \n')" != "89504e470d0a1a0a" ]; then
-              echo "::error::$f is not a PNG"
-              exit 1
-            fi
           done
+          # shellcheck disable=SC2086 # one path per word, and the case above allows no spaces
+          python3 scripts/check_png.py $changed
           branch="shots/$RUN_ID"
           git switch -c "$branch"
           git add -- 'src/assets/shots/*.png'

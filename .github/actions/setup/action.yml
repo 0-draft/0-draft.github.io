@@ -1,6 +1,11 @@
 name: Set up
 description: pnpm, Node 24 and the locked dependencies, shared by every CI job.
 
+inputs:
+  cache:
+    description: Use the shared pnpm store cache. Jobs that run untrusted code turn it off so they can't seed it.
+    default: "true"
+
 runs:
   using: composite
   steps:
@@ -8,6 +13,7 @@ runs:
     - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
       with:
         node-version: 24
-        cache: pnpm
+        cache: ${{ inputs.cache == 'true' && 'pnpm' || '' }}
+        package-manager-cache: ${{ inputs.cache == 'true' }}
     - run: pnpm install --frozen-lockfile
       shell: bash
