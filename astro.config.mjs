@@ -25,7 +25,7 @@ export default defineConfig({
     csp: {
       directives: [
         "default-src 'self'",
-        "img-src 'self' data: https://raw.githubusercontent.com https://avatars.githubusercontent.com",
+        "img-src 'self' data: https://raw.githubusercontent.com",
         "connect-src 'self' https://raw.githubusercontent.com",
         "frame-src 'self' https://0-draft.github.io",
         "font-src 'self'",
