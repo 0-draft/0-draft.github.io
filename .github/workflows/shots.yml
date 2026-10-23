@@ -1,0 +1,87 @@
+name: shots
+
+# A new repo with a live site shows up on the desk as a blank sheet until it has a
+# screenshot. Once a week this takes the missing ones and proposes them as a pull
+# request. Run it by hand with "retake all" after the sites themselves change.
+#
+# The pull request is opened with the workflow token, and GitHub does not start
+# other workflows for events that token causes, so CI does not run on it by
+# itself. Close and reopen the pull request to run CI before merging.
+
+on:
+  schedule:
+    - cron: "41 1 * * 1"
+  workflow_dispatch:
+    inputs:
+      all:
+        description: Retake every screenshot, not only the missing ones.
+        type: boolean
+        default: false
+
+permissions: {}
+
+concurrency:
+  group: shots
+  cancel-in-progress: false
+
+jobs:
+  versions:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: read
+    outputs:
+      playwright: ${{ steps.v.outputs.playwright }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - id: v
+        run: echo "playwright=$(node -p 'require("./package.json").devDependencies["@playwright/test"]')" >> "$GITHUB_OUTPUT"
+
+  shoot:
+    needs: versions
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    container:
+      image: mcr.microsoft.com/playwright:v${{ needs.versions.outputs.playwright }}-noble
+      options: --user 1001
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: ./.github/actions/setup
+      # The committed repo list can lag behind the org; read the current one.
+      - run: pnpm run sync
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+      - run: node scripts/shoot.ts ${{ inputs.all && '--all' || '' }}
+      - name: Propose the new screenshots
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          RUN_ID: ${{ github.run_id }}
+        run: |
+          git config --global --add safe.directory "$GITHUB_WORKSPACE"
+          if [ -z "$(git status --porcelain -- src/assets/shots)" ]; then
+            echo "Every live site already has a screenshot."
+            exit 0
+          fi
+          branch="shots/$RUN_ID"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git switch -c "$branch"
+          git add -- src/assets/shots
+          git commit -m "chore(shots): update project screenshots"
+          git push "https://x-access-token:${GH_TOKEN}@github.com/${REPO}.git" "$branch"
+          {
+            echo "Screenshots taken by the shots workflow, run $RUN_ID."
+            echo
+            git diff --name-status HEAD~1 -- src/assets/shots | sed 's/^/    /'
+            echo
+            echo "CI does not start on pull requests opened by the workflow token. Close and reopen this pull request to run it before merging."
+          } > "$RUNNER_TEMP/body.md"
+          gh pr create --repo "$REPO" --head "$branch" --title "chore(shots): update project screenshots" --body-file "$RUNNER_TEMP/body.md"
