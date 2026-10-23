@@ -25,14 +25,19 @@ for (const r of targets) {
   const path = shot(r.name);
   if (!all && (await exists(path))) continue;
   try {
-    await page.goto(r.homepage as string, { waitUntil: "networkidle", timeout: 45_000 });
+    // An error page must never be printed: without --all it would never be retaken.
+    const res = await page.goto(r.homepage as string, { waitUntil: "networkidle", timeout: 45_000 });
+    if (!res?.ok()) throw new Error(`HTTP ${res?.status() ?? "no response"}`);
     await page.waitForTimeout(1500);
     await page.screenshot({ path });
     taken++;
     console.log(`shot  ${r.name}`);
   } catch (err) {
     failed++;
-    console.warn(`fail  ${r.name}: ${(err as Error).message.split("\n")[0]}`);
+    const why = (err as Error).message.split("\n")[0];
+    console.warn(`fail  ${r.name}: ${why}`);
+    // Surfaces in the Actions run summary, not only in the log.
+    if (process.env.GITHUB_ACTIONS) console.log(`::warning title=No screenshot for ${r.name}::${why}`);
   }
 }
 await browser.close();
