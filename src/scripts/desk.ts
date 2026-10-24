@@ -564,7 +564,10 @@ function setMode(mode: "desk" | "list", intro = false) {
       h: seal.offsetHeight * 0.4,
     };
     go(fitBox(face, 0, 0, 0), { instant: true });
-    introTimer = window.setTimeout(() => go(overview(), { stiffness: 2.2 }), 650);
+    introTimer = window.setTimeout(() => {
+      introTimer = 0;
+      go(overview(), { stiffness: 2.2 });
+    }, 650);
   } else {
     go(overview(), { instant: true });
   }
