@@ -548,7 +548,8 @@ function setMode(mode: "desk" | "list", intro = false) {
   place();
   measure();
   drawMinimap();
-  const overview = narrow() ? shelfView("home") : fitBox(everything());
+  // Computed when needed, not now: web fonts may still be swapping in and resizing items.
+  const overview = () => (narrow() ? shelfView("home") : fitBox(everything()));
   if (intro && !reduced.matches) {
     // Start nose to nose with the seal, then pull back to show the whole desk.
     const seal = document.querySelector<HTMLElement>(".home-seal") as HTMLElement;
@@ -560,9 +561,9 @@ function setMode(mode: "desk" | "list", intro = false) {
       h: seal.offsetHeight * 0.4,
     };
     go(fitBox(face, 0, 0, 0), { instant: true });
-    introTimer = window.setTimeout(() => go(overview, { stiffness: 2.2 }), 650);
+    introTimer = window.setTimeout(() => go(overview(), { stiffness: 2.2 }), 650);
   } else {
-    go(overview, { instant: true });
+    go(overview(), { instant: true });
   }
 }
 
@@ -606,9 +607,7 @@ const resized = new ResizeObserver((entries) => {
 });
 for (const el of items) resized.observe(el);
 
-async function start() {
-  await document.fonts.ready;
-  setMode(recalled() === "list" ? "list" : "desk", true);
-  html.classList.add("ready");
-}
-start();
+// No waiting for web fonts: the desk shows as soon as the script runs (it holds the page's
+// largest image), and the ResizeObserver above re-measures items as the fonts swap in.
+setMode(recalled() === "list" ? "list" : "desk", true);
+html.classList.add("ready");
