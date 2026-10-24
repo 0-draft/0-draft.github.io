@@ -179,7 +179,10 @@ test("while a site is open, focus cannot wander onto the desk behind it", async 
   await page.locator(".live iframe").evaluate((f) => f.setAttribute("tabindex", "-1"));
   for (let i = 0; i < 6; i++) {
     await page.keyboard.press("Tab");
-    expect(await page.evaluate(() => !!document.activeElement?.closest("#world"))).toBe(false);
+    // Neither the desk nor the HUD over it (hidden while live) can take focus.
+    expect(await page.evaluate(() => !!document.activeElement?.closest("#world, .tray, .minimap, .hud-top"))).toBe(
+      false,
+    );
   }
 });
 
