@@ -625,5 +625,8 @@ html.classList.add("ready");
 // has already moved, a site is open, or the intro is still about to compute it anyway.
 document.fonts.ready.then(() => {
   if (!html.classList.contains("desk") || !untouched || introTimer || liveFrom) return;
+  // Measure here rather than wait for the ResizeObserver, which may not have run yet.
+  measure();
+  drawMinimap();
   go(openingView(), { stiffness: 2.2 });
 });
