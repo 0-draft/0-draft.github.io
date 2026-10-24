@@ -54,12 +54,23 @@ function decode(s: string): string {
   });
 }
 
+// Removes markup until none is left: one pass over "<scr<b>ipt>" would leave "<script>".
+// The result is only ever rendered as text, but it should also read as plain text.
+function stripTags(html: string): string {
+  let out = html;
+  for (let prev = ""; prev !== out; ) {
+    prev = out;
+    out = out.replace(/<[^>]*>/g, "");
+  }
+  return out.replace(/[<>]/g, "");
+}
+
 function segments(html: string): Seg[] {
   const segs: Seg[] = [];
   const re = /<a\s+href="([^"]+)"[^>]*>([\s\S]*?)<\/a>|<[^>]+>|([^<]+)/g;
   for (const m of html.matchAll(re)) {
     if (m[1] !== undefined) {
-      const text = decode(m[2].replace(/<[^>]+>/g, "")).trim();
+      const text = decode(stripTags(m[2])).trim();
       const href = safeHref(m[1]);
       if (text) segs.push(href ? { text, href } : { text });
     } else if (m[3] !== undefined) {
