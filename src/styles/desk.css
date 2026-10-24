@@ -684,10 +684,9 @@
   html.list .hint-desk {
     display: none;
   }
-  /* zoomed far out, the pile headings grow so the desk still reads like a map */
+  /* scaled from the camera (desk.ts) when zoomed far out, growing up from the pile */
   html.desk .label {
     transform-origin: 0 100%;
-    scale: clamp(1, calc(0.4 / var(--z, 1)), 2.2);
     z-index: 3;
   }
   html.desk .sheet.lifted {

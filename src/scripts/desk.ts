@@ -6,6 +6,7 @@ const desk = document.getElementById("desk") as HTMLElement;
 const surface = document.querySelector<HTMLElement>(".surface") as HTMLElement;
 const world = document.getElementById("world") as HTMLElement;
 const items = [...world.querySelectorAll<HTMLElement>(".item")];
+const labelEls = items.filter((el) => el.classList.contains("label"));
 const zoomRead = document.querySelector<HTMLOutputElement>(".zoom-read") as HTMLOutputElement;
 const minimap = document.querySelector<HTMLButtonElement>(".minimap") as HTMLButtonElement;
 const modeToggle = document.querySelector<HTMLButtonElement>("[data-mode-toggle]") as HTMLButtonElement;
@@ -53,7 +54,9 @@ function unplace() {
   for (const el of items) {
     el.style.translate = "";
     el.style.rotate = "";
+    el.style.scale = "";
   }
+  labelScale = 0;
   world.style.transform = "";
 }
 
@@ -163,13 +166,23 @@ function apply() {
   const tx = vw / 2 - cam.x * cam.z;
   const ty = vh / 2 - cam.y * cam.z;
   world.style.transform = `translate(${tx}px, ${ty}px) scale(${cam.z})`;
-  world.style.setProperty("--z", cam.z.toFixed(4));
+  scaleLabels();
   // The stock is one tile-sized layer that only ever translates, so panning never repaints it.
   const ox = (((tx % TILE) + TILE) % TILE) - TILE;
   const oy = (((ty % TILE) + TILE) % TILE) - TILE;
   surface.style.transform = `translate3d(${ox}px, ${oy}px, 0)`;
   zoomRead.value = `${Math.round(cam.z * 100)}%`;
   drawViewport();
+}
+
+// Zoomed far out, the pile headings grow so the desk still reads like a map. Set on the few
+// headings directly: an inherited custom property on #world restyled the whole desk every frame.
+let labelScale = 0;
+function scaleLabels() {
+  const s = Math.min(2.2, Math.max(1, 0.4 / cam.z));
+  if (Math.abs(s - labelScale) < 0.005) return;
+  labelScale = s;
+  for (const el of labelEls) el.style.scale = String(s);
 }
 
 function zoomAt(factor: number, sx: number, sy: number, animate = false) {
