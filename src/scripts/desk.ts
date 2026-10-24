@@ -108,7 +108,8 @@ let introTimer = 0;
 // Until the visitor moves the camera, the opening framing is still ours to correct.
 let untouched = true;
 
-// The intro's pull-back is the only motion the visitor didn't ask for; any input cancels it.
+// The intro's pull-back, and the re-frame once fonts arrive, are the only motion the visitor
+// didn't ask for; any input cancels both.
 function cancelIntro() {
   clearTimeout(introTimer);
   introTimer = 0;
