@@ -105,11 +105,14 @@ function go(to: Cam, opts: { instant?: boolean; stiffness?: number } = {}): Prom
 let raf = 0;
 let last = 0;
 let introTimer = 0;
+// Until the visitor moves the camera, the opening framing is still ours to correct.
+let untouched = true;
 
 // The intro's pull-back is the only motion the visitor didn't ask for; any input cancels it.
 function cancelIntro() {
   clearTimeout(introTimer);
   introTimer = 0;
+  untouched = false;
 }
 
 // Stops the camera outright: no frame, no pending intro, no promise left waiting.
@@ -549,7 +552,7 @@ function setMode(mode: "desk" | "list", intro = false) {
   measure();
   drawMinimap();
   // Computed when needed, not now: web fonts may still be swapping in and resizing items.
-  const overview = () => (narrow() ? shelfView("home") : fitBox(everything()));
+  const overview = openingView;
   if (intro && !reduced.matches) {
     // Start nose to nose with the seal, then pull back to show the whole desk.
     const seal = document.querySelector<HTMLElement>(".home-seal") as HTMLElement;
@@ -607,7 +610,17 @@ const resized = new ResizeObserver((entries) => {
 });
 for (const el of items) resized.observe(el);
 
+function openingView(): Cam {
+  return narrow() ? shelfView("home") : fitBox(everything());
+}
+
 // No waiting for web fonts: the desk shows as soon as the script runs (it holds the page's
 // largest image), and the ResizeObserver above re-measures items as the fonts swap in.
 setMode(recalled() === "list" ? "list" : "desk", true);
 html.classList.add("ready");
+// Once the fonts have swapped in, frame the desk again from the real sizes, unless the visitor
+// has already moved, a site is open, or the intro is still about to compute it anyway.
+document.fonts.ready.then(() => {
+  if (!html.classList.contains("desk") || !untouched || introTimer || liveFrom) return;
+  go(openingView(), { stiffness: 2.2 });
+});
