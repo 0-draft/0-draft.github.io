@@ -422,12 +422,12 @@ const liveOpen = live.querySelector<HTMLAnchorElement>(".live-open") as HTMLAnch
 const liveClose = live.querySelector<HTMLButtonElement>(".live-close") as HTMLButtonElement;
 let liveFrom: { cam: Cam; sheet: HTMLElement; button: HTMLButtonElement } | null = null;
 let openSeq = 0;
-const skip = document.querySelector<HTMLElement>(".skip");
+// While a site is open, everything behind and around it is out of reach for focus and
+// assistive tech: the desk, the skip link and the HUD (hiding the HUD alone did not stop Tab).
+const behindLive = [world, ...document.querySelectorAll<HTMLElement>(".skip, .hud-top, .tray, .minimap")];
 
-// While a site is open, everything behind it is out of reach for focus and assistive tech.
 function setBackgroundInert(on: boolean) {
-  world.inert = on;
-  if (skip) skip.inert = on;
+  for (const el of behindLive) el.inert = on;
 }
 
 function screenBox(sheet: HTMLElement): Box {
