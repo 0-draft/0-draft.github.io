@@ -71,6 +71,14 @@ describe("parseBlocks", () => {
     expect(p).toEqual({ kind: "text", segs: [{ text: "it's 'fine' &#39; &lt;b&gt;" }] });
   });
 
+  it("leaves no markup behind in link text, even when tags are nested to dodge one pass", () => {
+    const [p] = parseBlocks(`<p><a href="${ISSUE}"><scr<b>ipt>alert(1)<b>y</b></a></p>`);
+    if (p.kind !== "text") throw new Error("expected text");
+    expect(p.segs).toHaveLength(1);
+    expect(p.segs[0].text).not.toMatch(/[<>]/);
+    expect(p.segs[0].text).toContain("alert(1)y");
+  });
+
   it("survives references that name no real character", () => {
     const [p] = parseBlocks("<p>a&#x110000;b&#xD800;c&#0;d&bogus;e</p>");
     expect(p).toEqual({ kind: "text", segs: [{ text: "a\ufffdb\ufffdc\ufffdd&bogus;e" }] });
