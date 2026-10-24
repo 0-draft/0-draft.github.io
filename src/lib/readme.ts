@@ -55,7 +55,8 @@ function decode(s: string): string {
 }
 
 // Removes markup until none is left: one pass over "<scr<b>ipt>" would leave "<script>".
-// The result is only ever rendered as text, but it should also read as plain text.
+// The result is only ever rendered as text. Entities are decoded afterwards on purpose, so a
+// README that writes "&lt;b&gt;" still shows the literal text "<b>".
 function stripTags(html: string): string {
   let out = html;
   for (let prev = ""; prev !== out; ) {
