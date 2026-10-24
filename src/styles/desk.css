@@ -50,6 +50,8 @@
   }
   img {
     max-width: 100%;
+    /* with width/height attributes, max-width alone would squash an image that has to shrink */
+    height: auto;
     display: block;
   }
   button {
