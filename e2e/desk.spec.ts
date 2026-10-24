@@ -219,7 +219,8 @@ test.describe("without JavaScript", () => {
   test.use({ javaScriptEnabled: false });
 
   test("everything is still there as a list", async ({ page }) => {
-    await page.goto("/");
+    // Only the markup matters here; don't wait on board images from raw.githubusercontent.com.
+    await page.goto("/", { waitUntil: "domcontentloaded" });
     await expect(page.locator("html")).toHaveClass(/\blist\b/);
     await expect(page.getByRole("heading", { level: 1, name: "0-draft" })).toBeVisible();
     for (const r of repos) {
