@@ -5,8 +5,9 @@ name: shots
 # request. Run it by hand with "retake all" after the sites themselves change.
 #
 # The pull request is opened with the workflow token, and GitHub does not start
-# other workflows for events that token causes, so CI does not run on it by
-# itself. Close and reopen the pull request to run CI before merging.
+# other workflows for events that token causes, except workflow_dispatch. So the
+# propose job dispatches ci.yml on the new branch, and its checks land on the
+# head commit of the pull request.
 
 on:
   schedule:
@@ -75,6 +76,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     permissions:
+      actions: write
       contents: write
       pull-requests: write
     steps:
@@ -127,7 +129,6 @@ jobs:
             echo "Screenshots taken by the shots workflow, run $RUN_ID."
             echo
             git diff --name-status HEAD~1 -- src/assets/shots | sed 's/^/    /'
-            echo
-            echo "CI does not start on pull requests opened by the workflow token. Close and reopen this pull request to run it before merging."
           } > "$RUNNER_TEMP/body.md"
           gh pr create --repo "$REPO" --head "$branch" --title "chore(shots): update project screenshots" --body-file "$RUNNER_TEMP/body.md"
+          gh workflow run ci.yml --repo "$REPO" --ref "$branch"
