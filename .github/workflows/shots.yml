@@ -139,7 +139,7 @@ jobs:
             fi
             sleep 5
           done
-          ids="$(gh api "$held" --jq '.workflow_runs[].id')"
+          ids="$(gh api "$held" --jq '.workflow_runs[].id' || true)"
           if [ -z "$ids" ]; then
             echo "::warning::No held runs to approve; close and reopen the pull request if CI does not start."
           fi
