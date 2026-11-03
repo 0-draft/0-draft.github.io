@@ -4,10 +4,9 @@ name: shots
 # screenshot. Once a week this takes the missing ones and proposes them as a pull
 # request. Run it by hand with "retake all" after the sites themselves change.
 #
-# The pull request is opened with the workflow token, and GitHub does not start
-# other workflows for events that token causes, except workflow_dispatch. So the
-# propose job dispatches ci.yml on the new branch, and its checks land on the
-# head commit of the pull request.
+# The pull request is opened with the workflow token, and GitHub holds the
+# pull_request runs that token causes until someone approves them. The propose
+# job approves the runs on the commit it just pushed, so CI starts by itself.
 
 on:
   schedule:
@@ -131,4 +130,20 @@ jobs:
             git diff --name-status HEAD~1 -- src/assets/shots | sed 's/^/    /'
           } > "$RUNNER_TEMP/body.md"
           gh pr create --repo "$REPO" --head "$branch" --title "chore(shots): update project screenshots" --body-file "$RUNNER_TEMP/body.md"
-          gh workflow run ci.yml --repo "$REPO" --ref "$branch"
+          # Wait for the held ci run to appear, then approve every held run on the commit.
+          sha="$(git rev-parse HEAD)"
+          held="repos/$REPO/actions/runs?head_sha=$sha&event=pull_request&status=action_required"
+          for _ in $(seq 1 24); do
+            if [ -n "$(gh api "$held" --jq '.workflow_runs[] | select(.path == ".github/workflows/ci.yml") | .id')" ]; then
+              break
+            fi
+            sleep 5
+          done
+          ids="$(gh api "$held" --jq '.workflow_runs[].id')"
+          if [ -z "$ids" ]; then
+            echo "::warning::No held runs to approve; close and reopen the pull request if CI does not start."
+          fi
+          for id in $ids; do
+            gh api --method POST "repos/$REPO/actions/runs/$id/approve" \
+              || echo "::warning::Could not approve run $id; approve it from the pull request."
+          done

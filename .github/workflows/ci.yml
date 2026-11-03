@@ -1,14 +1,11 @@
 name: ci
 
 # Runs on every pull request, and is called by deploy.yml so nothing reaches Pages
-# without passing the same checks. shots.yml dispatches it on the branch of the
-# pull request it opens, since pull requests opened by the workflow token start
-# nothing. On a pull request the site is built from the data committed in
-# src/data; deploy asks for a fresh sync first.
+# without passing the same checks. On a pull request the site is built from the
+# data committed in src/data; deploy asks for a fresh sync first.
 
 on:
   pull_request:
-  workflow_dispatch:
   workflow_call:
     inputs:
       sync:
