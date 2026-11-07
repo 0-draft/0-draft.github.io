@@ -21,18 +21,26 @@ export const placed: Record<string, Spot> = {
   "s3-atlas": { x: -1860, y: -820 },
   "authz-playground": { x: 880, y: -1600 },
   "identity-deep-dive": { x: 1560, y: -1540 },
+  "vpn-is-the-door": { x: 2240, y: -1620 },
   "php2shell-anatomy": { x: 1220, y: -860 },
+  "why-hackers-dont-get-caught": { x: 1900, y: -820 },
+  baccarat: { x: -2340, y: 840 },
   blackjack: { x: -1620, y: 820 },
   shogi: { x: -900, y: 780 },
   guestbook: { x: -240, y: 880 },
   "dev.to": { x: 860, y: 780 },
+  goi: { x: 1660, y: 800 },
+  wtfe: { x: 2340, y: 860 },
+  ccretro: { x: 3160, y: 820 },
 };
 
 export const labels: Record<string, Spot> = {
   aws: { x: -2860, y: -1920 },
   security: { x: 880, y: -1920 },
-  games: { x: -1620, y: 490 },
+  games: { x: -2340, y: 490 },
   writing: { x: 860, y: 470 },
+  culture: { x: 1660, y: 470 },
+  tools: { x: 3160, y: 490 },
   // Below every other pile (the dev.to receipt reaches y ≈ 1970).
   fresh: { x: -1620, y: 2300 },
 };
