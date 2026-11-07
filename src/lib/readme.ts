@@ -142,6 +142,7 @@ export const GAMES = {
   blackjack: "BLACKJACK",
   shogi: "SHOGI",
   guestbook: "GUESTBOOK",
+  baccarat: "BACCARAT",
 } as const;
 
 export type GameName = keyof typeof GAMES;

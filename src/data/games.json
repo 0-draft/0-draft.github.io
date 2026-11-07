@@ -909,5 +909,1148 @@
         ]
       ]
     }
+  ],
+  "baccarat": [
+    {
+      "kind": "grid",
+      "rows": [
+        [
+          {
+            "href": null,
+            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/label-player.svg",
+            "alt": "player",
+            "w": 60,
+            "h": 62
+          },
+          {
+            "href": null,
+            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/7H.svg",
+            "alt": "seven of hearts",
+            "w": 44,
+            "h": 62
+          },
+          {
+            "href": null,
+            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/KS.svg",
+            "alt": "king of spades",
+            "w": 44,
+            "h": 62
+          },
+          {
+            "href": null,
+            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/blank.svg",
+            "alt": "",
+            "w": 44,
+            "h": 62
+          }
+        ],
+        [
+          {
+            "href": null,
+            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/label-banker-won.svg",
+            "alt": "banker, won",
+            "w": 60,
+            "h": 62
+          },
+          {
+            "href": null,
+            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/4S.svg",
+            "alt": "four of spades",
+            "w": 44,
+            "h": 62
+          },
+          {
+            "href": null,
+            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/8H.svg",
+            "alt": "eight of hearts",
+            "w": 44,
+            "h": 62
+          },
+          {
+            "href": null,
+            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/6H.svg",
+            "alt": "six of hearts",
+            "w": 44,
+            "h": 62
+          }
+        ]
+      ]
+    },
+    {
+      "kind": "text",
+      "segs": [
+        {
+          "text": "Hand 2: Player 7 (7 K) against Banker 8 (4 8 6). Banker wins. @kanywst's 1u on Player lost 1u. Pick a spot and a chip to deal hand 3."
+        }
+      ]
+    },
+    {
+      "kind": "grid",
+      "rows": [
+        [
+          {
+            "href": null,
+            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/spot-player.svg",
+            "alt": "player",
+            "w": 84,
+            "h": 44
+          },
+          {
+            "href": "https://github.com/0-draft/baccarat/issues/new?title=bac%7Cbet+player+1+3&body=Just+click+Submit+new+issue.+The+table+updates+in+about+30+seconds.",
+            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/chip1.svg",
+            "alt": "1 on player",
+            "w": 44,
+            "h": 44
+          },
+          {
+            "href": "https://github.com/0-draft/baccarat/issues/new?title=bac%7Cbet+player+2+3&body=Just+click+Submit+new+issue.+The+table+updates+in+about+30+seconds.",
+            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/chip2.svg",
+            "alt": "2 on player",
+            "w": 44,
+            "h": 44
+          },
+          {
+            "href": "https://github.com/0-draft/baccarat/issues/new?title=bac%7Cbet+player+5+3&body=Just+click+Submit+new+issue.+The+table+updates+in+about+30+seconds.",
+            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/chip5.svg",
+            "alt": "5 on player",
+            "w": 44,
+            "h": 44
+          },
+          {
+            "href": "https://github.com/0-draft/baccarat/issues/new?title=bac%7Cbet+player+10+3&body=Just+click+Submit+new+issue.+The+table+updates+in+about+30+seconds.",
+            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/chip10.svg",
+            "alt": "10 on player",
+            "w": 44,
+            "h": 44
+          },
+          {
+            "href": "https://github.com/0-draft/baccarat/issues/new?title=bac%7Cbet+player+25+3&body=Just+click+Submit+new+issue.+The+table+updates+in+about+30+seconds.",
+            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/chip25.svg",
+            "alt": "25 on player",
+            "w": 44,
+            "h": 44
+          }
+        ],
+        [
+          {
+            "href": null,
+            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/spot-banker.svg",
+            "alt": "banker",
+            "w": 84,
+            "h": 44
+          },
+          {
+            "href": "https://github.com/0-draft/baccarat/issues/new?title=bac%7Cbet+banker+1+3&body=Just+click+Submit+new+issue.+The+table+updates+in+about+30+seconds.",
+            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/chip1.svg",
+            "alt": "1 on banker",
+            "w": 44,
+            "h": 44
+          },
+          {
+            "href": "https://github.com/0-draft/baccarat/issues/new?title=bac%7Cbet+banker+2+3&body=Just+click+Submit+new+issue.+The+table+updates+in+about+30+seconds.",
+            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/chip2.svg",
+            "alt": "2 on banker",
+            "w": 44,
+            "h": 44
+          },
+          {
+            "href": "https://github.com/0-draft/baccarat/issues/new?title=bac%7Cbet+banker+5+3&body=Just+click+Submit+new+issue.+The+table+updates+in+about+30+seconds.",
+            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/chip5.svg",
+            "alt": "5 on banker",
+            "w": 44,
+            "h": 44
+          },
+          {
+            "href": "https://github.com/0-draft/baccarat/issues/new?title=bac%7Cbet+banker+10+3&body=Just+click+Submit+new+issue.+The+table+updates+in+about+30+seconds.",
+            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/chip10.svg",
+            "alt": "10 on banker",
+            "w": 44,
+            "h": 44
+          },
+          {
+            "href": "https://github.com/0-draft/baccarat/issues/new?title=bac%7Cbet+banker+25+3&body=Just+click+Submit+new+issue.+The+table+updates+in+about+30+seconds.",
+            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/chip25.svg",
+            "alt": "25 on banker",
+            "w": 44,
+            "h": 44
+          }
+        ],
+        [
+          {
+            "href": null,
+            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/spot-tie.svg",
+            "alt": "tie",
+            "w": 84,
+            "h": 44
+          },
+          {
+            "href": "https://github.com/0-draft/baccarat/issues/new?title=bac%7Cbet+tie+1+3&body=Just+click+Submit+new+issue.+The+table+updates+in+about+30+seconds.",
+            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/chip1.svg",
+            "alt": "1 on tie",
+            "w": 44,
+            "h": 44
+          },
+          {
+            "href": "https://github.com/0-draft/baccarat/issues/new?title=bac%7Cbet+tie+2+3&body=Just+click+Submit+new+issue.+The+table+updates+in+about+30+seconds.",
+            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/chip2.svg",
+            "alt": "2 on tie",
+            "w": 44,
+            "h": 44
+          },
+          {
+            "href": "https://github.com/0-draft/baccarat/issues/new?title=bac%7Cbet+tie+5+3&body=Just+click+Submit+new+issue.+The+table+updates+in+about+30+seconds.",
+            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/chip5.svg",
+            "alt": "5 on tie",
+            "w": 44,
+            "h": 44
+          },
+          {
+            "href": "https://github.com/0-draft/baccarat/issues/new?title=bac%7Cbet+tie+10+3&body=Just+click+Submit+new+issue.+The+table+updates+in+about+30+seconds.",
+            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/chip10.svg",
+            "alt": "10 on tie",
+            "w": 44,
+            "h": 44
+          },
+          {
+            "href": "https://github.com/0-draft/baccarat/issues/new?title=bac%7Cbet+tie+25+3&body=Just+click+Submit+new+issue.+The+table+updates+in+about+30+seconds.",
+            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/chip25.svg",
+            "alt": "25 on tie",
+            "w": 44,
+            "h": 44
+          }
+        ],
+        [
+          {
+            "href": null,
+            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/spot-ppair.svg",
+            "alt": "player pair",
+            "w": 84,
+            "h": 44
+          },
+          {
+            "href": "https://github.com/0-draft/baccarat/issues/new?title=bac%7Cbet+ppair+1+3&body=Just+click+Submit+new+issue.+The+table+updates+in+about+30+seconds.",
+            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/chip1.svg",
+            "alt": "1 on player pair",
+            "w": 44,
+            "h": 44
+          },
+          {
+            "href": "https://github.com/0-draft/baccarat/issues/new?title=bac%7Cbet+ppair+2+3&body=Just+click+Submit+new+issue.+The+table+updates+in+about+30+seconds.",
+            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/chip2.svg",
+            "alt": "2 on player pair",
+            "w": 44,
+            "h": 44
+          },
+          {
+            "href": "https://github.com/0-draft/baccarat/issues/new?title=bac%7Cbet+ppair+5+3&body=Just+click+Submit+new+issue.+The+table+updates+in+about+30+seconds.",
+            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/chip5.svg",
+            "alt": "5 on player pair",
+            "w": 44,
+            "h": 44
+          },
+          {
+            "href": "https://github.com/0-draft/baccarat/issues/new?title=bac%7Cbet+ppair+10+3&body=Just+click+Submit+new+issue.+The+table+updates+in+about+30+seconds.",
+            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/chip10.svg",
+            "alt": "10 on player pair",
+            "w": 44,
+            "h": 44
+          },
+          {
+            "href": "https://github.com/0-draft/baccarat/issues/new?title=bac%7Cbet+ppair+25+3&body=Just+click+Submit+new+issue.+The+table+updates+in+about+30+seconds.",
+            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/chip25.svg",
+            "alt": "25 on player pair",
+            "w": 44,
+            "h": 44
+          }
+        ],
+        [
+          {
+            "href": null,
+            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/spot-bpair.svg",
+            "alt": "banker pair",
+            "w": 84,
+            "h": 44
+          },
+          {
+            "href": "https://github.com/0-draft/baccarat/issues/new?title=bac%7Cbet+bpair+1+3&body=Just+click+Submit+new+issue.+The+table+updates+in+about+30+seconds.",
+            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/chip1.svg",
+            "alt": "1 on banker pair",
+            "w": 44,
+            "h": 44
+          },
+          {
+            "href": "https://github.com/0-draft/baccarat/issues/new?title=bac%7Cbet+bpair+2+3&body=Just+click+Submit+new+issue.+The+table+updates+in+about+30+seconds.",
+            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/chip2.svg",
+            "alt": "2 on banker pair",
+            "w": 44,
+            "h": 44
+          },
+          {
+            "href": "https://github.com/0-draft/baccarat/issues/new?title=bac%7Cbet+bpair+5+3&body=Just+click+Submit+new+issue.+The+table+updates+in+about+30+seconds.",
+            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/chip5.svg",
+            "alt": "5 on banker pair",
+            "w": 44,
+            "h": 44
+          },
+          {
+            "href": "https://github.com/0-draft/baccarat/issues/new?title=bac%7Cbet+bpair+10+3&body=Just+click+Submit+new+issue.+The+table+updates+in+about+30+seconds.",
+            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/chip10.svg",
+            "alt": "10 on banker pair",
+            "w": 44,
+            "h": 44
+          },
+          {
+            "href": "https://github.com/0-draft/baccarat/issues/new?title=bac%7Cbet+bpair+25+3&body=Just+click+Submit+new+issue.+The+table+updates+in+about+30+seconds.",
+            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/chip25.svg",
+            "alt": "25 on banker pair",
+            "w": 44,
+            "h": 44
+          }
+        ]
+      ]
+    },
+    {
+      "kind": "text",
+      "segs": [
+        {
+          "text": "Bet on the hand that comes closest to 9. A chip opens a prefilled issue: submit it and the cards come out in about 30 seconds."
+        }
+      ]
+    },
+    {
+      "kind": "grid",
+      "rows": [
+        [
+          {
+            "href": null,
+            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-B.svg",
+            "alt": "banker",
+            "w": 22,
+            "h": 22
+          },
+          {
+            "href": null,
+            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "alt": "",
+            "w": 22,
+            "h": 22
+          },
+          {
+            "href": null,
+            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "alt": "",
+            "w": 22,
+            "h": 22
+          },
+          {
+            "href": null,
+            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "alt": "",
+            "w": 22,
+            "h": 22
+          },
+          {
+            "href": null,
+            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "alt": "",
+            "w": 22,
+            "h": 22
+          },
+          {
+            "href": null,
+            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "alt": "",
+            "w": 22,
+            "h": 22
+          },
+          {
+            "href": null,
+            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "alt": "",
+            "w": 22,
+            "h": 22
+          },
+          {
+            "href": null,
+            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "alt": "",
+            "w": 22,
+            "h": 22
+          },
+          {
+            "href": null,
+            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "alt": "",
+            "w": 22,
+            "h": 22
+          },
+          {
+            "href": null,
+            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "alt": "",
+            "w": 22,
+            "h": 22
+          },
+          {
+            "href": null,
+            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "alt": "",
+            "w": 22,
+            "h": 22
+          },
+          {
+            "href": null,
+            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "alt": "",
+            "w": 22,
+            "h": 22
+          },
+          {
+            "href": null,
+            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "alt": "",
+            "w": 22,
+            "h": 22
+          },
+          {
+            "href": null,
+            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "alt": "",
+            "w": 22,
+            "h": 22
+          },
+          {
+            "href": null,
+            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "alt": "",
+            "w": 22,
+            "h": 22
+          },
+          {
+            "href": null,
+            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "alt": "",
+            "w": 22,
+            "h": 22
+          },
+          {
+            "href": null,
+            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "alt": "",
+            "w": 22,
+            "h": 22
+          }
+        ],
+        [
+          {
+            "href": null,
+            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-B.svg",
+            "alt": "banker",
+            "w": 22,
+            "h": 22
+          },
+          {
+            "href": null,
+            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "alt": "",
+            "w": 22,
+            "h": 22
+          },
+          {
+            "href": null,
+            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "alt": "",
+            "w": 22,
+            "h": 22
+          },
+          {
+            "href": null,
+            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "alt": "",
+            "w": 22,
+            "h": 22
+          },
+          {
+            "href": null,
+            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "alt": "",
+            "w": 22,
+            "h": 22
+          },
+          {
+            "href": null,
+            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "alt": "",
+            "w": 22,
+            "h": 22
+          },
+          {
+            "href": null,
+            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "alt": "",
+            "w": 22,
+            "h": 22
+          },
+          {
+            "href": null,
+            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "alt": "",
+            "w": 22,
+            "h": 22
+          },
+          {
+            "href": null,
+            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "alt": "",
+            "w": 22,
+            "h": 22
+          },
+          {
+            "href": null,
+            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "alt": "",
+            "w": 22,
+            "h": 22
+          },
+          {
+            "href": null,
+            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "alt": "",
+            "w": 22,
+            "h": 22
+          },
+          {
+            "href": null,
+            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "alt": "",
+            "w": 22,
+            "h": 22
+          },
+          {
+            "href": null,
+            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "alt": "",
+            "w": 22,
+            "h": 22
+          },
+          {
+            "href": null,
+            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "alt": "",
+            "w": 22,
+            "h": 22
+          },
+          {
+            "href": null,
+            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "alt": "",
+            "w": 22,
+            "h": 22
+          },
+          {
+            "href": null,
+            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "alt": "",
+            "w": 22,
+            "h": 22
+          },
+          {
+            "href": null,
+            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "alt": "",
+            "w": 22,
+            "h": 22
+          }
+        ],
+        [
+          {
+            "href": null,
+            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "alt": "",
+            "w": 22,
+            "h": 22
+          },
+          {
+            "href": null,
+            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "alt": "",
+            "w": 22,
+            "h": 22
+          },
+          {
+            "href": null,
+            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "alt": "",
+            "w": 22,
+            "h": 22
+          },
+          {
+            "href": null,
+            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "alt": "",
+            "w": 22,
+            "h": 22
+          },
+          {
+            "href": null,
+            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "alt": "",
+            "w": 22,
+            "h": 22
+          },
+          {
+            "href": null,
+            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "alt": "",
+            "w": 22,
+            "h": 22
+          },
+          {
+            "href": null,
+            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "alt": "",
+            "w": 22,
+            "h": 22
+          },
+          {
+            "href": null,
+            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "alt": "",
+            "w": 22,
+            "h": 22
+          },
+          {
+            "href": null,
+            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "alt": "",
+            "w": 22,
+            "h": 22
+          },
+          {
+            "href": null,
+            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "alt": "",
+            "w": 22,
+            "h": 22
+          },
+          {
+            "href": null,
+            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "alt": "",
+            "w": 22,
+            "h": 22
+          },
+          {
+            "href": null,
+            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "alt": "",
+            "w": 22,
+            "h": 22
+          },
+          {
+            "href": null,
+            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "alt": "",
+            "w": 22,
+            "h": 22
+          },
+          {
+            "href": null,
+            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "alt": "",
+            "w": 22,
+            "h": 22
+          },
+          {
+            "href": null,
+            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "alt": "",
+            "w": 22,
+            "h": 22
+          },
+          {
+            "href": null,
+            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "alt": "",
+            "w": 22,
+            "h": 22
+          },
+          {
+            "href": null,
+            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "alt": "",
+            "w": 22,
+            "h": 22
+          }
+        ],
+        [
+          {
+            "href": null,
+            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "alt": "",
+            "w": 22,
+            "h": 22
+          },
+          {
+            "href": null,
+            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "alt": "",
+            "w": 22,
+            "h": 22
+          },
+          {
+            "href": null,
+            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "alt": "",
+            "w": 22,
+            "h": 22
+          },
+          {
+            "href": null,
+            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "alt": "",
+            "w": 22,
+            "h": 22
+          },
+          {
+            "href": null,
+            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "alt": "",
+            "w": 22,
+            "h": 22
+          },
+          {
+            "href": null,
+            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "alt": "",
+            "w": 22,
+            "h": 22
+          },
+          {
+            "href": null,
+            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "alt": "",
+            "w": 22,
+            "h": 22
+          },
+          {
+            "href": null,
+            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "alt": "",
+            "w": 22,
+            "h": 22
+          },
+          {
+            "href": null,
+            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "alt": "",
+            "w": 22,
+            "h": 22
+          },
+          {
+            "href": null,
+            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "alt": "",
+            "w": 22,
+            "h": 22
+          },
+          {
+            "href": null,
+            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "alt": "",
+            "w": 22,
+            "h": 22
+          },
+          {
+            "href": null,
+            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "alt": "",
+            "w": 22,
+            "h": 22
+          },
+          {
+            "href": null,
+            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "alt": "",
+            "w": 22,
+            "h": 22
+          },
+          {
+            "href": null,
+            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "alt": "",
+            "w": 22,
+            "h": 22
+          },
+          {
+            "href": null,
+            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "alt": "",
+            "w": 22,
+            "h": 22
+          },
+          {
+            "href": null,
+            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "alt": "",
+            "w": 22,
+            "h": 22
+          },
+          {
+            "href": null,
+            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "alt": "",
+            "w": 22,
+            "h": 22
+          }
+        ],
+        [
+          {
+            "href": null,
+            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "alt": "",
+            "w": 22,
+            "h": 22
+          },
+          {
+            "href": null,
+            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "alt": "",
+            "w": 22,
+            "h": 22
+          },
+          {
+            "href": null,
+            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "alt": "",
+            "w": 22,
+            "h": 22
+          },
+          {
+            "href": null,
+            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "alt": "",
+            "w": 22,
+            "h": 22
+          },
+          {
+            "href": null,
+            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "alt": "",
+            "w": 22,
+            "h": 22
+          },
+          {
+            "href": null,
+            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "alt": "",
+            "w": 22,
+            "h": 22
+          },
+          {
+            "href": null,
+            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "alt": "",
+            "w": 22,
+            "h": 22
+          },
+          {
+            "href": null,
+            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "alt": "",
+            "w": 22,
+            "h": 22
+          },
+          {
+            "href": null,
+            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "alt": "",
+            "w": 22,
+            "h": 22
+          },
+          {
+            "href": null,
+            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "alt": "",
+            "w": 22,
+            "h": 22
+          },
+          {
+            "href": null,
+            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "alt": "",
+            "w": 22,
+            "h": 22
+          },
+          {
+            "href": null,
+            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "alt": "",
+            "w": 22,
+            "h": 22
+          },
+          {
+            "href": null,
+            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "alt": "",
+            "w": 22,
+            "h": 22
+          },
+          {
+            "href": null,
+            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "alt": "",
+            "w": 22,
+            "h": 22
+          },
+          {
+            "href": null,
+            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "alt": "",
+            "w": 22,
+            "h": 22
+          },
+          {
+            "href": null,
+            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "alt": "",
+            "w": 22,
+            "h": 22
+          },
+          {
+            "href": null,
+            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "alt": "",
+            "w": 22,
+            "h": 22
+          }
+        ],
+        [
+          {
+            "href": null,
+            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "alt": "",
+            "w": 22,
+            "h": 22
+          },
+          {
+            "href": null,
+            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "alt": "",
+            "w": 22,
+            "h": 22
+          },
+          {
+            "href": null,
+            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "alt": "",
+            "w": 22,
+            "h": 22
+          },
+          {
+            "href": null,
+            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "alt": "",
+            "w": 22,
+            "h": 22
+          },
+          {
+            "href": null,
+            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "alt": "",
+            "w": 22,
+            "h": 22
+          },
+          {
+            "href": null,
+            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "alt": "",
+            "w": 22,
+            "h": 22
+          },
+          {
+            "href": null,
+            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "alt": "",
+            "w": 22,
+            "h": 22
+          },
+          {
+            "href": null,
+            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "alt": "",
+            "w": 22,
+            "h": 22
+          },
+          {
+            "href": null,
+            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "alt": "",
+            "w": 22,
+            "h": 22
+          },
+          {
+            "href": null,
+            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "alt": "",
+            "w": 22,
+            "h": 22
+          },
+          {
+            "href": null,
+            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "alt": "",
+            "w": 22,
+            "h": 22
+          },
+          {
+            "href": null,
+            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "alt": "",
+            "w": 22,
+            "h": 22
+          },
+          {
+            "href": null,
+            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "alt": "",
+            "w": 22,
+            "h": 22
+          },
+          {
+            "href": null,
+            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "alt": "",
+            "w": 22,
+            "h": 22
+          },
+          {
+            "href": null,
+            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "alt": "",
+            "w": 22,
+            "h": 22
+          },
+          {
+            "href": null,
+            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "alt": "",
+            "w": 22,
+            "h": 22
+          },
+          {
+            "href": null,
+            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "alt": "",
+            "w": 22,
+            "h": 22
+          }
+        ]
+      ]
+    },
+    {
+      "kind": "text",
+      "segs": [
+        {
+          "text": "Shoe 1 · P 0 B 2 T 0 · 7.8 decks left · out of it: 7 3 5 6 7 4 K 8 6"
+        }
+      ]
+    },
+    {
+      "kind": "text",
+      "segs": [
+        {
+          "text": "-0.05u over 2 hands · 1 player · 0u given up to worse bets"
+        }
+      ]
+    },
+    {
+      "kind": "table",
+      "head": [
+        "Hand",
+        "Bet",
+        "Player",
+        "Banker",
+        ""
+      ],
+      "rows": [
+        [
+          [
+            {
+              "text": "2"
+            },
+            {
+              "text": " "
+            },
+            {
+              "text": "@kanywst",
+              "href": "https://github.com/kanywst"
+            }
+          ],
+          [
+            {
+              "text": "1u Player"
+            }
+          ],
+          [
+            {
+              "text": "7 (7 K)"
+            }
+          ],
+          [
+            {
+              "text": "8 (4 8 6)"
+            }
+          ],
+          [
+            {
+              "text": "-1u"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "text": "1"
+            },
+            {
+              "text": " "
+            },
+            {
+              "text": "@kanywst",
+              "href": "https://github.com/kanywst"
+            }
+          ],
+          [
+            {
+              "text": "1u Banker"
+            }
+          ],
+          [
+            {
+              "text": "2 (7 5)"
+            }
+          ],
+          [
+            {
+              "text": "9 (3 6)"
+            }
+          ],
+          [
+            {
+              "text": "+0.95u"
+            }
+          ]
+        ]
+      ]
+    },
+    {
+      "kind": "text",
+      "segs": [
+        {
+          "text": "Punto banco · 8 decks · banker pays 0.95 to 1 · tie pays 8 to 1 and pushes the player and banker bets · pairs pay 11 to 1 · shuffled at the cut card, 16 cards from the end"
+        }
+      ]
+    }
   ]
 }

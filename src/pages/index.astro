@@ -105,7 +105,7 @@ const count = all.reduce((n, s) => n + s.repos.length, 0);
               </header>
               <div class="pile">
                 {shelf.repos.map((repo) =>
-                  repo.name === "blackjack" || repo.name === "shogi" ? (
+                  repo.name === "blackjack" || repo.name === "baccarat" || repo.name === "shogi" ? (
                     <Sheet repo={repo} group={shelf.id} kind="board">
                       <div class:list={["board", `board-${repo.name}`]} data-game={repo.name}>
                         <Blocks blocks={boards[repo.name] ?? []} />
