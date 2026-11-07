@@ -1,5 +1,44 @@
 [
   {
+    "title": "What Coding Agents Leave in Public Git Repos",
+    "url": "https://dev.to/kanywst/what-coding-agents-leave-in-public-git-repos-nm1",
+    "publishedAt": "2026-11-04T13:38:24Z",
+    "reactions": 1,
+    "tags": [
+      "ai",
+      "git",
+      "privacy",
+      "security"
+    ],
+    "readingMinutes": 3
+  },
+  {
+    "title": "Secret Scanners Look for Credentials. I Wanted One That Looks for Me.",
+    "url": "https://dev.to/kanywst/secret-scanners-look-for-credentials-i-wanted-one-that-looks-for-me-5adj",
+    "publishedAt": "2026-11-04T04:39:45Z",
+    "reactions": 0,
+    "tags": [
+      "showdev",
+      "git",
+      "privacy",
+      "security"
+    ],
+    "readingMinutes": 3
+  },
+  {
+    "title": "Ransomware in Japan: 61 of 92 Known Entry Points in 2025 Were VPN Appliances",
+    "url": "https://dev.to/kanywst/ransomware-in-japan-61-of-92-known-entry-points-in-2025-were-vpn-appliances-49gn",
+    "publishedAt": "2026-10-27T14:47:29Z",
+    "reactions": 0,
+    "tags": [
+      "showdev",
+      "security",
+      "ransomware",
+      "vpn"
+    ],
+    "readingMinutes": 4
+  },
+  {
     "title": "Mandatum: Making an AI Agent's Authority a Chain You Can Verify",
     "url": "https://dev.to/kanywst/mandatum-making-an-ai-agents-authority-a-chain-you-can-verify-1hoa",
     "publishedAt": "2026-09-16T10:45:49Z",
@@ -16,14 +55,14 @@
     "title": "I Made Four Authorization Engines Answer the Same Questions",
     "url": "https://dev.to/kanywst/i-made-four-authorization-engines-answer-the-same-questions-5a96",
     "publishedAt": "2026-09-12T07:11:35Z",
-    "reactions": 0,
+    "reactions": 1,
     "tags": [
       "showdev",
       "authorization",
       "security",
       "webassembly"
     ],
-    "readingMinutes": 2
+    "readingMinutes": 3
   },
   {
     "title": "Envoy AI Gateway: A Hands-On Tour You Can Run Before Touching Kubernetes",
@@ -63,44 +102,5 @@
       "a2a"
     ],
     "readingMinutes": 12
-  },
-  {
-    "title": "The Day client_id Becomes a URL: Client ID Metadata Documents vs Dynamic Client Registration (DCR)",
-    "url": "https://dev.to/kanywst/the-day-clientid-becomes-a-url-client-id-metadata-documents-vs-dynamic-client-registration-dcr-dhi",
-    "publishedAt": "2026-06-26T12:08:30Z",
-    "reactions": 1,
-    "tags": [
-      "oauth",
-      "security",
-      "identity",
-      "mcp"
-    ],
-    "readingMinutes": 15
-  },
-  {
-    "title": "AgentAuth Deep Dive: Reading the Self-Authenticating UUID for AI Agents from the Source",
-    "url": "https://dev.to/kanywst/agentauth-deep-dive-reading-the-self-authenticating-uuid-for-ai-agents-from-the-source-44eh",
-    "publishedAt": "2026-06-25T13:44:37Z",
-    "reactions": 0,
-    "tags": [
-      "ai",
-      "security",
-      "mcp",
-      "typescript"
-    ],
-    "readingMinutes": 14
-  },
-  {
-    "title": "JWT (Access Token) vs X.509 Deep Dive: How to Choose What You Present as a Credential",
-    "url": "https://dev.to/kanywst/jwt-access-token-vs-x509-deep-dive-how-to-choose-what-you-present-as-a-credential-34ij",
-    "publishedAt": "2026-06-15T13:54:03Z",
-    "reactions": 0,
-    "tags": [
-      "security",
-      "authentication",
-      "jwt",
-      "tls"
-    ],
-    "readingMinutes": 10
   }
 ]
