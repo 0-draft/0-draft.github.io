@@ -17,20 +17,39 @@ export const groups: Group[] = [
   {
     id: "security",
     title: "Identity & security",
-    blurb: "Policy engines side by side, standards worth watching, and one zero-day taken apart.",
-    repos: ["authz-playground", "identity-deep-dive", "php2shell-anatomy"],
+    blurb:
+      "Policy engines side by side, standards worth watching, a zero-day taken apart, and how attackers get in and stay hidden.",
+    repos: [
+      "authz-playground",
+      "identity-deep-dive",
+      "vpn-is-the-door",
+      "php2shell-anatomy",
+      "why-hackers-dont-get-caught",
+    ],
   },
   {
     id: "games",
     title: "Played in the README",
     blurb: "Open an issue to make a move. GitHub Actions deals the cards and redraws the board.",
-    repos: ["blackjack", "shogi", "guestbook"],
+    repos: ["baccarat", "blackjack", "shogi", "guestbook"],
   },
   {
     id: "writing",
     title: "Writing",
     blurb: "Where the deep dives end up as articles.",
     repos: ["dev.to"],
+  },
+  {
+    id: "culture",
+    title: "Words & ways",
+    blurb: "Japanese words worth using, and how engineers in other countries think and work. English and Japanese.",
+    repos: ["goi", "wtfe"],
+  },
+  {
+    id: "tools",
+    title: "Tools",
+    blurb: "Runs on your own machine.",
+    repos: ["ccretro"],
   },
 ];
 

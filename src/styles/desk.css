@@ -432,7 +432,8 @@
     padding: 20px;
     container-type: inline-size;
   }
-  .board-blackjack {
+  .board-blackjack,
+  .board-baccarat {
     width: 520px;
     background: var(--felt);
     color: #f5f1e6;
@@ -460,7 +461,8 @@
     width: min(44px, calc(100cqi / 9));
     height: auto;
   }
-  .board-blackjack .b-grid + .b-text + .b-grid .b-row {
+  .board-blackjack .b-grid + .b-text + .b-grid .b-row,
+  .board-baccarat .b-grid + .b-text + .b-grid .b-row {
     gap: 6px;
   }
   .b-row a:hover img {
@@ -998,6 +1000,7 @@
     max-width: 100%;
   }
   html.list .board-blackjack,
+  html.list .board-baccarat,
   html.list .board-shogi {
     width: auto;
   }

@@ -189,7 +189,7 @@ test("while a site is open, focus cannot wander onto the desk behind it", async 
 test("board images carry their size, so the boards don't grow after the desk is measured", async ({ page }) => {
   await openDesk(page);
   const unsized = await page
-    .locator('[data-game="shogi"] img, [data-game="blackjack"] img')
+    .locator('[data-game="shogi"] img, [data-game="blackjack"] img, [data-game="baccarat"] img')
     .evaluateAll((imgs) => imgs.filter((i) => !i.getAttribute("width") || !i.getAttribute("height")).length);
   expect(unsized).toBe(0);
 });
@@ -200,6 +200,7 @@ test("the README games render as playable boards", async ({ page }) => {
   await expect(shogi).toHaveCount(9);
   await expect(page.locator('[data-game="shogi"] a[href*="/issues/new"]').first()).toBeAttached();
   await expect(page.locator('[data-game="blackjack"] img').first()).toBeAttached();
+  await expect(page.locator('[data-game="baccarat"] img').first()).toBeAttached();
   await expect(page.locator('[data-game="guestbook"] li').first()).toBeAttached();
 });
 
