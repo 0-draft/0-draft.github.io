@@ -1,5 +1,51 @@
 [
   {
+    "name": "aws-connectivity",
+    "description": "Every way from a corporate network into AWS, drawn as a road map (VPN, Direct Connect, SD-WAN, hubs, PrivateLink, hybrid DNS), plus a Direct Connect deep dive with labs. Bilingual (EN/JA).",
+    "url": "https://github.com/0-draft/aws-connectivity",
+    "homepage": "https://0-draft.github.io/aws-connectivity/",
+    "language": "TypeScript",
+    "topics": [
+      "aws",
+      "aws-networking",
+      "cloud-wan",
+      "direct-connect",
+      "hybrid-cloud",
+      "interactive-explainer",
+      "network-diagram",
+      "privatelink",
+      "site-to-site-vpn",
+      "transit-gateway"
+    ],
+    "stars": 0,
+    "createdAt": "2026-10-09T18:41:00Z",
+    "pushedAt": "2026-11-08T03:08:30Z"
+  },
+  {
+    "name": "aws-credentials",
+    "description": "AWS credentials, drawn: how they are issued (every STS endpoint, all 11 APIs, every credential path) and how requests are signed with them (SigV4, SigV4a, presigned URLs). Interactive, bilingual (EN/JA).",
+    "url": "https://github.com/0-draft/aws-credentials",
+    "homepage": "https://0-draft.github.io/aws-credentials/",
+    "language": "TypeScript",
+    "topics": [
+      "assume-role",
+      "aws",
+      "aws-credentials",
+      "aws-sts",
+      "iam",
+      "oidc",
+      "saml",
+      "sigv4",
+      "sigv4a",
+      "sts",
+      "visualization",
+      "webcrypto"
+    ],
+    "stars": 0,
+    "createdAt": "2026-10-09T21:35:42Z",
+    "pushedAt": "2026-11-08T03:02:45Z"
+  },
+  {
     "name": "dev.to",
     "description": "Dev.to Articles Management",
     "url": "https://github.com/0-draft/dev.to",
@@ -19,188 +65,26 @@
     ],
     "stars": 1,
     "createdAt": "2026-01-08T10:38:03Z",
-    "pushedAt": "2026-11-07T14:00:24Z"
+    "pushedAt": "2026-11-08T02:41:27Z"
   },
   {
-    "name": "identity-deep-dive",
-    "description": "Collect, score, and surface deep-dive candidates across OAuth WG, WIMSE, and OpenID Foundation specs",
-    "url": "https://github.com/0-draft/identity-deep-dive",
-    "homepage": "https://0-draft.github.io/identity-deep-dive/",
-    "language": "Python",
-    "topics": [
-      "deep-dive",
-      "digital-credentials",
-      "identity",
-      "ietf",
-      "oauth2",
-      "openid",
-      "security",
-      "standards-monitoring",
-      "wimse",
-      "workload-identity"
-    ],
-    "stars": 0,
-    "createdAt": "2026-04-25T04:30:53Z",
-    "pushedAt": "2026-11-07T13:09:31Z"
-  },
-  {
-    "name": "why-hackers-dont-get-caught",
-    "description": "Why hackers don't get caught: how attackers hide, layer by layer, why so many named attackers stay out of reach, and the one layer that gave away those who were caught. Visual explainer, EN/JA, every claim sourced.",
-    "url": "https://github.com/0-draft/why-hackers-dont-get-caught",
-    "homepage": "https://0-draft.github.io/why-hackers-dont-get-caught/",
-    "language": "Astro",
-    "topics": [
-      "anonymity",
-      "astro",
-      "attribution",
-      "bilingual",
-      "cybercrime",
-      "cybersecurity",
-      "deanonymization",
-      "education",
-      "opsec",
-      "osint",
-      "privacy",
-      "threat-intelligence",
-      "tor",
-      "visual-explainer"
-    ],
-    "stars": 0,
-    "createdAt": "2026-11-05T18:28:41Z",
-    "pushedAt": "2026-11-07T04:56:10Z"
-  },
-  {
-    "name": "blackjack",
-    "description": "Blackjack played by whoever turns up. Every decision is a GitHub issue and the table is the README.",
-    "url": "https://github.com/0-draft/blackjack",
-    "homepage": "https://github.com/0-draft/blackjack#blackjack",
-    "language": "Python",
-    "topics": [
-      "blackjack",
-      "game",
-      "github-actions",
-      "python",
-      "readme-game"
-    ],
-    "stars": 0,
-    "createdAt": "2026-10-02T13:58:28Z",
-    "pushedAt": "2026-11-07T04:55:44Z"
-  },
-  {
-    "name": "guestbook",
-    "description": "A guest book anyone can sign by opening an issue. The README is the book.",
-    "url": "https://github.com/0-draft/guestbook",
-    "homepage": "https://github.com/0-draft/guestbook#guestbook",
-    "language": "Python",
-    "topics": [
-      "github-actions",
-      "guestbook",
-      "python",
-      "readme"
-    ],
-    "stars": 0,
-    "createdAt": "2026-10-02T14:15:46Z",
-    "pushedAt": "2026-11-07T04:55:21Z"
-  },
-  {
-    "name": "ccretro",
-    "description": "A retrospective of your Claude Code usage as a local web page — period comparison, follow-through on last month's suggestions, and a /ccretro skill that turns them into skills, hooks and CLAUDE.md",
-    "url": "https://github.com/0-draft/ccretro",
+    "name": "claude-english-coach",
+    "description": "A template repo for learning English with Claude Code: corrections, a mistake log, vocab and quizzes in plain Markdown.",
+    "url": "https://github.com/0-draft/claude-english-coach",
     "homepage": null,
-    "language": "JavaScript",
+    "language": "HTML",
     "topics": [
-      "analytics",
-      "claude",
       "claude-code",
-      "claude-code-plugin",
-      "developer-productivity",
-      "retrospective"
+      "english-learning",
+      "fsrs",
+      "language-learning",
+      "repository-template",
+      "second-language-acquisition",
+      "spaced-repetition"
     ],
     "stars": 0,
-    "createdAt": "2026-11-01T16:54:14Z",
-    "pushedAt": "2026-11-05T18:45:45Z"
-  },
-  {
-    "name": "baccarat",
-    "description": "Baccarat played by whoever turns up. Every bet is a GitHub issue and the table is the README.",
-    "url": "https://github.com/0-draft/baccarat",
-    "homepage": "https://github.com/0-draft/baccarat#baccarat",
-    "language": "Python",
-    "topics": [
-      "baccarat",
-      "game",
-      "github-actions",
-      "python",
-      "readme-game"
-    ],
-    "stars": 0,
-    "createdAt": "2026-11-05T13:51:09Z",
-    "pushedAt": "2026-11-05T18:15:42Z"
-  },
-  {
-    "name": "php2shell-anatomy",
-    "description": "Defensive awareness site dissecting the php2shell PHP zero-day (CVE-2026-109618 / CVE-2026-109619): why it's critical, who's affected, and how to patch in time.",
-    "url": "https://github.com/0-draft/php2shell-anatomy",
-    "homepage": "https://0-draft.github.io/php2shell-anatomy/",
-    "language": "TypeScript",
-    "topics": [
-      "appsec",
-      "astro",
-      "cve",
-      "infosec",
-      "php",
-      "php-security",
-      "php2shell",
-      "rce",
-      "security",
-      "security-awareness",
-      "typescript",
-      "vulnerability",
-      "web-security",
-      "zero-day"
-    ],
-    "stars": 0,
-    "createdAt": "2026-10-21T13:09:42Z",
-    "pushedAt": "2026-11-04T07:07:54Z"
-  },
-  {
-    "name": "shogi",
-    "description": "Shogi played by whoever turns up. Every move is a GitHub issue and the board is the README.",
-    "url": "https://github.com/0-draft/shogi",
-    "homepage": "https://github.com/0-draft/shogi#shogi",
-    "language": "Python",
-    "topics": [
-      "game",
-      "github-actions",
-      "python",
-      "readme-game",
-      "shogi"
-    ],
-    "stars": 0,
-    "createdAt": "2026-09-01T15:11:20Z",
-    "pushedAt": "2026-11-04T04:04:58Z"
-  },
-  {
-    "name": "vpn-is-the-door",
-    "description": "Why VPN appliances are the main way ransomware gets into Japanese organizations (61 of 92 known entry routes in 2025, NPA): statistics, real cases, 31 exploited VPN flaws. EN / 日本語.",
-    "url": "https://github.com/0-draft/vpn-is-the-door",
-    "homepage": "https://0-draft.github.io/vpn-is-the-door/",
-    "language": "Astro",
-    "topics": [
-      "astro",
-      "cybersecurity",
-      "data-visualization",
-      "edge-devices",
-      "explorable-explanation",
-      "incident-response",
-      "japan",
-      "known-exploited-vulnerabilities",
-      "ransomware",
-      "vpn"
-    ],
-    "stars": 0,
-    "createdAt": "2026-10-25T13:39:46Z",
-    "pushedAt": "2026-11-03T15:02:54Z"
+    "createdAt": "2026-11-07T14:24:10Z",
+    "pushedAt": "2026-11-08T02:28:14Z"
   },
   {
     "name": "wtfe",
@@ -222,108 +106,50 @@
     ],
     "stars": 0,
     "createdAt": "2026-10-24T20:45:52Z",
-    "pushedAt": "2026-11-03T15:01:48Z"
+    "pushedAt": "2026-11-08T02:28:09Z"
   },
   {
-    "name": "cross-connect",
-    "description": "AWS Direct Connect, drawn: an interactive, bilingual (EN/JA) explainer of connections, VIFs, DX gateway, BGP, resiliency, MACsec and pricing.",
-    "url": "https://github.com/0-draft/cross-connect",
-    "homepage": "https://0-draft.github.io/cross-connect/",
-    "language": "TypeScript",
+    "name": "why-hackers-dont-get-caught",
+    "description": "Why hackers don't get caught: how attackers hide, layer by layer, why so many named attackers stay out of reach, and the one layer that gave away those who were caught. Visual explainer, EN/JA, every claim sourced.",
+    "url": "https://github.com/0-draft/why-hackers-dont-get-caught",
+    "homepage": "https://0-draft.github.io/why-hackers-dont-get-caught/",
+    "language": "MDX",
     "topics": [
-      "aws",
-      "aws-direct-connect",
-      "bgp",
-      "direct-connect",
-      "explainer",
-      "networking"
-    ],
-    "stars": 1,
-    "createdAt": "2026-09-30T09:39:11Z",
-    "pushedAt": "2026-11-03T14:48:53Z"
-  },
-  {
-    "name": "on-ramp",
-    "description": "Every way from a corporate network into AWS, drawn as a road map: VPN, Direct Connect, SD-WAN, Transit Gateway, Cloud WAN, PrivateLink, hybrid DNS, user access. EN/JA.",
-    "url": "https://github.com/0-draft/on-ramp",
-    "homepage": "https://0-draft.github.io/on-ramp/",
-    "language": "TypeScript",
-    "topics": [
-      "aws",
-      "aws-networking",
-      "cloud-wan",
-      "direct-connect",
-      "hybrid-cloud",
-      "interactive-explainer",
-      "network-diagram",
-      "privatelink",
-      "site-to-site-vpn",
-      "transit-gateway"
+      "anonymity",
+      "astro",
+      "attribution",
+      "bilingual",
+      "cybercrime",
+      "cybersecurity",
+      "deanonymization",
+      "education",
+      "opsec",
+      "osint",
+      "privacy",
+      "threat-intelligence",
+      "tor",
+      "visual-explainer"
     ],
     "stars": 0,
-    "createdAt": "2026-10-09T18:41:00Z",
-    "pushedAt": "2026-11-03T14:45:24Z"
+    "createdAt": "2026-11-05T18:28:41Z",
+    "pushedAt": "2026-11-08T02:28:08Z"
   },
   {
-    "name": "caller-identity",
-    "description": "Interactive, wire-level walkthrough of how AWS credentials are issued, signed, verified and authorized. Every SigV4 signature is computed in your browser.",
-    "url": "https://github.com/0-draft/caller-identity",
-    "homepage": "https://0-draft.github.io/caller-identity/",
-    "language": "TypeScript",
+    "name": "casino",
+    "description": "Blackjack and baccarat played by whoever turns up. Every decision or bet is a GitHub issue and both tables are the README.",
+    "url": "https://github.com/0-draft/casino",
+    "homepage": "https://github.com/0-draft/casino#casino",
+    "language": "Python",
     "topics": [
-      "aws",
-      "educational",
-      "iam",
-      "oidc",
-      "react",
-      "security",
-      "sigv4",
-      "sts",
-      "typescript",
-      "visualization",
-      "webcrypto",
-      "workload-identity"
+      "blackjack",
+      "game",
+      "github-actions",
+      "python",
+      "readme-game"
     ],
     "stars": 0,
-    "createdAt": "2026-09-19T09:34:55Z",
-    "pushedAt": "2026-11-03T14:35:01Z"
-  },
-  {
-    "name": "assume-role",
-    "description": "AWS STS, drawn: every endpoint, every API, every way a workload or a human ends up holding temporary credentials. Interactive, bilingual (EN/JA).",
-    "url": "https://github.com/0-draft/assume-role",
-    "homepage": "https://0-draft.github.io/assume-role/",
-    "language": "TypeScript",
-    "topics": [
-      "assume-role",
-      "aws",
-      "aws-sts",
-      "iam",
-      "oidc",
-      "saml",
-      "sts",
-      "visualization"
-    ],
-    "stars": 0,
-    "createdAt": "2026-10-09T21:35:42Z",
-    "pushedAt": "2026-11-03T14:33:12Z"
-  },
-  {
-    "name": "s3-atlas",
-    "description": "Everything about Amazon S3 — deep research docs, command cookbook, competitor and market analysis, and an interactive visual atlas (EN/JA).",
-    "url": "https://github.com/0-draft/s3-atlas",
-    "homepage": "https://0-draft.github.io/s3-atlas/",
-    "language": "TypeScript",
-    "topics": [
-      "aws",
-      "cloud",
-      "documentation",
-      "object-storage",
-      "s3"
-    ],
-    "stars": 0,
-    "createdAt": "2026-10-02T16:26:35Z",
-    "pushedAt": "2026-11-03T14:32:32Z"
+    "createdAt": "2026-10-02T13:58:28Z",
+    "pushedAt": "2026-11-08T02:22:21Z"
   },
   {
     "name": "authz-playground",
@@ -350,7 +176,7 @@
     ],
     "stars": 1,
     "createdAt": "2026-09-12T05:34:04Z",
-    "pushedAt": "2026-11-01T17:43:58Z"
+    "pushedAt": "2026-11-08T01:42:32Z"
   },
   {
     "name": "goi",
@@ -371,6 +197,111 @@
     ],
     "stars": 0,
     "createdAt": "2026-10-24T20:53:16Z",
-    "pushedAt": "2026-11-01T07:15:36Z"
+    "pushedAt": "2026-11-08T01:41:11Z"
+  },
+  {
+    "name": "identity-deep-dive",
+    "description": "Collect, score, and surface deep-dive candidates across OAuth WG, WIMSE, and OpenID Foundation specs",
+    "url": "https://github.com/0-draft/identity-deep-dive",
+    "homepage": "https://0-draft.github.io/identity-deep-dive/",
+    "language": "Python",
+    "topics": [
+      "deep-dive",
+      "digital-credentials",
+      "identity",
+      "ietf",
+      "oauth2",
+      "openid",
+      "security",
+      "standards-monitoring",
+      "wimse",
+      "workload-identity"
+    ],
+    "stars": 0,
+    "createdAt": "2026-04-25T04:30:53Z",
+    "pushedAt": "2026-11-07T21:58:29Z"
+  },
+  {
+    "name": "php2shell-anatomy",
+    "description": "Defensive awareness site dissecting the php2shell PHP zero-day (CVE-2026-109618 / CVE-2026-109619): why it's critical, who's affected, and how to patch in time.",
+    "url": "https://github.com/0-draft/php2shell-anatomy",
+    "homepage": "https://0-draft.github.io/php2shell-anatomy/",
+    "language": "TypeScript",
+    "topics": [
+      "appsec",
+      "astro",
+      "cve",
+      "infosec",
+      "php",
+      "php-security",
+      "php2shell",
+      "rce",
+      "security",
+      "security-awareness",
+      "typescript",
+      "vulnerability",
+      "web-security",
+      "zero-day"
+    ],
+    "stars": 0,
+    "createdAt": "2026-10-21T13:09:42Z",
+    "pushedAt": "2026-11-07T14:13:48Z"
+  },
+  {
+    "name": "ccretro",
+    "description": "A retrospective of your Claude Code usage as a local web page — period comparison, follow-through on last month's suggestions, and a /ccretro skill that turns them into skills, hooks and CLAUDE.md",
+    "url": "https://github.com/0-draft/ccretro",
+    "homepage": null,
+    "language": "JavaScript",
+    "topics": [
+      "analytics",
+      "claude",
+      "claude-code",
+      "claude-code-plugin",
+      "developer-productivity",
+      "retrospective"
+    ],
+    "stars": 0,
+    "createdAt": "2026-11-01T16:54:14Z",
+    "pushedAt": "2026-11-05T18:45:45Z"
+  },
+  {
+    "name": "vpn-is-the-door",
+    "description": "Why VPN appliances are the main way ransomware gets into Japanese organizations (61 of 92 known entry routes in 2025, NPA): statistics, real cases, 31 exploited VPN flaws. EN / 日本語.",
+    "url": "https://github.com/0-draft/vpn-is-the-door",
+    "homepage": "https://0-draft.github.io/vpn-is-the-door/",
+    "language": "Astro",
+    "topics": [
+      "astro",
+      "cybersecurity",
+      "data-visualization",
+      "edge-devices",
+      "explorable-explanation",
+      "incident-response",
+      "japan",
+      "known-exploited-vulnerabilities",
+      "ransomware",
+      "vpn"
+    ],
+    "stars": 0,
+    "createdAt": "2026-10-25T13:39:46Z",
+    "pushedAt": "2026-11-03T15:02:54Z"
+  },
+  {
+    "name": "s3-atlas",
+    "description": "Everything about Amazon S3 — deep research docs, command cookbook, competitor and market analysis, and an interactive visual atlas (EN/JA).",
+    "url": "https://github.com/0-draft/s3-atlas",
+    "homepage": "https://0-draft.github.io/s3-atlas/",
+    "language": "TypeScript",
+    "topics": [
+      "aws",
+      "cloud",
+      "documentation",
+      "object-storage",
+      "s3"
+    ],
+    "stars": 0,
+    "createdAt": "2026-10-02T16:26:35Z",
+    "pushedAt": "2026-11-03T14:32:32Z"
   }
 ]
