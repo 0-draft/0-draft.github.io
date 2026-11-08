@@ -4,11 +4,11 @@
 
 Everything public in the [0-draft](https://github.com/0-draft) org, pulled as proofs and laid out on a print-shop desk at night: <https://0-draft.github.io/>.
 
-Drag the desk to look around and pinch (or press `+` and `-`) to zoom. Break the wax seal on a sheet and the real site opens right on the desk. Blackjack, shogi and the guest book are read live from their READMEs, so you can make a move from here. Prefer a plain page? Press "List view".
+Drag the desk to look around and pinch (or press `+` and `-`) to zoom. Break the wax seal on a sheet and the real site opens right on the desk. The blackjack and baccarat tables are read live from the [casino](https://github.com/0-draft/casino) README, so you can place a bet from here. Prefer a plain page? Press "List view".
 
 ## How it works
 
-- `scripts/sync.ts` pulls the org's public repos (archived repos and forks are left out), the live region of each README game, and the latest dev.to articles into `src/data/`. A source that fails keeps its previous file.
+- `scripts/sync.ts` pulls the org's public repos (archived repos, forks, and repos whose description starts with `[Retired]` or `[Merged into ...]` are left out), the live region of each README game, and the latest dev.to articles into `src/data/`. A source that fails keeps its previous file.
 - `src/data/groups.ts` decides which pile a repo sits in. A new repo that isn't filed there shows up on its own pile on the next build.
 - `src/lib/desk.ts` holds where each sheet sits on the desk. `src/scripts/desk.ts` is the camera: pan, zoom, the minimap and the live frame. It has no dependencies.
 - `src/assets/shots/` holds a screenshot per project, named after the repo. `scripts/shoot.ts` takes the missing ones; `--all` retakes every one.

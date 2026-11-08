@@ -1,5 +1,5 @@
 // Refreshes everything the site reads at build time:
-//   src/data/repos.json     public, unarchived, non-fork repos of the org
+//   src/data/repos.json     public, unarchived, non-fork, not retired repos of the org
 //   src/data/games.json     the live board of each README game
 //   src/data/articles.json  latest dev.to articles
 // A source that fails keeps its previous file, so one flaky API never breaks the build.
@@ -9,6 +9,9 @@ import { type Block, GAMES, type GameName, parseGame, readmeUrl } from "../src/l
 const ORG = "0-draft";
 const SKIP = new Set([".github", `${ORG}.github.io`]);
 const DEVTO_USER = "kanywst";
+// A repo that was merged into another or retired stays public for a month before it is archived.
+// Its description says so; it leaves the desk right away instead of waiting for the archive.
+const RETIRED = /^\[(Retired|Merged into [^\]]+)\]/;
 const data = (file: string) => new URL(`../src/data/${file}`, import.meta.url);
 
 const ghHeaders: Record<string, string> = {
@@ -43,7 +46,7 @@ async function repos() {
     if (batch.length < 100) break;
   }
   return all
-    .filter((r) => !r.archived && !r.fork && !r.private && !SKIP.has(r.name))
+    .filter((r) => !r.archived && !r.fork && !r.private && !SKIP.has(r.name) && !RETIRED.test(r.description ?? ""))
     .map((r) => ({
       name: r.name,
       description: r.description ?? "",
@@ -103,10 +106,17 @@ async function sizeCells(blocks: Block[], known: Map<string, { w: number; h: num
 async function games() {
   const out: Record<string, Block[]> = {};
   const known = await knownSizes();
+  const readmes = new Map<string, Promise<string>>();
   for (const name of Object.keys(GAMES) as GameName[]) {
-    const md = await (await get(readmeUrl(name))).text();
+    const url = readmeUrl(name);
+    if (!readmes.has(url))
+      readmes.set(
+        url,
+        get(url).then((res) => res.text()),
+      );
+    const md = await (readmes.get(url) as Promise<string>);
     const blocks = parseGame(name, md);
-    if (!blocks?.length) throw new Error(`no live region in ${name}/README.md`);
+    if (!blocks?.length) throw new Error(`no ${GAMES[name].marker} region in ${GAMES[name].repo}/README.md`);
     await sizeCells(blocks, known);
     out[name] = blocks;
   }
