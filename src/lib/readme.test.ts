@@ -1,44 +1,44 @@
 import { describe, expect, it } from "vitest";
-import { liveRegion, parseBlocks, parseGame } from "./readme.ts";
+import { liveRegion, parseBlocks, parseGame, readmeUrl } from "./readme.ts";
 
-const IMG = "https://raw.githubusercontent.com/0-draft/shogi/main/.github/koma";
-const ISSUE = "https://github.com/0-draft/shogi/issues/new?title=shogi%7Csel+9a&amp;body=go";
+const IMG = "https://raw.githubusercontent.com/0-draft/casino/main/.github/cards";
+const ISSUE = "https://github.com/0-draft/casino/issues/new?title=baccarat%7Cbet+player&amp;body=go";
 
 const readme = (body: string) =>
-  `# Shogi\n\nintro\n\n<!-- SHOGI:START -->\n${body}\n<!-- SHOGI:END -->\n\n## How to play\n`;
+  `# Casino\n\n## Baccarat\n\n<!-- BACCARAT:START -->\n${body}\n<!-- BACCARAT:END -->\n\n## How it works\n`;
 
 describe("liveRegion", () => {
   it("returns the text between the markers", () => {
-    expect(liveRegion(readme("<p>hi</p>"), "SHOGI")).toContain("<p>hi</p>");
+    expect(liveRegion(readme("<p>hi</p>"), "BACCARAT")).toContain("<p>hi</p>");
   });
 
   it("returns null when a marker is missing or out of order", () => {
-    expect(liveRegion("<!-- SHOGI:START --> no end", "SHOGI")).toBeNull();
-    expect(liveRegion("<!-- SHOGI:END --> <!-- SHOGI:START -->", "SHOGI")).toBeNull();
+    expect(liveRegion("<!-- BACCARAT:START --> no end", "BACCARAT")).toBeNull();
+    expect(liveRegion("<!-- BACCARAT:END --> <!-- BACCARAT:START -->", "BACCARAT")).toBeNull();
   });
 });
 
 describe("parseBlocks", () => {
   it("reads a <pre> board into rows, linking only cells that open a move", () => {
-    const pre = `<pre><a href="${ISSUE}"><img src="${IMG}/gL.svg" align="top" alt="9a white lance"></a><a href="https://github.com/0-draft/shogi#shogi"><img src="${IMG}/empty.svg" align="top" alt=""></a>
-<a href="${ISSUE}"><img src="${IMG}/sP.svg" align="top" alt="9g black pawn"></a></pre>`;
+    const pre = `<pre><a href="${ISSUE}"><img src="${IMG}/seat-player.svg" align="top" alt="player"></a><a href="https://github.com/0-draft/casino#baccarat"><img src="${IMG}/empty.svg" align="top" alt=""></a>
+<a href="${ISSUE}"><img src="${IMG}/4H.svg" align="top" alt="four of hearts"></a></pre>`;
     const [grid] = parseBlocks(pre);
     expect(grid).toEqual({
       kind: "grid",
       rows: [
         [
           {
-            href: "https://github.com/0-draft/shogi/issues/new?title=shogi%7Csel+9a&body=go",
-            src: `${IMG}/gL.svg`,
-            alt: "9a white lance",
+            href: "https://github.com/0-draft/casino/issues/new?title=baccarat%7Cbet+player&body=go",
+            src: `${IMG}/seat-player.svg`,
+            alt: "player",
           },
           { href: null, src: `${IMG}/empty.svg`, alt: "" },
         ],
         [
           {
-            href: "https://github.com/0-draft/shogi/issues/new?title=shogi%7Csel+9a&body=go",
-            src: `${IMG}/sP.svg`,
-            alt: "9g black pawn",
+            href: "https://github.com/0-draft/casino/issues/new?title=baccarat%7Cbet+player&body=go",
+            src: `${IMG}/4H.svg`,
+            alt: "four of hearts",
           },
         ],
       ],
@@ -46,9 +46,9 @@ describe("parseBlocks", () => {
   });
 
   it("drops images that are not hosted in the org and links that leave GitHub", () => {
-    const pre = `<pre><a href="https://evil.example/x"><img src="${IMG}/gL.svg" alt="a"></a><a href="${ISSUE}"><img src="https://evil.example/x.svg" alt="b"></a></pre>`;
+    const pre = `<pre><a href="https://evil.example/x"><img src="${IMG}/seat-player.svg" alt="a"></a><a href="${ISSUE}"><img src="https://evil.example/x.svg" alt="b"></a></pre>`;
     const [grid] = parseBlocks(pre);
-    expect(grid).toEqual({ kind: "grid", rows: [[{ href: null, src: `${IMG}/gL.svg`, alt: "a" }]] });
+    expect(grid).toEqual({ kind: "grid", rows: [[{ href: null, src: `${IMG}/seat-player.svg`, alt: "a" }]] });
   });
 
   it("turns a paragraph into text and link segments with entities decoded", () => {
@@ -59,7 +59,7 @@ describe("parseBlocks", () => {
       kind: "text",
       segs: [
         { text: "Last move & more · " },
-        { text: "Resign", href: "https://github.com/0-draft/shogi/issues/new?title=shogi%7Csel+9a&body=go" },
+        { text: "Resign", href: "https://github.com/0-draft/casino/issues/new?title=baccarat%7Cbet+player&body=go" },
         { text: " " },
         { text: "bad" },
       ],
@@ -125,12 +125,27 @@ describe("parseBlocks", () => {
 
 describe("parseGame", () => {
   it("parses the region for the named game", () => {
-    expect(parseGame("shogi", readme("<p>Click a piece</p>"))).toEqual([
-      { kind: "text", segs: [{ text: "Click a piece" }] },
+    expect(parseGame("baccarat", readme("<p>Place a bet</p>"))).toEqual([
+      { kind: "text", segs: [{ text: "Place a bet" }] },
     ]);
   });
 
   it("returns null for a README without the game's markers", () => {
     expect(parseGame("blackjack", readme("<p>x</p>"))).toBeNull();
+  });
+
+  it("keeps two games in one README apart", () => {
+    const md =
+      "<!-- BLACKJACK:START --><p>hit</p><!-- BLACKJACK:END --><!-- BACCARAT:START --><p>bet</p><!-- BACCARAT:END -->";
+    expect(parseGame("blackjack", md)).toEqual([{ kind: "text", segs: [{ text: "hit" }] }]);
+    expect(parseGame("baccarat", md)).toEqual([{ kind: "text", segs: [{ text: "bet" }] }]);
+  });
+});
+
+describe("readmeUrl", () => {
+  it("reads both tables from 0-draft/casino", () => {
+    const url = "https://raw.githubusercontent.com/0-draft/casino/main/README.md";
+    expect(readmeUrl("blackjack")).toBe(url);
+    expect(readmeUrl("baccarat")).toBe(url);
   });
 });

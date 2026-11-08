@@ -6,12 +6,14 @@ import Sheet from "../components/Sheet.astro";
 import articles from "../data/articles.json";
 import games from "../data/games.json";
 import { fileNo, home, shelves } from "../lib/desk.ts";
-import type { Block } from "../lib/readme.ts";
+import { type Block, GAMES, type GameName } from "../lib/readme.ts";
 import "../styles/desk.css";
 
 const all = shelves();
 const boards = games as Record<string, Block[]>;
-const guestRows = boards.guestbook?.find((b) => b.kind === "table")?.rows ?? [];
+// A repo whose README holds games shows them as boards, one per live region.
+const tables = (name: string) => (Object.keys(GAMES) as GameName[]).filter((game) => GAMES[game].repo === name);
+const title = (game: string) => game[0].toUpperCase() + game.slice(1);
 const minutes = articles.reduce((n, a) => n + a.readingMinutes, 0);
 const shortDate = (iso: string) =>
   new Date(iso).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric", timeZone: "UTC" });
@@ -105,34 +107,19 @@ const count = all.reduce((n, s) => n + s.repos.length, 0);
               </header>
               <div class="pile">
                 {shelf.repos.map((repo) =>
-                  repo.name === "blackjack" || repo.name === "baccarat" || repo.name === "shogi" ? (
+                  tables(repo.name).length ? (
                     <Sheet repo={repo} group={shelf.id} kind="board">
-                      <div class:list={["board", `board-${repo.name}`]} data-game={repo.name}>
-                        <Blocks blocks={boards[repo.name] ?? []} />
-                      </div>
-                    </Sheet>
-                  ) : repo.name === "guestbook" ? (
-                    <Sheet repo={repo} group={shelf.id} kind="book">
-                      <div class="book">
-                        <ol class="book-lines" data-game="guestbook">
-                          {guestRows.map(([date, who, msg]) => (
-                            <li>
-                              <time>{date?.[0]?.text}</time>
-                              <a class="who" href={who?.[0]?.href}>
-                                {who?.[0]?.text}
-                              </a>
-                              <a class="msg" href={msg?.[0]?.href}>
-                                {msg?.[0]?.text}
-                              </a>
-                            </li>
-                          ))}
-                        </ol>
-                        <a
-                          class="btn btn-wax"
-                          href="https://github.com/0-draft/guestbook/issues/new?template=guestbook.yml&title=%F0%9F%93%AE+%5BGuest+Book%5D"
-                        >
-                          Sign the guest book
-                        </a>
+                      <div class="boards">
+                        {tables(repo.name).map((game) => (
+                          <section class:list={["board", `board-${game}`]} aria-label={title(game)}>
+                            <p class="board-name" aria-hidden="true">
+                              {title(game)}
+                            </p>
+                            <div data-game={game}>
+                              <Blocks blocks={boards[game] ?? []} />
+                            </div>
+                          </section>
+                        ))}
                       </div>
                     </Sheet>
                   ) : repo.name === "dev.to" ? (

@@ -6,22 +6,29 @@
         [
           {
             "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/blackjack/main/.github/cards/label-dealer.svg",
+            "src": "https://raw.githubusercontent.com/0-draft/casino/main/.github/cards/label-dealer.svg",
             "alt": "dealer",
             "w": 52,
             "h": 62
           },
           {
             "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/blackjack/main/.github/cards/7S.svg",
+            "src": "https://raw.githubusercontent.com/0-draft/casino/main/.github/cards/7S.svg",
             "alt": "seven of spades",
             "w": 44,
             "h": 62
           },
           {
             "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/blackjack/main/.github/cards/back.svg",
-            "alt": "the dealer's hole card, face down",
+            "src": "https://raw.githubusercontent.com/0-draft/casino/main/.github/cards/9S.svg",
+            "alt": "nine of spades",
+            "w": 44,
+            "h": 62
+          },
+          {
+            "href": null,
+            "src": "https://raw.githubusercontent.com/0-draft/casino/main/.github/cards/KC.svg",
+            "alt": "king of clubs",
             "w": 44,
             "h": 62
           }
@@ -29,22 +36,29 @@
         [
           {
             "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/blackjack/main/.github/cards/label-you.svg",
-            "alt": "you",
+            "src": "https://raw.githubusercontent.com/0-draft/casino/main/.github/cards/label-player.svg",
+            "alt": "player",
             "w": 52,
             "h": 62
           },
           {
             "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/blackjack/main/.github/cards/3D.svg",
+            "src": "https://raw.githubusercontent.com/0-draft/casino/main/.github/cards/3D.svg",
             "alt": "three of diamonds",
             "w": 44,
             "h": 62
           },
           {
             "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/blackjack/main/.github/cards/7S.svg",
+            "src": "https://raw.githubusercontent.com/0-draft/casino/main/.github/cards/7S.svg",
             "alt": "seven of spades",
+            "w": 44,
+            "h": 62
+          },
+          {
+            "href": null,
+            "src": "https://raw.githubusercontent.com/0-draft/casino/main/.github/cards/AC.svg",
+            "alt": "ace of clubs",
             "w": 44,
             "h": 62
           }
@@ -55,7 +69,7 @@
       "kind": "text",
       "segs": [
         {
-          "text": "The dealer shows seven, and you have 10."
+          "text": "Hand 12: the dealer busted with 26, @kanywst had soft 21, and it paid 1u. Pick a chip to deal hand 13."
         }
       ]
     },
@@ -64,32 +78,39 @@
       "rows": [
         [
           {
-            "href": "https://github.com/0-draft/blackjack/issues/new?title=bj%7Chit+12&body=Just+click+Submit+new+issue.+The+table+updates+in+about+30+seconds.",
-            "src": "https://raw.githubusercontent.com/0-draft/blackjack/main/.github/cards/btn-hit.svg",
-            "alt": "hit",
-            "w": 49,
-            "h": 30
+            "href": "https://github.com/0-draft/casino/issues/new?title=bj%7Cbet+1+13&body=Just+click+Submit+new+issue.+The+table+updates+in+about+30+seconds.",
+            "src": "https://raw.githubusercontent.com/0-draft/casino/main/.github/cards/chip1.svg",
+            "alt": "bet 1 unit",
+            "w": 44,
+            "h": 44
           },
           {
-            "href": "https://github.com/0-draft/blackjack/issues/new?title=bj%7Cstand+12&body=Just+click+Submit+new+issue.+The+table+updates+in+about+30+seconds.",
-            "src": "https://raw.githubusercontent.com/0-draft/blackjack/main/.github/cards/btn-stand.svg",
-            "alt": "stand",
-            "w": 66,
-            "h": 30
+            "href": "https://github.com/0-draft/casino/issues/new?title=bj%7Cbet+2+13&body=Just+click+Submit+new+issue.+The+table+updates+in+about+30+seconds.",
+            "src": "https://raw.githubusercontent.com/0-draft/casino/main/.github/cards/chip2.svg",
+            "alt": "bet 2 units",
+            "w": 44,
+            "h": 44
           },
           {
-            "href": "https://github.com/0-draft/blackjack/issues/new?title=bj%7Cdouble+12&body=Just+click+Submit+new+issue.+The+table+updates+in+about+30+seconds.",
-            "src": "https://raw.githubusercontent.com/0-draft/blackjack/main/.github/cards/btn-double.svg",
-            "alt": "double",
-            "w": 74,
-            "h": 30
+            "href": "https://github.com/0-draft/casino/issues/new?title=bj%7Cbet+5+13&body=Just+click+Submit+new+issue.+The+table+updates+in+about+30+seconds.",
+            "src": "https://raw.githubusercontent.com/0-draft/casino/main/.github/cards/chip5.svg",
+            "alt": "bet 5 units",
+            "w": 44,
+            "h": 44
           },
           {
-            "href": "https://github.com/0-draft/blackjack/issues/new?title=bj%7Csurrender+12&body=Just+click+Submit+new+issue.+The+table+updates+in+about+30+seconds.",
-            "src": "https://raw.githubusercontent.com/0-draft/blackjack/main/.github/cards/btn-surrender.svg",
-            "alt": "surrender",
-            "w": 100,
-            "h": 30
+            "href": "https://github.com/0-draft/casino/issues/new?title=bj%7Cbet+10+13&body=Just+click+Submit+new+issue.+The+table+updates+in+about+30+seconds.",
+            "src": "https://raw.githubusercontent.com/0-draft/casino/main/.github/cards/chip10.svg",
+            "alt": "bet 10 units",
+            "w": 44,
+            "h": 44
+          },
+          {
+            "href": "https://github.com/0-draft/casino/issues/new?title=bj%7Cbet+25+13&body=Just+click+Submit+new+issue.+The+table+updates+in+about+30+seconds.",
+            "src": "https://raw.githubusercontent.com/0-draft/casino/main/.github/cards/chip25.svg",
+            "alt": "bet 25 units",
+            "w": 44,
+            "h": 44
           }
         ]
       ]
@@ -106,11 +127,11 @@
       "kind": "text",
       "segs": [
         {
-          "text": "Shoe 1 · 4.8 decks left · out of it: 6 7 Q 7 8 7 8 2 2 Q T T 5 K K 7 9 3 3 J 9 3 7 7 · "
+          "text": "Shoe 1 · 4.8 decks left · out of it: 7 8 7 8 2 2 Q T T 5 K K 7 9 3 3 J 9 3 7 7 A 9 K · "
         },
         {
-          "text": "all 62",
-          "href": "https://github.com/0-draft/blackjack/blob/main/.github/blackjack.json"
+          "text": "all 65",
+          "href": "https://github.com/0-draft/casino/blob/main/.github/blackjack.json"
         }
       ]
     },
@@ -118,7 +139,7 @@
       "kind": "text",
       "segs": [
         {
-          "text": "-3u over 11 hands · 1 player · 0u lost to mistakes"
+          "text": "-2u over 12 hands · 1 player · 0.1u lost to mistakes"
         }
       ]
     },
@@ -131,6 +152,35 @@
         ""
       ],
       "rows": [
+        [
+          [
+            {
+              "text": "12"
+            },
+            {
+              "text": " "
+            },
+            {
+              "text": "@kanywst",
+              "href": "https://github.com/kanywst"
+            }
+          ],
+          [
+            {
+              "text": "soft 21 (3 7 A)"
+            }
+          ],
+          [
+            {
+              "text": "26 bust (7 9 K)"
+            }
+          ],
+          [
+            {
+              "text": "+1u"
+            }
+          ]
+        ],
         [
           [
             {
@@ -188,35 +238,6 @@
               "text": "+25u"
             }
           ]
-        ],
-        [
-          [
-            {
-              "text": "9"
-            },
-            {
-              "text": " "
-            },
-            {
-              "text": "@kanywst",
-              "href": "https://github.com/kanywst"
-            }
-          ],
-          [
-            {
-              "text": "21 (7 2 2 Q)"
-            }
-          ],
-          [
-            {
-              "text": "18 (8 T)"
-            }
-          ],
-          [
-            {
-              "text": "+25u"
-            }
-          ]
         ]
       ]
     },
@@ -229,687 +250,6 @@
       ]
     }
   ],
-  "shogi": [
-    {
-      "kind": "grid",
-      "rows": [
-        [
-          {
-            "href": "https://github.com/0-draft/shogi/issues/new?title=shogi%7Csel+9a&body=Just+click+Submit+new+issue.+The+board+updates+in+about+30+seconds.",
-            "src": "https://raw.githubusercontent.com/0-draft/shogi/main/.github/koma/gL.svg",
-            "alt": "9a white lance to move",
-            "w": 44,
-            "h": 48
-          },
-          {
-            "href": "https://github.com/0-draft/shogi/issues/new?title=shogi%7Csel+8a&body=Just+click+Submit+new+issue.+The+board+updates+in+about+30+seconds.",
-            "src": "https://raw.githubusercontent.com/0-draft/shogi/main/.github/koma/gN.svg",
-            "alt": "8a white knight to move",
-            "w": 44,
-            "h": 48
-          },
-          {
-            "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/shogi/main/.github/koma/empty.svg",
-            "alt": "",
-            "w": 44,
-            "h": 48
-          },
-          {
-            "href": "https://github.com/0-draft/shogi/issues/new?title=shogi%7Csel+6a&body=Just+click+Submit+new+issue.+The+board+updates+in+about+30+seconds.",
-            "src": "https://raw.githubusercontent.com/0-draft/shogi/main/.github/koma/gG.svg",
-            "alt": "6a white gold to move",
-            "w": 44,
-            "h": 48
-          },
-          {
-            "href": "https://github.com/0-draft/shogi/issues/new?title=shogi%7Csel+5a&body=Just+click+Submit+new+issue.+The+board+updates+in+about+30+seconds.",
-            "src": "https://raw.githubusercontent.com/0-draft/shogi/main/.github/koma/gK.svg",
-            "alt": "5a white king to move",
-            "w": 44,
-            "h": 48
-          },
-          {
-            "href": "https://github.com/0-draft/shogi/issues/new?title=shogi%7Csel+4a&body=Just+click+Submit+new+issue.+The+board+updates+in+about+30+seconds.",
-            "src": "https://raw.githubusercontent.com/0-draft/shogi/main/.github/koma/gG.svg",
-            "alt": "4a white gold to move",
-            "w": 44,
-            "h": 48
-          },
-          {
-            "href": "https://github.com/0-draft/shogi/issues/new?title=shogi%7Csel+3a&body=Just+click+Submit+new+issue.+The+board+updates+in+about+30+seconds.",
-            "src": "https://raw.githubusercontent.com/0-draft/shogi/main/.github/koma/gS.svg",
-            "alt": "3a white silver to move",
-            "w": 44,
-            "h": 48
-          },
-          {
-            "href": "https://github.com/0-draft/shogi/issues/new?title=shogi%7Csel+2a&body=Just+click+Submit+new+issue.+The+board+updates+in+about+30+seconds.",
-            "src": "https://raw.githubusercontent.com/0-draft/shogi/main/.github/koma/gN.svg",
-            "alt": "2a white knight to move",
-            "w": 44,
-            "h": 48
-          },
-          {
-            "href": "https://github.com/0-draft/shogi/issues/new?title=shogi%7Csel+1a&body=Just+click+Submit+new+issue.+The+board+updates+in+about+30+seconds.",
-            "src": "https://raw.githubusercontent.com/0-draft/shogi/main/.github/koma/gL.svg",
-            "alt": "1a white lance to move",
-            "w": 44,
-            "h": 48
-          }
-        ],
-        [
-          {
-            "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/shogi/main/.github/koma/empty.svg",
-            "alt": "",
-            "w": 44,
-            "h": 48
-          },
-          {
-            "href": "https://github.com/0-draft/shogi/issues/new?title=shogi%7Csel+8b&body=Just+click+Submit+new+issue.+The+board+updates+in+about+30+seconds.",
-            "src": "https://raw.githubusercontent.com/0-draft/shogi/main/.github/koma/gR.svg",
-            "alt": "8b white rook to move",
-            "w": 44,
-            "h": 48
-          },
-          {
-            "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/shogi/main/.github/koma/empty.svg",
-            "alt": "",
-            "w": 44,
-            "h": 48
-          },
-          {
-            "href": "https://github.com/0-draft/shogi/issues/new?title=shogi%7Csel+6b&body=Just+click+Submit+new+issue.+The+board+updates+in+about+30+seconds.",
-            "src": "https://raw.githubusercontent.com/0-draft/shogi/main/.github/koma/gS.svg",
-            "alt": "6b white silver to move",
-            "w": 44,
-            "h": 48
-          },
-          {
-            "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/shogi/main/.github/koma/empty.svg",
-            "alt": "",
-            "w": 44,
-            "h": 48
-          },
-          {
-            "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/shogi/main/.github/koma/empty.svg",
-            "alt": "",
-            "w": 44,
-            "h": 48
-          },
-          {
-            "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/shogi/main/.github/koma/empty.svg",
-            "alt": "",
-            "w": 44,
-            "h": 48
-          },
-          {
-            "href": "https://github.com/0-draft/shogi/issues/new?title=shogi%7Csel+2b&body=Just+click+Submit+new+issue.+The+board+updates+in+about+30+seconds.",
-            "src": "https://raw.githubusercontent.com/0-draft/shogi/main/.github/koma/gB.svg",
-            "alt": "2b white bishop to move",
-            "w": 44,
-            "h": 48
-          },
-          {
-            "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/shogi/main/.github/koma/empty.svg",
-            "alt": "",
-            "w": 44,
-            "h": 48
-          }
-        ],
-        [
-          {
-            "href": "https://github.com/0-draft/shogi/issues/new?title=shogi%7Csel+9c&body=Just+click+Submit+new+issue.+The+board+updates+in+about+30+seconds.",
-            "src": "https://raw.githubusercontent.com/0-draft/shogi/main/.github/koma/gP.svg",
-            "alt": "9c white pawn to move",
-            "w": 44,
-            "h": 48
-          },
-          {
-            "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/shogi/main/.github/koma/empty.svg",
-            "alt": "",
-            "w": 44,
-            "h": 48
-          },
-          {
-            "href": "https://github.com/0-draft/shogi/issues/new?title=shogi%7Csel+7c&body=Just+click+Submit+new+issue.+The+board+updates+in+about+30+seconds.",
-            "src": "https://raw.githubusercontent.com/0-draft/shogi/main/.github/koma/gP.svg",
-            "alt": "7c white pawn to move",
-            "w": 44,
-            "h": 48
-          },
-          {
-            "href": "https://github.com/0-draft/shogi/issues/new?title=shogi%7Csel+6c&body=Just+click+Submit+new+issue.+The+board+updates+in+about+30+seconds.",
-            "src": "https://raw.githubusercontent.com/0-draft/shogi/main/.github/koma/gP.svg",
-            "alt": "6c white pawn to move",
-            "w": 44,
-            "h": 48
-          },
-          {
-            "href": "https://github.com/0-draft/shogi/issues/new?title=shogi%7Csel+5c&body=Just+click+Submit+new+issue.+The+board+updates+in+about+30+seconds.",
-            "src": "https://raw.githubusercontent.com/0-draft/shogi/main/.github/koma/gP.svg",
-            "alt": "5c white pawn to move",
-            "w": 44,
-            "h": 48
-          },
-          {
-            "href": "https://github.com/0-draft/shogi/issues/new?title=shogi%7Csel+4c&body=Just+click+Submit+new+issue.+The+board+updates+in+about+30+seconds.",
-            "src": "https://raw.githubusercontent.com/0-draft/shogi/main/.github/koma/gP.svg",
-            "alt": "4c white pawn to move",
-            "w": 44,
-            "h": 48
-          },
-          {
-            "href": "https://github.com/0-draft/shogi/issues/new?title=shogi%7Csel+3c&body=Just+click+Submit+new+issue.+The+board+updates+in+about+30+seconds.",
-            "src": "https://raw.githubusercontent.com/0-draft/shogi/main/.github/koma/gP.svg",
-            "alt": "3c white pawn to move",
-            "w": 44,
-            "h": 48
-          },
-          {
-            "href": "https://github.com/0-draft/shogi/issues/new?title=shogi%7Csel+2c&body=Just+click+Submit+new+issue.+The+board+updates+in+about+30+seconds.",
-            "src": "https://raw.githubusercontent.com/0-draft/shogi/main/.github/koma/gP.svg",
-            "alt": "2c white pawn to move",
-            "w": 44,
-            "h": 48
-          },
-          {
-            "href": "https://github.com/0-draft/shogi/issues/new?title=shogi%7Csel+1c&body=Just+click+Submit+new+issue.+The+board+updates+in+about+30+seconds.",
-            "src": "https://raw.githubusercontent.com/0-draft/shogi/main/.github/koma/gP.svg",
-            "alt": "1c white pawn to move",
-            "w": 44,
-            "h": 48
-          }
-        ],
-        [
-          {
-            "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/shogi/main/.github/koma/empty.svg",
-            "alt": "",
-            "w": 44,
-            "h": 48
-          },
-          {
-            "href": "https://github.com/0-draft/shogi/issues/new?title=shogi%7Csel+8d&body=Just+click+Submit+new+issue.+The+board+updates+in+about+30+seconds.",
-            "src": "https://raw.githubusercontent.com/0-draft/shogi/main/.github/koma/gP.svg",
-            "alt": "8d white pawn to move",
-            "w": 44,
-            "h": 48
-          },
-          {
-            "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/shogi/main/.github/koma/empty.svg",
-            "alt": "",
-            "w": 44,
-            "h": 48
-          },
-          {
-            "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/shogi/main/.github/koma/empty.svg",
-            "alt": "",
-            "w": 44,
-            "h": 48
-          },
-          {
-            "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/shogi/main/.github/koma/empty.svg",
-            "alt": "",
-            "w": 44,
-            "h": 48
-          },
-          {
-            "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/shogi/main/.github/koma/empty.svg",
-            "alt": "",
-            "w": 44,
-            "h": 48
-          },
-          {
-            "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/shogi/main/.github/koma/empty.svg",
-            "alt": "",
-            "w": 44,
-            "h": 48
-          },
-          {
-            "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/shogi/main/.github/koma/empty.svg",
-            "alt": "",
-            "w": 44,
-            "h": 48
-          },
-          {
-            "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/shogi/main/.github/koma/empty.svg",
-            "alt": "",
-            "w": 44,
-            "h": 48
-          }
-        ],
-        [
-          {
-            "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/shogi/main/.github/koma/empty.svg",
-            "alt": "",
-            "w": 44,
-            "h": 48
-          },
-          {
-            "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/shogi/main/.github/koma/empty.svg",
-            "alt": "",
-            "w": 44,
-            "h": 48
-          },
-          {
-            "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/shogi/main/.github/koma/empty.svg",
-            "alt": "",
-            "w": 44,
-            "h": 48
-          },
-          {
-            "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/shogi/main/.github/koma/empty.svg",
-            "alt": "",
-            "w": 44,
-            "h": 48
-          },
-          {
-            "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/shogi/main/.github/koma/empty.svg",
-            "alt": "",
-            "w": 44,
-            "h": 48
-          },
-          {
-            "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/shogi/main/.github/koma/empty.svg",
-            "alt": "",
-            "w": 44,
-            "h": 48
-          },
-          {
-            "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/shogi/main/.github/koma/empty.svg",
-            "alt": "",
-            "w": 44,
-            "h": 48
-          },
-          {
-            "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/shogi/main/.github/koma/empty.svg",
-            "alt": "",
-            "w": 44,
-            "h": 48
-          },
-          {
-            "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/shogi/main/.github/koma/empty.svg",
-            "alt": "",
-            "w": 44,
-            "h": 48
-          }
-        ],
-        [
-          {
-            "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/shogi/main/.github/koma/empty.svg",
-            "alt": "",
-            "w": 44,
-            "h": 48
-          },
-          {
-            "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/shogi/main/.github/koma/empty.svg",
-            "alt": "",
-            "w": 44,
-            "h": 48
-          },
-          {
-            "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/shogi/main/.github/koma/sP-idle.svg",
-            "alt": "7f black pawn",
-            "w": 44,
-            "h": 48
-          },
-          {
-            "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/shogi/main/.github/koma/empty.svg",
-            "alt": "",
-            "w": 44,
-            "h": 48
-          },
-          {
-            "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/shogi/main/.github/koma/empty.svg",
-            "alt": "",
-            "w": 44,
-            "h": 48
-          },
-          {
-            "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/shogi/main/.github/koma/empty.svg",
-            "alt": "",
-            "w": 44,
-            "h": 48
-          },
-          {
-            "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/shogi/main/.github/koma/empty.svg",
-            "alt": "",
-            "w": 44,
-            "h": 48
-          },
-          {
-            "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/shogi/main/.github/koma/empty.svg",
-            "alt": "",
-            "w": 44,
-            "h": 48
-          },
-          {
-            "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/shogi/main/.github/koma/empty.svg",
-            "alt": "",
-            "w": 44,
-            "h": 48
-          }
-        ],
-        [
-          {
-            "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/shogi/main/.github/koma/sP-idle.svg",
-            "alt": "9g black pawn",
-            "w": 44,
-            "h": 48
-          },
-          {
-            "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/shogi/main/.github/koma/sP-idle.svg",
-            "alt": "8g black pawn",
-            "w": 44,
-            "h": 48
-          },
-          {
-            "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/shogi/main/.github/koma/sN-idle.svg",
-            "alt": "7g black knight",
-            "w": 44,
-            "h": 48
-          },
-          {
-            "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/shogi/main/.github/koma/sP-idle.svg",
-            "alt": "6g black pawn",
-            "w": 44,
-            "h": 48
-          },
-          {
-            "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/shogi/main/.github/koma/sP-idle.svg",
-            "alt": "5g black pawn",
-            "w": 44,
-            "h": 48
-          },
-          {
-            "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/shogi/main/.github/koma/sP-idle.svg",
-            "alt": "4g black pawn",
-            "w": 44,
-            "h": 48
-          },
-          {
-            "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/shogi/main/.github/koma/sP-idle.svg",
-            "alt": "3g black pawn",
-            "w": 44,
-            "h": 48
-          },
-          {
-            "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/shogi/main/.github/koma/sP-idle.svg",
-            "alt": "2g black pawn",
-            "w": 44,
-            "h": 48
-          },
-          {
-            "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/shogi/main/.github/koma/sP-idle.svg",
-            "alt": "1g black pawn",
-            "w": 44,
-            "h": 48
-          }
-        ],
-        [
-          {
-            "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/shogi/main/.github/koma/empty.svg",
-            "alt": "",
-            "w": 44,
-            "h": 48
-          },
-          {
-            "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/shogi/main/.github/koma/sB-idle.svg",
-            "alt": "8h black bishop",
-            "w": 44,
-            "h": 48
-          },
-          {
-            "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/shogi/main/.github/koma/empty.svg",
-            "alt": "",
-            "w": 44,
-            "h": 48
-          },
-          {
-            "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/shogi/main/.github/koma/empty.svg",
-            "alt": "",
-            "w": 44,
-            "h": 48
-          },
-          {
-            "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/shogi/main/.github/koma/sR-idle.svg",
-            "alt": "5h black rook",
-            "w": 44,
-            "h": 48
-          },
-          {
-            "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/shogi/main/.github/koma/empty.svg",
-            "alt": "",
-            "w": 44,
-            "h": 48
-          },
-          {
-            "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/shogi/main/.github/koma/empty.svg",
-            "alt": "",
-            "w": 44,
-            "h": 48
-          },
-          {
-            "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/shogi/main/.github/koma/empty.svg",
-            "alt": "",
-            "w": 44,
-            "h": 48
-          },
-          {
-            "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/shogi/main/.github/koma/empty.svg",
-            "alt": "",
-            "w": 44,
-            "h": 48
-          }
-        ],
-        [
-          {
-            "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/shogi/main/.github/koma/sL-idle.svg",
-            "alt": "9i black lance",
-            "w": 44,
-            "h": 48
-          },
-          {
-            "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/shogi/main/.github/koma/empty.svg",
-            "alt": "",
-            "w": 44,
-            "h": 48
-          },
-          {
-            "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/shogi/main/.github/koma/sS-idle.svg",
-            "alt": "7i black silver",
-            "w": 44,
-            "h": 48
-          },
-          {
-            "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/shogi/main/.github/koma/sG-idle.svg",
-            "alt": "6i black gold",
-            "w": 44,
-            "h": 48
-          },
-          {
-            "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/shogi/main/.github/koma/sK-idle.svg",
-            "alt": "5i black king",
-            "w": 44,
-            "h": 48
-          },
-          {
-            "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/shogi/main/.github/koma/sG-idle.svg",
-            "alt": "4i black gold",
-            "w": 44,
-            "h": 48
-          },
-          {
-            "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/shogi/main/.github/koma/sS-idle.svg",
-            "alt": "3i black silver",
-            "w": 44,
-            "h": 48
-          },
-          {
-            "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/shogi/main/.github/koma/sN-idle.svg",
-            "alt": "2i black knight",
-            "w": 44,
-            "h": 48
-          },
-          {
-            "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/shogi/main/.github/koma/sL-idle.svg",
-            "alt": "1i black lance",
-            "w": 44,
-            "h": 48
-          }
-        ]
-      ]
-    },
-    {
-      "kind": "text",
-      "segs": [
-        {
-          "text": "Click a piece, then a square. Takes about 30 seconds. · "
-        },
-        {
-          "text": "Resign",
-          "href": "https://github.com/0-draft/shogi/issues/new?title=shogi%7Cresign&body=Just+click+Submit+new+issue.+The+board+updates+in+about+30+seconds."
-        }
-      ]
-    },
-    {
-      "kind": "text",
-      "segs": [
-        {
-          "text": "Last move: R-5h · Black 0 · White 0 · 0 games · 1 player"
-        }
-      ]
-    }
-  ],
-  "guestbook": [
-    {
-      "kind": "table",
-      "head": [
-        "🕐",
-        "👤",
-        "💬"
-      ],
-      "rows": [
-        [
-          [
-            {
-              "text": "2026-10-14"
-            }
-          ],
-          [
-            {
-              "text": "@kanywst",
-              "href": "https://github.com/kanywst"
-            }
-          ],
-          [
-            {
-              "text": "workflow no longer hardcodes the repo or branch",
-              "href": "https://github.com/0-draft/guestbook/issues/5"
-            }
-          ]
-        ],
-        [
-          [
-            {
-              "text": "2026-10-14"
-            }
-          ],
-          [
-            {
-              "text": "@kanywst",
-              "href": "https://github.com/kanywst"
-            }
-          ],
-          [
-            {
-              "text": "smoke test after the move to 0-draft 👋",
-              "href": "https://github.com/0-draft/guestbook/issues/3"
-            }
-          ]
-        ],
-        [
-          [
-            {
-              "text": "2026-03-23"
-            }
-          ],
-          [
-            {
-              "text": "@kanywst",
-              "href": "https://github.com/kanywst"
-            }
-          ],
-          [
-            {
-              "text": "‼️",
-              "href": "https://github.com/kanywst/kanywst/issues/2"
-            }
-          ]
-        ]
-      ]
-    }
-  ],
   "baccarat": [
     {
       "kind": "grid",
@@ -917,28 +257,28 @@
         [
           {
             "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/label-player.svg",
-            "alt": "player",
+            "src": "https://raw.githubusercontent.com/0-draft/casino/main/.github/cards/seat-player-won.svg",
+            "alt": "player, won",
             "w": 60,
             "h": 62
           },
           {
             "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/7H.svg",
-            "alt": "seven of hearts",
+            "src": "https://raw.githubusercontent.com/0-draft/casino/main/.github/cards/4H.svg",
+            "alt": "four of hearts",
             "w": 44,
             "h": 62
           },
           {
             "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/KS.svg",
-            "alt": "king of spades",
+            "src": "https://raw.githubusercontent.com/0-draft/casino/main/.github/cards/5D.svg",
+            "alt": "five of diamonds",
             "w": 44,
             "h": 62
           },
           {
             "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/blank.svg",
+            "src": "https://raw.githubusercontent.com/0-draft/casino/main/.github/cards/blank.svg",
             "alt": "",
             "w": 44,
             "h": 62
@@ -947,29 +287,29 @@
         [
           {
             "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/label-banker-won.svg",
-            "alt": "banker, won",
+            "src": "https://raw.githubusercontent.com/0-draft/casino/main/.github/cards/seat-banker.svg",
+            "alt": "banker",
             "w": 60,
             "h": 62
           },
           {
             "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/4S.svg",
-            "alt": "four of spades",
+            "src": "https://raw.githubusercontent.com/0-draft/casino/main/.github/cards/7H.svg",
+            "alt": "seven of hearts",
             "w": 44,
             "h": 62
           },
           {
             "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/8H.svg",
-            "alt": "eight of hearts",
+            "src": "https://raw.githubusercontent.com/0-draft/casino/main/.github/cards/5D.svg",
+            "alt": "five of diamonds",
             "w": 44,
             "h": 62
           },
           {
             "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/6H.svg",
-            "alt": "six of hearts",
+            "src": "https://raw.githubusercontent.com/0-draft/casino/main/.github/cards/blank.svg",
+            "alt": "",
             "w": 44,
             "h": 62
           }
@@ -980,7 +320,7 @@
       "kind": "text",
       "segs": [
         {
-          "text": "Hand 2: Player 7 (7 K) against Banker 8 (4 8 6). Banker wins. @kanywst's 1u on Player lost 1u. Pick a spot and a chip to deal hand 3."
+          "text": "Hand 3: Player natural 9 (4 5) against Banker 2 (7 5). Player wins. @kanywst's 1u on Player paid 1u. Pick a spot and a chip to deal hand 4."
         }
       ]
     },
@@ -990,42 +330,42 @@
         [
           {
             "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/spot-player.svg",
+            "src": "https://raw.githubusercontent.com/0-draft/casino/main/.github/cards/spot-player.svg",
             "alt": "player",
             "w": 84,
             "h": 44
           },
           {
-            "href": "https://github.com/0-draft/baccarat/issues/new?title=bac%7Cbet+player+1+3&body=Just+click+Submit+new+issue.+The+table+updates+in+about+30+seconds.",
-            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/chip1.svg",
+            "href": "https://github.com/0-draft/casino/issues/new?title=bac%7Cbet+player+1+4&body=Just+click+Submit+new+issue.+The+table+updates+in+about+30+seconds.",
+            "src": "https://raw.githubusercontent.com/0-draft/casino/main/.github/cards/chip1.svg",
             "alt": "1 on player",
             "w": 44,
             "h": 44
           },
           {
-            "href": "https://github.com/0-draft/baccarat/issues/new?title=bac%7Cbet+player+2+3&body=Just+click+Submit+new+issue.+The+table+updates+in+about+30+seconds.",
-            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/chip2.svg",
+            "href": "https://github.com/0-draft/casino/issues/new?title=bac%7Cbet+player+2+4&body=Just+click+Submit+new+issue.+The+table+updates+in+about+30+seconds.",
+            "src": "https://raw.githubusercontent.com/0-draft/casino/main/.github/cards/chip2.svg",
             "alt": "2 on player",
             "w": 44,
             "h": 44
           },
           {
-            "href": "https://github.com/0-draft/baccarat/issues/new?title=bac%7Cbet+player+5+3&body=Just+click+Submit+new+issue.+The+table+updates+in+about+30+seconds.",
-            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/chip5.svg",
+            "href": "https://github.com/0-draft/casino/issues/new?title=bac%7Cbet+player+5+4&body=Just+click+Submit+new+issue.+The+table+updates+in+about+30+seconds.",
+            "src": "https://raw.githubusercontent.com/0-draft/casino/main/.github/cards/chip5.svg",
             "alt": "5 on player",
             "w": 44,
             "h": 44
           },
           {
-            "href": "https://github.com/0-draft/baccarat/issues/new?title=bac%7Cbet+player+10+3&body=Just+click+Submit+new+issue.+The+table+updates+in+about+30+seconds.",
-            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/chip10.svg",
+            "href": "https://github.com/0-draft/casino/issues/new?title=bac%7Cbet+player+10+4&body=Just+click+Submit+new+issue.+The+table+updates+in+about+30+seconds.",
+            "src": "https://raw.githubusercontent.com/0-draft/casino/main/.github/cards/chip10.svg",
             "alt": "10 on player",
             "w": 44,
             "h": 44
           },
           {
-            "href": "https://github.com/0-draft/baccarat/issues/new?title=bac%7Cbet+player+25+3&body=Just+click+Submit+new+issue.+The+table+updates+in+about+30+seconds.",
-            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/chip25.svg",
+            "href": "https://github.com/0-draft/casino/issues/new?title=bac%7Cbet+player+25+4&body=Just+click+Submit+new+issue.+The+table+updates+in+about+30+seconds.",
+            "src": "https://raw.githubusercontent.com/0-draft/casino/main/.github/cards/chip25.svg",
             "alt": "25 on player",
             "w": 44,
             "h": 44
@@ -1034,42 +374,42 @@
         [
           {
             "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/spot-banker.svg",
+            "src": "https://raw.githubusercontent.com/0-draft/casino/main/.github/cards/spot-banker.svg",
             "alt": "banker",
             "w": 84,
             "h": 44
           },
           {
-            "href": "https://github.com/0-draft/baccarat/issues/new?title=bac%7Cbet+banker+1+3&body=Just+click+Submit+new+issue.+The+table+updates+in+about+30+seconds.",
-            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/chip1.svg",
+            "href": "https://github.com/0-draft/casino/issues/new?title=bac%7Cbet+banker+1+4&body=Just+click+Submit+new+issue.+The+table+updates+in+about+30+seconds.",
+            "src": "https://raw.githubusercontent.com/0-draft/casino/main/.github/cards/chip1.svg",
             "alt": "1 on banker",
             "w": 44,
             "h": 44
           },
           {
-            "href": "https://github.com/0-draft/baccarat/issues/new?title=bac%7Cbet+banker+2+3&body=Just+click+Submit+new+issue.+The+table+updates+in+about+30+seconds.",
-            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/chip2.svg",
+            "href": "https://github.com/0-draft/casino/issues/new?title=bac%7Cbet+banker+2+4&body=Just+click+Submit+new+issue.+The+table+updates+in+about+30+seconds.",
+            "src": "https://raw.githubusercontent.com/0-draft/casino/main/.github/cards/chip2.svg",
             "alt": "2 on banker",
             "w": 44,
             "h": 44
           },
           {
-            "href": "https://github.com/0-draft/baccarat/issues/new?title=bac%7Cbet+banker+5+3&body=Just+click+Submit+new+issue.+The+table+updates+in+about+30+seconds.",
-            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/chip5.svg",
+            "href": "https://github.com/0-draft/casino/issues/new?title=bac%7Cbet+banker+5+4&body=Just+click+Submit+new+issue.+The+table+updates+in+about+30+seconds.",
+            "src": "https://raw.githubusercontent.com/0-draft/casino/main/.github/cards/chip5.svg",
             "alt": "5 on banker",
             "w": 44,
             "h": 44
           },
           {
-            "href": "https://github.com/0-draft/baccarat/issues/new?title=bac%7Cbet+banker+10+3&body=Just+click+Submit+new+issue.+The+table+updates+in+about+30+seconds.",
-            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/chip10.svg",
+            "href": "https://github.com/0-draft/casino/issues/new?title=bac%7Cbet+banker+10+4&body=Just+click+Submit+new+issue.+The+table+updates+in+about+30+seconds.",
+            "src": "https://raw.githubusercontent.com/0-draft/casino/main/.github/cards/chip10.svg",
             "alt": "10 on banker",
             "w": 44,
             "h": 44
           },
           {
-            "href": "https://github.com/0-draft/baccarat/issues/new?title=bac%7Cbet+banker+25+3&body=Just+click+Submit+new+issue.+The+table+updates+in+about+30+seconds.",
-            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/chip25.svg",
+            "href": "https://github.com/0-draft/casino/issues/new?title=bac%7Cbet+banker+25+4&body=Just+click+Submit+new+issue.+The+table+updates+in+about+30+seconds.",
+            "src": "https://raw.githubusercontent.com/0-draft/casino/main/.github/cards/chip25.svg",
             "alt": "25 on banker",
             "w": 44,
             "h": 44
@@ -1078,42 +418,42 @@
         [
           {
             "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/spot-tie.svg",
+            "src": "https://raw.githubusercontent.com/0-draft/casino/main/.github/cards/spot-tie.svg",
             "alt": "tie",
             "w": 84,
             "h": 44
           },
           {
-            "href": "https://github.com/0-draft/baccarat/issues/new?title=bac%7Cbet+tie+1+3&body=Just+click+Submit+new+issue.+The+table+updates+in+about+30+seconds.",
-            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/chip1.svg",
+            "href": "https://github.com/0-draft/casino/issues/new?title=bac%7Cbet+tie+1+4&body=Just+click+Submit+new+issue.+The+table+updates+in+about+30+seconds.",
+            "src": "https://raw.githubusercontent.com/0-draft/casino/main/.github/cards/chip1.svg",
             "alt": "1 on tie",
             "w": 44,
             "h": 44
           },
           {
-            "href": "https://github.com/0-draft/baccarat/issues/new?title=bac%7Cbet+tie+2+3&body=Just+click+Submit+new+issue.+The+table+updates+in+about+30+seconds.",
-            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/chip2.svg",
+            "href": "https://github.com/0-draft/casino/issues/new?title=bac%7Cbet+tie+2+4&body=Just+click+Submit+new+issue.+The+table+updates+in+about+30+seconds.",
+            "src": "https://raw.githubusercontent.com/0-draft/casino/main/.github/cards/chip2.svg",
             "alt": "2 on tie",
             "w": 44,
             "h": 44
           },
           {
-            "href": "https://github.com/0-draft/baccarat/issues/new?title=bac%7Cbet+tie+5+3&body=Just+click+Submit+new+issue.+The+table+updates+in+about+30+seconds.",
-            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/chip5.svg",
+            "href": "https://github.com/0-draft/casino/issues/new?title=bac%7Cbet+tie+5+4&body=Just+click+Submit+new+issue.+The+table+updates+in+about+30+seconds.",
+            "src": "https://raw.githubusercontent.com/0-draft/casino/main/.github/cards/chip5.svg",
             "alt": "5 on tie",
             "w": 44,
             "h": 44
           },
           {
-            "href": "https://github.com/0-draft/baccarat/issues/new?title=bac%7Cbet+tie+10+3&body=Just+click+Submit+new+issue.+The+table+updates+in+about+30+seconds.",
-            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/chip10.svg",
+            "href": "https://github.com/0-draft/casino/issues/new?title=bac%7Cbet+tie+10+4&body=Just+click+Submit+new+issue.+The+table+updates+in+about+30+seconds.",
+            "src": "https://raw.githubusercontent.com/0-draft/casino/main/.github/cards/chip10.svg",
             "alt": "10 on tie",
             "w": 44,
             "h": 44
           },
           {
-            "href": "https://github.com/0-draft/baccarat/issues/new?title=bac%7Cbet+tie+25+3&body=Just+click+Submit+new+issue.+The+table+updates+in+about+30+seconds.",
-            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/chip25.svg",
+            "href": "https://github.com/0-draft/casino/issues/new?title=bac%7Cbet+tie+25+4&body=Just+click+Submit+new+issue.+The+table+updates+in+about+30+seconds.",
+            "src": "https://raw.githubusercontent.com/0-draft/casino/main/.github/cards/chip25.svg",
             "alt": "25 on tie",
             "w": 44,
             "h": 44
@@ -1122,42 +462,42 @@
         [
           {
             "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/spot-ppair.svg",
+            "src": "https://raw.githubusercontent.com/0-draft/casino/main/.github/cards/spot-ppair.svg",
             "alt": "player pair",
             "w": 84,
             "h": 44
           },
           {
-            "href": "https://github.com/0-draft/baccarat/issues/new?title=bac%7Cbet+ppair+1+3&body=Just+click+Submit+new+issue.+The+table+updates+in+about+30+seconds.",
-            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/chip1.svg",
+            "href": "https://github.com/0-draft/casino/issues/new?title=bac%7Cbet+ppair+1+4&body=Just+click+Submit+new+issue.+The+table+updates+in+about+30+seconds.",
+            "src": "https://raw.githubusercontent.com/0-draft/casino/main/.github/cards/chip1.svg",
             "alt": "1 on player pair",
             "w": 44,
             "h": 44
           },
           {
-            "href": "https://github.com/0-draft/baccarat/issues/new?title=bac%7Cbet+ppair+2+3&body=Just+click+Submit+new+issue.+The+table+updates+in+about+30+seconds.",
-            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/chip2.svg",
+            "href": "https://github.com/0-draft/casino/issues/new?title=bac%7Cbet+ppair+2+4&body=Just+click+Submit+new+issue.+The+table+updates+in+about+30+seconds.",
+            "src": "https://raw.githubusercontent.com/0-draft/casino/main/.github/cards/chip2.svg",
             "alt": "2 on player pair",
             "w": 44,
             "h": 44
           },
           {
-            "href": "https://github.com/0-draft/baccarat/issues/new?title=bac%7Cbet+ppair+5+3&body=Just+click+Submit+new+issue.+The+table+updates+in+about+30+seconds.",
-            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/chip5.svg",
+            "href": "https://github.com/0-draft/casino/issues/new?title=bac%7Cbet+ppair+5+4&body=Just+click+Submit+new+issue.+The+table+updates+in+about+30+seconds.",
+            "src": "https://raw.githubusercontent.com/0-draft/casino/main/.github/cards/chip5.svg",
             "alt": "5 on player pair",
             "w": 44,
             "h": 44
           },
           {
-            "href": "https://github.com/0-draft/baccarat/issues/new?title=bac%7Cbet+ppair+10+3&body=Just+click+Submit+new+issue.+The+table+updates+in+about+30+seconds.",
-            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/chip10.svg",
+            "href": "https://github.com/0-draft/casino/issues/new?title=bac%7Cbet+ppair+10+4&body=Just+click+Submit+new+issue.+The+table+updates+in+about+30+seconds.",
+            "src": "https://raw.githubusercontent.com/0-draft/casino/main/.github/cards/chip10.svg",
             "alt": "10 on player pair",
             "w": 44,
             "h": 44
           },
           {
-            "href": "https://github.com/0-draft/baccarat/issues/new?title=bac%7Cbet+ppair+25+3&body=Just+click+Submit+new+issue.+The+table+updates+in+about+30+seconds.",
-            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/chip25.svg",
+            "href": "https://github.com/0-draft/casino/issues/new?title=bac%7Cbet+ppair+25+4&body=Just+click+Submit+new+issue.+The+table+updates+in+about+30+seconds.",
+            "src": "https://raw.githubusercontent.com/0-draft/casino/main/.github/cards/chip25.svg",
             "alt": "25 on player pair",
             "w": 44,
             "h": 44
@@ -1166,42 +506,42 @@
         [
           {
             "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/spot-bpair.svg",
+            "src": "https://raw.githubusercontent.com/0-draft/casino/main/.github/cards/spot-bpair.svg",
             "alt": "banker pair",
             "w": 84,
             "h": 44
           },
           {
-            "href": "https://github.com/0-draft/baccarat/issues/new?title=bac%7Cbet+bpair+1+3&body=Just+click+Submit+new+issue.+The+table+updates+in+about+30+seconds.",
-            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/chip1.svg",
+            "href": "https://github.com/0-draft/casino/issues/new?title=bac%7Cbet+bpair+1+4&body=Just+click+Submit+new+issue.+The+table+updates+in+about+30+seconds.",
+            "src": "https://raw.githubusercontent.com/0-draft/casino/main/.github/cards/chip1.svg",
             "alt": "1 on banker pair",
             "w": 44,
             "h": 44
           },
           {
-            "href": "https://github.com/0-draft/baccarat/issues/new?title=bac%7Cbet+bpair+2+3&body=Just+click+Submit+new+issue.+The+table+updates+in+about+30+seconds.",
-            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/chip2.svg",
+            "href": "https://github.com/0-draft/casino/issues/new?title=bac%7Cbet+bpair+2+4&body=Just+click+Submit+new+issue.+The+table+updates+in+about+30+seconds.",
+            "src": "https://raw.githubusercontent.com/0-draft/casino/main/.github/cards/chip2.svg",
             "alt": "2 on banker pair",
             "w": 44,
             "h": 44
           },
           {
-            "href": "https://github.com/0-draft/baccarat/issues/new?title=bac%7Cbet+bpair+5+3&body=Just+click+Submit+new+issue.+The+table+updates+in+about+30+seconds.",
-            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/chip5.svg",
+            "href": "https://github.com/0-draft/casino/issues/new?title=bac%7Cbet+bpair+5+4&body=Just+click+Submit+new+issue.+The+table+updates+in+about+30+seconds.",
+            "src": "https://raw.githubusercontent.com/0-draft/casino/main/.github/cards/chip5.svg",
             "alt": "5 on banker pair",
             "w": 44,
             "h": 44
           },
           {
-            "href": "https://github.com/0-draft/baccarat/issues/new?title=bac%7Cbet+bpair+10+3&body=Just+click+Submit+new+issue.+The+table+updates+in+about+30+seconds.",
-            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/chip10.svg",
+            "href": "https://github.com/0-draft/casino/issues/new?title=bac%7Cbet+bpair+10+4&body=Just+click+Submit+new+issue.+The+table+updates+in+about+30+seconds.",
+            "src": "https://raw.githubusercontent.com/0-draft/casino/main/.github/cards/chip10.svg",
             "alt": "10 on banker pair",
             "w": 44,
             "h": 44
           },
           {
-            "href": "https://github.com/0-draft/baccarat/issues/new?title=bac%7Cbet+bpair+25+3&body=Just+click+Submit+new+issue.+The+table+updates+in+about+30+seconds.",
-            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/chip25.svg",
+            "href": "https://github.com/0-draft/casino/issues/new?title=bac%7Cbet+bpair+25+4&body=Just+click+Submit+new+issue.+The+table+updates+in+about+30+seconds.",
+            "src": "https://raw.githubusercontent.com/0-draft/casino/main/.github/cards/chip25.svg",
             "alt": "25 on banker pair",
             "w": 44,
             "h": 44
@@ -1223,119 +563,119 @@
         [
           {
             "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-B.svg",
+            "src": "https://raw.githubusercontent.com/0-draft/casino/main/.github/cards/bead-B.svg",
             "alt": "banker",
             "w": 22,
             "h": 22
           },
           {
             "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "src": "https://raw.githubusercontent.com/0-draft/casino/main/.github/cards/bead-empty.svg",
             "alt": "",
             "w": 22,
             "h": 22
           },
           {
             "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "src": "https://raw.githubusercontent.com/0-draft/casino/main/.github/cards/bead-empty.svg",
             "alt": "",
             "w": 22,
             "h": 22
           },
           {
             "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "src": "https://raw.githubusercontent.com/0-draft/casino/main/.github/cards/bead-empty.svg",
             "alt": "",
             "w": 22,
             "h": 22
           },
           {
             "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "src": "https://raw.githubusercontent.com/0-draft/casino/main/.github/cards/bead-empty.svg",
             "alt": "",
             "w": 22,
             "h": 22
           },
           {
             "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "src": "https://raw.githubusercontent.com/0-draft/casino/main/.github/cards/bead-empty.svg",
             "alt": "",
             "w": 22,
             "h": 22
           },
           {
             "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "src": "https://raw.githubusercontent.com/0-draft/casino/main/.github/cards/bead-empty.svg",
             "alt": "",
             "w": 22,
             "h": 22
           },
           {
             "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "src": "https://raw.githubusercontent.com/0-draft/casino/main/.github/cards/bead-empty.svg",
             "alt": "",
             "w": 22,
             "h": 22
           },
           {
             "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "src": "https://raw.githubusercontent.com/0-draft/casino/main/.github/cards/bead-empty.svg",
             "alt": "",
             "w": 22,
             "h": 22
           },
           {
             "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "src": "https://raw.githubusercontent.com/0-draft/casino/main/.github/cards/bead-empty.svg",
             "alt": "",
             "w": 22,
             "h": 22
           },
           {
             "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "src": "https://raw.githubusercontent.com/0-draft/casino/main/.github/cards/bead-empty.svg",
             "alt": "",
             "w": 22,
             "h": 22
           },
           {
             "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "src": "https://raw.githubusercontent.com/0-draft/casino/main/.github/cards/bead-empty.svg",
             "alt": "",
             "w": 22,
             "h": 22
           },
           {
             "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "src": "https://raw.githubusercontent.com/0-draft/casino/main/.github/cards/bead-empty.svg",
             "alt": "",
             "w": 22,
             "h": 22
           },
           {
             "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "src": "https://raw.githubusercontent.com/0-draft/casino/main/.github/cards/bead-empty.svg",
             "alt": "",
             "w": 22,
             "h": 22
           },
           {
             "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "src": "https://raw.githubusercontent.com/0-draft/casino/main/.github/cards/bead-empty.svg",
             "alt": "",
             "w": 22,
             "h": 22
           },
           {
             "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "src": "https://raw.githubusercontent.com/0-draft/casino/main/.github/cards/bead-empty.svg",
             "alt": "",
             "w": 22,
             "h": 22
           },
           {
             "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "src": "https://raw.githubusercontent.com/0-draft/casino/main/.github/cards/bead-empty.svg",
             "alt": "",
             "w": 22,
             "h": 22
@@ -1344,240 +684,119 @@
         [
           {
             "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-B.svg",
+            "src": "https://raw.githubusercontent.com/0-draft/casino/main/.github/cards/bead-B.svg",
             "alt": "banker",
             "w": 22,
             "h": 22
           },
           {
             "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "src": "https://raw.githubusercontent.com/0-draft/casino/main/.github/cards/bead-empty.svg",
             "alt": "",
             "w": 22,
             "h": 22
           },
           {
             "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "src": "https://raw.githubusercontent.com/0-draft/casino/main/.github/cards/bead-empty.svg",
             "alt": "",
             "w": 22,
             "h": 22
           },
           {
             "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "src": "https://raw.githubusercontent.com/0-draft/casino/main/.github/cards/bead-empty.svg",
             "alt": "",
             "w": 22,
             "h": 22
           },
           {
             "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "src": "https://raw.githubusercontent.com/0-draft/casino/main/.github/cards/bead-empty.svg",
             "alt": "",
             "w": 22,
             "h": 22
           },
           {
             "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "src": "https://raw.githubusercontent.com/0-draft/casino/main/.github/cards/bead-empty.svg",
             "alt": "",
             "w": 22,
             "h": 22
           },
           {
             "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "src": "https://raw.githubusercontent.com/0-draft/casino/main/.github/cards/bead-empty.svg",
             "alt": "",
             "w": 22,
             "h": 22
           },
           {
             "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "src": "https://raw.githubusercontent.com/0-draft/casino/main/.github/cards/bead-empty.svg",
             "alt": "",
             "w": 22,
             "h": 22
           },
           {
             "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "src": "https://raw.githubusercontent.com/0-draft/casino/main/.github/cards/bead-empty.svg",
             "alt": "",
             "w": 22,
             "h": 22
           },
           {
             "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "src": "https://raw.githubusercontent.com/0-draft/casino/main/.github/cards/bead-empty.svg",
             "alt": "",
             "w": 22,
             "h": 22
           },
           {
             "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "src": "https://raw.githubusercontent.com/0-draft/casino/main/.github/cards/bead-empty.svg",
             "alt": "",
             "w": 22,
             "h": 22
           },
           {
             "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "src": "https://raw.githubusercontent.com/0-draft/casino/main/.github/cards/bead-empty.svg",
             "alt": "",
             "w": 22,
             "h": 22
           },
           {
             "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "src": "https://raw.githubusercontent.com/0-draft/casino/main/.github/cards/bead-empty.svg",
             "alt": "",
             "w": 22,
             "h": 22
           },
           {
             "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "src": "https://raw.githubusercontent.com/0-draft/casino/main/.github/cards/bead-empty.svg",
             "alt": "",
             "w": 22,
             "h": 22
           },
           {
             "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "src": "https://raw.githubusercontent.com/0-draft/casino/main/.github/cards/bead-empty.svg",
             "alt": "",
             "w": 22,
             "h": 22
           },
           {
             "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "src": "https://raw.githubusercontent.com/0-draft/casino/main/.github/cards/bead-empty.svg",
             "alt": "",
             "w": 22,
             "h": 22
           },
           {
             "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
-            "alt": "",
-            "w": 22,
-            "h": 22
-          }
-        ],
-        [
-          {
-            "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
-            "alt": "",
-            "w": 22,
-            "h": 22
-          },
-          {
-            "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
-            "alt": "",
-            "w": 22,
-            "h": 22
-          },
-          {
-            "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
-            "alt": "",
-            "w": 22,
-            "h": 22
-          },
-          {
-            "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
-            "alt": "",
-            "w": 22,
-            "h": 22
-          },
-          {
-            "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
-            "alt": "",
-            "w": 22,
-            "h": 22
-          },
-          {
-            "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
-            "alt": "",
-            "w": 22,
-            "h": 22
-          },
-          {
-            "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
-            "alt": "",
-            "w": 22,
-            "h": 22
-          },
-          {
-            "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
-            "alt": "",
-            "w": 22,
-            "h": 22
-          },
-          {
-            "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
-            "alt": "",
-            "w": 22,
-            "h": 22
-          },
-          {
-            "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
-            "alt": "",
-            "w": 22,
-            "h": 22
-          },
-          {
-            "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
-            "alt": "",
-            "w": 22,
-            "h": 22
-          },
-          {
-            "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
-            "alt": "",
-            "w": 22,
-            "h": 22
-          },
-          {
-            "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
-            "alt": "",
-            "w": 22,
-            "h": 22
-          },
-          {
-            "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
-            "alt": "",
-            "w": 22,
-            "h": 22
-          },
-          {
-            "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
-            "alt": "",
-            "w": 22,
-            "h": 22
-          },
-          {
-            "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
-            "alt": "",
-            "w": 22,
-            "h": 22
-          },
-          {
-            "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "src": "https://raw.githubusercontent.com/0-draft/casino/main/.github/cards/bead-empty.svg",
             "alt": "",
             "w": 22,
             "h": 22
@@ -1586,119 +805,119 @@
         [
           {
             "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "src": "https://raw.githubusercontent.com/0-draft/casino/main/.github/cards/bead-P.svg",
+            "alt": "player",
+            "w": 22,
+            "h": 22
+          },
+          {
+            "href": null,
+            "src": "https://raw.githubusercontent.com/0-draft/casino/main/.github/cards/bead-empty.svg",
             "alt": "",
             "w": 22,
             "h": 22
           },
           {
             "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "src": "https://raw.githubusercontent.com/0-draft/casino/main/.github/cards/bead-empty.svg",
             "alt": "",
             "w": 22,
             "h": 22
           },
           {
             "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "src": "https://raw.githubusercontent.com/0-draft/casino/main/.github/cards/bead-empty.svg",
             "alt": "",
             "w": 22,
             "h": 22
           },
           {
             "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "src": "https://raw.githubusercontent.com/0-draft/casino/main/.github/cards/bead-empty.svg",
             "alt": "",
             "w": 22,
             "h": 22
           },
           {
             "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "src": "https://raw.githubusercontent.com/0-draft/casino/main/.github/cards/bead-empty.svg",
             "alt": "",
             "w": 22,
             "h": 22
           },
           {
             "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "src": "https://raw.githubusercontent.com/0-draft/casino/main/.github/cards/bead-empty.svg",
             "alt": "",
             "w": 22,
             "h": 22
           },
           {
             "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "src": "https://raw.githubusercontent.com/0-draft/casino/main/.github/cards/bead-empty.svg",
             "alt": "",
             "w": 22,
             "h": 22
           },
           {
             "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "src": "https://raw.githubusercontent.com/0-draft/casino/main/.github/cards/bead-empty.svg",
             "alt": "",
             "w": 22,
             "h": 22
           },
           {
             "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "src": "https://raw.githubusercontent.com/0-draft/casino/main/.github/cards/bead-empty.svg",
             "alt": "",
             "w": 22,
             "h": 22
           },
           {
             "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "src": "https://raw.githubusercontent.com/0-draft/casino/main/.github/cards/bead-empty.svg",
             "alt": "",
             "w": 22,
             "h": 22
           },
           {
             "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "src": "https://raw.githubusercontent.com/0-draft/casino/main/.github/cards/bead-empty.svg",
             "alt": "",
             "w": 22,
             "h": 22
           },
           {
             "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "src": "https://raw.githubusercontent.com/0-draft/casino/main/.github/cards/bead-empty.svg",
             "alt": "",
             "w": 22,
             "h": 22
           },
           {
             "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "src": "https://raw.githubusercontent.com/0-draft/casino/main/.github/cards/bead-empty.svg",
             "alt": "",
             "w": 22,
             "h": 22
           },
           {
             "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "src": "https://raw.githubusercontent.com/0-draft/casino/main/.github/cards/bead-empty.svg",
             "alt": "",
             "w": 22,
             "h": 22
           },
           {
             "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "src": "https://raw.githubusercontent.com/0-draft/casino/main/.github/cards/bead-empty.svg",
             "alt": "",
             "w": 22,
             "h": 22
           },
           {
             "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
-            "alt": "",
-            "w": 22,
-            "h": 22
-          },
-          {
-            "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "src": "https://raw.githubusercontent.com/0-draft/casino/main/.github/cards/bead-empty.svg",
             "alt": "",
             "w": 22,
             "h": 22
@@ -1707,119 +926,119 @@
         [
           {
             "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "src": "https://raw.githubusercontent.com/0-draft/casino/main/.github/cards/bead-empty.svg",
             "alt": "",
             "w": 22,
             "h": 22
           },
           {
             "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "src": "https://raw.githubusercontent.com/0-draft/casino/main/.github/cards/bead-empty.svg",
             "alt": "",
             "w": 22,
             "h": 22
           },
           {
             "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "src": "https://raw.githubusercontent.com/0-draft/casino/main/.github/cards/bead-empty.svg",
             "alt": "",
             "w": 22,
             "h": 22
           },
           {
             "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "src": "https://raw.githubusercontent.com/0-draft/casino/main/.github/cards/bead-empty.svg",
             "alt": "",
             "w": 22,
             "h": 22
           },
           {
             "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "src": "https://raw.githubusercontent.com/0-draft/casino/main/.github/cards/bead-empty.svg",
             "alt": "",
             "w": 22,
             "h": 22
           },
           {
             "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "src": "https://raw.githubusercontent.com/0-draft/casino/main/.github/cards/bead-empty.svg",
             "alt": "",
             "w": 22,
             "h": 22
           },
           {
             "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "src": "https://raw.githubusercontent.com/0-draft/casino/main/.github/cards/bead-empty.svg",
             "alt": "",
             "w": 22,
             "h": 22
           },
           {
             "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "src": "https://raw.githubusercontent.com/0-draft/casino/main/.github/cards/bead-empty.svg",
             "alt": "",
             "w": 22,
             "h": 22
           },
           {
             "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "src": "https://raw.githubusercontent.com/0-draft/casino/main/.github/cards/bead-empty.svg",
             "alt": "",
             "w": 22,
             "h": 22
           },
           {
             "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "src": "https://raw.githubusercontent.com/0-draft/casino/main/.github/cards/bead-empty.svg",
             "alt": "",
             "w": 22,
             "h": 22
           },
           {
             "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "src": "https://raw.githubusercontent.com/0-draft/casino/main/.github/cards/bead-empty.svg",
             "alt": "",
             "w": 22,
             "h": 22
           },
           {
             "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "src": "https://raw.githubusercontent.com/0-draft/casino/main/.github/cards/bead-empty.svg",
             "alt": "",
             "w": 22,
             "h": 22
           },
           {
             "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "src": "https://raw.githubusercontent.com/0-draft/casino/main/.github/cards/bead-empty.svg",
             "alt": "",
             "w": 22,
             "h": 22
           },
           {
             "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "src": "https://raw.githubusercontent.com/0-draft/casino/main/.github/cards/bead-empty.svg",
             "alt": "",
             "w": 22,
             "h": 22
           },
           {
             "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "src": "https://raw.githubusercontent.com/0-draft/casino/main/.github/cards/bead-empty.svg",
             "alt": "",
             "w": 22,
             "h": 22
           },
           {
             "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "src": "https://raw.githubusercontent.com/0-draft/casino/main/.github/cards/bead-empty.svg",
             "alt": "",
             "w": 22,
             "h": 22
           },
           {
             "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "src": "https://raw.githubusercontent.com/0-draft/casino/main/.github/cards/bead-empty.svg",
             "alt": "",
             "w": 22,
             "h": 22
@@ -1828,119 +1047,240 @@
         [
           {
             "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "src": "https://raw.githubusercontent.com/0-draft/casino/main/.github/cards/bead-empty.svg",
             "alt": "",
             "w": 22,
             "h": 22
           },
           {
             "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "src": "https://raw.githubusercontent.com/0-draft/casino/main/.github/cards/bead-empty.svg",
             "alt": "",
             "w": 22,
             "h": 22
           },
           {
             "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "src": "https://raw.githubusercontent.com/0-draft/casino/main/.github/cards/bead-empty.svg",
             "alt": "",
             "w": 22,
             "h": 22
           },
           {
             "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "src": "https://raw.githubusercontent.com/0-draft/casino/main/.github/cards/bead-empty.svg",
             "alt": "",
             "w": 22,
             "h": 22
           },
           {
             "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "src": "https://raw.githubusercontent.com/0-draft/casino/main/.github/cards/bead-empty.svg",
             "alt": "",
             "w": 22,
             "h": 22
           },
           {
             "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "src": "https://raw.githubusercontent.com/0-draft/casino/main/.github/cards/bead-empty.svg",
             "alt": "",
             "w": 22,
             "h": 22
           },
           {
             "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "src": "https://raw.githubusercontent.com/0-draft/casino/main/.github/cards/bead-empty.svg",
             "alt": "",
             "w": 22,
             "h": 22
           },
           {
             "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "src": "https://raw.githubusercontent.com/0-draft/casino/main/.github/cards/bead-empty.svg",
             "alt": "",
             "w": 22,
             "h": 22
           },
           {
             "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "src": "https://raw.githubusercontent.com/0-draft/casino/main/.github/cards/bead-empty.svg",
             "alt": "",
             "w": 22,
             "h": 22
           },
           {
             "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "src": "https://raw.githubusercontent.com/0-draft/casino/main/.github/cards/bead-empty.svg",
             "alt": "",
             "w": 22,
             "h": 22
           },
           {
             "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "src": "https://raw.githubusercontent.com/0-draft/casino/main/.github/cards/bead-empty.svg",
             "alt": "",
             "w": 22,
             "h": 22
           },
           {
             "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "src": "https://raw.githubusercontent.com/0-draft/casino/main/.github/cards/bead-empty.svg",
             "alt": "",
             "w": 22,
             "h": 22
           },
           {
             "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "src": "https://raw.githubusercontent.com/0-draft/casino/main/.github/cards/bead-empty.svg",
             "alt": "",
             "w": 22,
             "h": 22
           },
           {
             "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "src": "https://raw.githubusercontent.com/0-draft/casino/main/.github/cards/bead-empty.svg",
             "alt": "",
             "w": 22,
             "h": 22
           },
           {
             "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "src": "https://raw.githubusercontent.com/0-draft/casino/main/.github/cards/bead-empty.svg",
             "alt": "",
             "w": 22,
             "h": 22
           },
           {
             "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "src": "https://raw.githubusercontent.com/0-draft/casino/main/.github/cards/bead-empty.svg",
             "alt": "",
             "w": 22,
             "h": 22
           },
           {
             "href": null,
-            "src": "https://raw.githubusercontent.com/0-draft/baccarat/main/.github/cards/bead-empty.svg",
+            "src": "https://raw.githubusercontent.com/0-draft/casino/main/.github/cards/bead-empty.svg",
+            "alt": "",
+            "w": 22,
+            "h": 22
+          }
+        ],
+        [
+          {
+            "href": null,
+            "src": "https://raw.githubusercontent.com/0-draft/casino/main/.github/cards/bead-empty.svg",
+            "alt": "",
+            "w": 22,
+            "h": 22
+          },
+          {
+            "href": null,
+            "src": "https://raw.githubusercontent.com/0-draft/casino/main/.github/cards/bead-empty.svg",
+            "alt": "",
+            "w": 22,
+            "h": 22
+          },
+          {
+            "href": null,
+            "src": "https://raw.githubusercontent.com/0-draft/casino/main/.github/cards/bead-empty.svg",
+            "alt": "",
+            "w": 22,
+            "h": 22
+          },
+          {
+            "href": null,
+            "src": "https://raw.githubusercontent.com/0-draft/casino/main/.github/cards/bead-empty.svg",
+            "alt": "",
+            "w": 22,
+            "h": 22
+          },
+          {
+            "href": null,
+            "src": "https://raw.githubusercontent.com/0-draft/casino/main/.github/cards/bead-empty.svg",
+            "alt": "",
+            "w": 22,
+            "h": 22
+          },
+          {
+            "href": null,
+            "src": "https://raw.githubusercontent.com/0-draft/casino/main/.github/cards/bead-empty.svg",
+            "alt": "",
+            "w": 22,
+            "h": 22
+          },
+          {
+            "href": null,
+            "src": "https://raw.githubusercontent.com/0-draft/casino/main/.github/cards/bead-empty.svg",
+            "alt": "",
+            "w": 22,
+            "h": 22
+          },
+          {
+            "href": null,
+            "src": "https://raw.githubusercontent.com/0-draft/casino/main/.github/cards/bead-empty.svg",
+            "alt": "",
+            "w": 22,
+            "h": 22
+          },
+          {
+            "href": null,
+            "src": "https://raw.githubusercontent.com/0-draft/casino/main/.github/cards/bead-empty.svg",
+            "alt": "",
+            "w": 22,
+            "h": 22
+          },
+          {
+            "href": null,
+            "src": "https://raw.githubusercontent.com/0-draft/casino/main/.github/cards/bead-empty.svg",
+            "alt": "",
+            "w": 22,
+            "h": 22
+          },
+          {
+            "href": null,
+            "src": "https://raw.githubusercontent.com/0-draft/casino/main/.github/cards/bead-empty.svg",
+            "alt": "",
+            "w": 22,
+            "h": 22
+          },
+          {
+            "href": null,
+            "src": "https://raw.githubusercontent.com/0-draft/casino/main/.github/cards/bead-empty.svg",
+            "alt": "",
+            "w": 22,
+            "h": 22
+          },
+          {
+            "href": null,
+            "src": "https://raw.githubusercontent.com/0-draft/casino/main/.github/cards/bead-empty.svg",
+            "alt": "",
+            "w": 22,
+            "h": 22
+          },
+          {
+            "href": null,
+            "src": "https://raw.githubusercontent.com/0-draft/casino/main/.github/cards/bead-empty.svg",
+            "alt": "",
+            "w": 22,
+            "h": 22
+          },
+          {
+            "href": null,
+            "src": "https://raw.githubusercontent.com/0-draft/casino/main/.github/cards/bead-empty.svg",
+            "alt": "",
+            "w": 22,
+            "h": 22
+          },
+          {
+            "href": null,
+            "src": "https://raw.githubusercontent.com/0-draft/casino/main/.github/cards/bead-empty.svg",
+            "alt": "",
+            "w": 22,
+            "h": 22
+          },
+          {
+            "href": null,
+            "src": "https://raw.githubusercontent.com/0-draft/casino/main/.github/cards/bead-empty.svg",
             "alt": "",
             "w": 22,
             "h": 22
@@ -1952,7 +1292,7 @@
       "kind": "text",
       "segs": [
         {
-          "text": "Shoe 1 · P 0 B 2 T 0 · 7.8 decks left · out of it: 7 3 5 6 7 4 K 8 6"
+          "text": "Shoe 1 · P 1 B 2 T 0 · 7.8 decks left · out of it: 7 3 5 6 7 4 K 8 6 4 7 5 5"
         }
       ]
     },
@@ -1960,7 +1300,7 @@
       "kind": "text",
       "segs": [
         {
-          "text": "-0.05u over 2 hands · 1 player · 0u given up to worse bets"
+          "text": "+0.95u over 3 hands · 1 player · 0u given up to worse bets"
         }
       ]
     },
@@ -1974,6 +1314,40 @@
         ""
       ],
       "rows": [
+        [
+          [
+            {
+              "text": "3"
+            },
+            {
+              "text": " "
+            },
+            {
+              "text": "@kanywst",
+              "href": "https://github.com/kanywst"
+            }
+          ],
+          [
+            {
+              "text": "1u Player"
+            }
+          ],
+          [
+            {
+              "text": "9 (4 5)"
+            }
+          ],
+          [
+            {
+              "text": "2 (7 5)"
+            }
+          ],
+          [
+            {
+              "text": "+1u"
+            }
+          ]
+        ],
         [
           [
             {

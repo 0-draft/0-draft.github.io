@@ -15,7 +15,6 @@
   /* the seal red lifted for text on the black desk: 5:1 against --night */
   --red-on-night: #e0575a;
   --felt: #1c5c43;
-  --wood: #ecd6a6;
 
   --on-night: rgb(241 236 225 / 0.92);
   --on-night-soft: rgb(241 236 225 / 0.62);
@@ -415,8 +414,7 @@
     top: calc(var(--pad) + (100cqi - 2 * var(--pad)) * 0.625 - 40px);
     bottom: auto;
   }
-  .sheet-board .stamp,
-  .sheet-book .stamp {
+  .sheet-board .stamp {
     bottom: auto;
     top: calc(100% - 104px);
   }
@@ -428,20 +426,24 @@
   .sheet-board {
     width: min-content;
   }
+  /* one felt table per game: side by side on the desk, stacked in the list */
+  .boards {
+    display: flex;
+  }
   .board {
+    width: 520px;
     padding: 20px;
     container-type: inline-size;
-  }
-  .board-blackjack,
-  .board-baccarat {
-    width: 520px;
     background: var(--felt);
     color: #f5f1e6;
   }
-  .board-shogi {
-    width: 436px;
-    background: var(--wood);
-    color: #3b2c18;
+  .board-name {
+    font-family: var(--mono);
+    font-size: 11.5px;
+    letter-spacing: 0.12em;
+    text-align: center;
+    text-transform: uppercase;
+    opacity: 0.75;
   }
   .b-grid {
     display: grid;
@@ -456,10 +458,6 @@
   .b-row a,
   .b-row img {
     display: block;
-  }
-  .board-shogi .b-row img {
-    width: min(44px, calc(100cqi / 9));
-    height: auto;
   }
   .board-blackjack .b-grid + .b-text + .b-grid .b-row,
   .board-baccarat .b-grid + .b-text + .b-grid .b-row {
@@ -496,45 +494,6 @@
   }
   .b-table td:last-child {
     text-align: right;
-  }
-
-  /* guestbook: a ruled ledger page */
-  .sheet-book {
-    width: 560px;
-  }
-  .book {
-    padding: 22px 22px 24px 64px;
-    background:
-      linear-gradient(90deg, transparent 46px, rgb(179 39 42 / 0.55) 46px 47px, transparent 47px),
-      repeating-linear-gradient(transparent 0 35px, rgb(20 18 16 / 0.16) 35px 36px) 0 22px / 100% 36px repeat-y;
-  }
-  .book-lines li {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    align-items: baseline;
-    column-gap: 12px;
-    line-height: 36px;
-  }
-  .book-lines time {
-    font-family: var(--mono);
-    font-size: 11.5px;
-    color: var(--ink-soft);
-  }
-  .book-lines .who {
-    font-weight: 700;
-    text-decoration: none;
-  }
-  .book-lines .msg {
-    grid-column: 1 / -1;
-    font-size: 18px;
-    text-decoration: none;
-    overflow-wrap: anywhere;
-  }
-  .book-lines a:hover {
-    text-decoration: underline;
-  }
-  .book .btn {
-    margin-top: 14px;
   }
 
   /* dev.to: a till receipt */
@@ -999,9 +958,10 @@
     width: auto;
     max-width: 100%;
   }
-  html.list .board-blackjack,
-  html.list .board-baccarat,
-  html.list .board-shogi {
+  html.list .boards {
+    flex-direction: column;
+  }
+  html.list .board {
     width: auto;
   }
   html.list .try,

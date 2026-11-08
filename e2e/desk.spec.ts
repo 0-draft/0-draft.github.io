@@ -62,7 +62,7 @@ test("keyboard focus pulls an off-screen sheet into view", async ({ page, isMobi
   test.skip(isMobile, "no hardware keyboard");
   await openDesk(page);
   await page.getByRole("button", { name: "Home" }).click();
-  const link = page.locator("#guestbook h3 a");
+  const link = page.locator("#casino h3 a");
   await link.focus();
   await expect
     .poll(async () => {
@@ -189,19 +189,19 @@ test("while a site is open, focus cannot wander onto the desk behind it", async 
 test("board images carry their size, so the boards don't grow after the desk is measured", async ({ page }) => {
   await openDesk(page);
   const unsized = await page
-    .locator('[data-game="shogi"] img, [data-game="blackjack"] img, [data-game="baccarat"] img')
+    .locator('[data-game="blackjack"] img, [data-game="baccarat"] img')
     .evaluateAll((imgs) => imgs.filter((i) => !i.getAttribute("width") || !i.getAttribute("height")).length);
   expect(unsized).toBe(0);
 });
 
 test("the README games render as playable boards", async ({ page }) => {
   await openDesk(page);
-  const shogi = page.locator('[data-game="shogi"] .b-grid .b-row');
-  await expect(shogi).toHaveCount(9);
-  await expect(page.locator('[data-game="shogi"] a[href*="/issues/new"]').first()).toBeAttached();
-  await expect(page.locator('[data-game="blackjack"] img').first()).toBeAttached();
-  await expect(page.locator('[data-game="baccarat"] img').first()).toBeAttached();
-  await expect(page.locator('[data-game="guestbook"] li').first()).toBeAttached();
+  const casino = page.locator("#casino");
+  await expect(casino.locator('[data-game="blackjack"] img').first()).toBeAttached();
+  await expect(casino.locator('[data-game="baccarat"] img').first()).toBeAttached();
+  await expect(casino.locator('[data-game="baccarat"] img[src*="/seat-player"]').first()).toBeAttached();
+  await expect(casino.locator('a[href*="/issues/new"]').first()).toBeAttached();
+  await expect(page.locator('a[href*="0-draft/guestbook"], a[href*="0-draft/shogi"]')).toHaveCount(0);
 });
 
 test("list view turns the desk into a plain page and remembers the choice", async ({ page }) => {
