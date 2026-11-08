@@ -80,43 +80,32 @@ function render(blocks: Block[], sizes: Map<string, { w: number; h: number }>): 
   });
 }
 
-function renderGuestbook(list: HTMLElement, blocks: Block[]) {
-  const table = blocks.find((b) => b.kind === "table");
-  if (table?.kind !== "table") return;
-  list.replaceChildren(
-    ...table.rows.map(([date, who, msg]) => {
-      const li = document.createElement("li");
-      const time = document.createElement("time");
-      time.textContent = date?.[0]?.text ?? "";
-      const w = link(who?.[0]?.href ?? "https://github.com", who?.[0]?.text ?? "");
-      w.className = "who";
-      w.removeAttribute("target");
-      const m = link(msg?.[0]?.href ?? "https://github.com/0-draft/guestbook", msg?.[0]?.text ?? "");
-      m.className = "msg";
-      m.removeAttribute("target");
-      li.append(time, w, m);
-      return li;
-    }),
-  );
-}
-
 const seen = new Map<GameName, string>();
 
 async function refresh() {
   const targets = document.querySelectorAll<HTMLElement>("[data-game]");
+  // Games that share a README (blackjack and baccarat in 0-draft/casino) share one request.
+  const readmes = new Map<string, Promise<string | null>>();
+  const read = (url: string) => {
+    if (!readmes.has(url)) {
+      readmes.set(
+        url,
+        fetch(`${url}?t=${Math.floor(Date.now() / 60_000)}`).then((res) => (res.ok ? res.text() : null)),
+      );
+    }
+    return readmes.get(url) as Promise<string | null>;
+  };
   await Promise.all(
     [...targets].map(async (el) => {
       const name = el.dataset.game as GameName;
       try {
-        const res = await fetch(`${readmeUrl(name)}?t=${Math.floor(Date.now() / 60_000)}`);
-        if (!res.ok) return;
-        const md = await res.text();
+        const md = await read(readmeUrl(name));
+        if (md === null) return;
         if (seen.get(name) === md) return;
         seen.set(name, md);
         const blocks = parseGame(name, md);
         if (!blocks) return;
-        if (name === "guestbook") renderGuestbook(el, blocks);
-        else el.replaceChildren(...render(blocks, knownSizes(el)));
+        el.replaceChildren(...render(blocks, knownSizes(el)));
       } catch {
         // The build-time board stays up if GitHub can't be reached.
       }

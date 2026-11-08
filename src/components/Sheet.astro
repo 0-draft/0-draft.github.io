@@ -9,7 +9,7 @@ type Placed = Shelf["repos"][number];
 interface Props {
   repo: Placed;
   group: string;
-  kind?: "screen" | "board" | "book" | "receipt";
+  kind?: "screen" | "board" | "receipt";
 }
 const { repo, group, kind = "screen" } = Astro.props;
 

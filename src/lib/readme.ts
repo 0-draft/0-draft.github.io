@@ -138,20 +138,19 @@ export function parseBlocks(region: string): Block[] {
   return blocks;
 }
 
+// Each game is one live region of a README. Blackjack and baccarat share 0-draft/casino's README.
 export const GAMES = {
-  blackjack: "BLACKJACK",
-  shogi: "SHOGI",
-  guestbook: "GUESTBOOK",
-  baccarat: "BACCARAT",
+  blackjack: { repo: "casino", marker: "BLACKJACK" },
+  baccarat: { repo: "casino", marker: "BACCARAT" },
 } as const;
 
 export type GameName = keyof typeof GAMES;
 
 export function readmeUrl(name: GameName): string {
-  return `https://raw.githubusercontent.com/0-draft/${name}/main/README.md`;
+  return `https://raw.githubusercontent.com/0-draft/${GAMES[name].repo}/main/README.md`;
 }
 
 export function parseGame(name: GameName, markdown: string): Block[] | null {
-  const region = liveRegion(markdown, GAMES[name]);
+  const region = liveRegion(markdown, GAMES[name].marker);
   return region ? parseBlocks(region) : null;
 }

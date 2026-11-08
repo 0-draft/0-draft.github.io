@@ -12,7 +12,7 @@ export const groups: Group[] = [
     id: "aws",
     title: "AWS, drawn",
     blurb: "Interactive maps of how AWS actually works, from credentials to cables. English and Japanese.",
-    repos: ["caller-identity", "assume-role", "on-ramp", "cross-connect", "s3-atlas"],
+    repos: ["aws-credentials", "aws-connectivity", "s3-atlas"],
   },
   {
     id: "security",
@@ -30,8 +30,8 @@ export const groups: Group[] = [
   {
     id: "games",
     title: "Played in the README",
-    blurb: "Open an issue to make a move. GitHub Actions deals the cards and redraws the board.",
-    repos: ["baccarat", "blackjack", "shogi", "guestbook"],
+    blurb: "Open an issue to place a bet or make a move. GitHub Actions deals the cards and redraws the table.",
+    repos: ["casino"],
   },
   {
     id: "writing",

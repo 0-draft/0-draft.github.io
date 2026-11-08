@@ -25,7 +25,9 @@ describe("framable", () => {
   const repo = (homepage: string | null) => ({ ...repos[0], homepage }) as Repo;
 
   it("frames sites on the org's Pages origin", () => {
-    expect(framable(repo("https://0-draft.github.io/on-ramp/"))).toBe("https://0-draft.github.io/on-ramp/");
+    expect(framable(repo("https://0-draft.github.io/aws-connectivity/"))).toBe(
+      "https://0-draft.github.io/aws-connectivity/",
+    );
   });
 
   it("leaves everything else to a normal link", () => {
